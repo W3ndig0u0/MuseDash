@@ -1,0 +1,15 @@
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/Projekt.deps.json
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/Projekt.runtimeconfig.json
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/Projekt.runtimeconfig.dev.json
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/Projekt.dll
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/ref/Projekt.dll
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/bin/Debug/net5.0/Projekt.pdb
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.csproj.AssemblyReference.cache
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.AssemblyInfoInputs.cache
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.AssemblyInfo.cs
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.csproj.CoreCompileInputs.cache
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.dll
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/ref/Projekt.dll
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.pdb
+/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/Debug/net5.0/Projekt.genruntimeconfig.cache
