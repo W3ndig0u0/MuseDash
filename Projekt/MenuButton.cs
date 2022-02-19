@@ -10,22 +10,21 @@ namespace Projekt
     int YPosition;
     int Width;
     int Height;
-
     Color ButtonColor;
-
     Vector2 mousePos;
     Sound clickSound;
     Rectangle button;
     bool areOverlapping;
+    Scene Scene;
 
-
-    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor)
+    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene)
     {
       XPosition = xPosition;
       YPosition = yPosition;
       Width = width;
       Height = height;
       ButtonColor = buttonColor;
+      Scene = scene;
 
       button = new Rectangle(xPosition, yPosition, width, height);
       mousePos = Raylib.GetMousePosition();
@@ -48,12 +47,15 @@ namespace Projekt
       {
         XPosition -= 12;
         ButtonColor.a = 200;
-        // Raylib.PlaySound(clickSound);
 
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
-          // Raylib.PlaySound(clickSound);
           ButtonColor.a = 255;
+
+          // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
+          InitGame.currentScene.AddScene(Scene);
+          new Draw().RenderScene(Scene);
+          // Raylib.PlaySound(clickSound);
         }
       }
 

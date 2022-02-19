@@ -9,20 +9,25 @@ namespace Projekt
   {
     List<Scene> scenes = new List<Scene>();
     StartScene startScene = new StartScene();
-    Draw draw = new Draw();
+
 
     //! -1 är för att den inte ska köra indexen 1, som inte finns just nu
     int currentScene = -1;
 
     public CurrentScene()
     {
-      this.AddScene(startScene);
+      AddScene(startScene);
     }
 
-    //!VIlken Scene som ska rendras
+    //!VIlken Scene som ska rendras, den säger till Draw vad som ska rendras
     public void PlayScene()
     {
-      draw.RenderScene(scenes[currentScene]);
+      scenes[currentScene].WhatToDraw();
+    }
+
+    public Scene GetScene(int n)
+    {
+      return scenes[currentScene - n];
     }
 
     //!För att lägga till en scene

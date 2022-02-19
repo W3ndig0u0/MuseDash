@@ -5,13 +5,13 @@ namespace Projekt
 {
   public class Draw
   {
+
     public void RenderScene(Scene s)
     {
       while (!Raylib.WindowShouldClose())
       {
         Raylib.BeginDrawing();
-        s.WhatToDraw();
-
+        InitGame.currentScene.PlayScene();
         Raylib.EndDrawing();
       }
     }
