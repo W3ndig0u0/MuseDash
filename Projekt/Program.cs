@@ -1,4 +1,6 @@
-﻿namespace Projekt
+﻿using System;
+
+namespace Projekt
 {
   class Program
   {
@@ -6,6 +8,7 @@
     {
       // !Initializerar Raylib programmet med denna width o heigth
       new InitGame(1600, 800);
+
     }
   }
 }

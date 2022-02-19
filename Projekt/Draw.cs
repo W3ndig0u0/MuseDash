@@ -10,7 +10,7 @@ namespace Projekt
       while (!Raylib.WindowShouldClose())
       {
         Raylib.BeginDrawing();
-        s.WhatToDraw(Raylib_cs.Color.MAGENTA);
+        s.WhatToDraw();
 
         Raylib.EndDrawing();
       }

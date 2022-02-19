@@ -5,10 +5,10 @@ namespace Projekt
 {
   public class MenuScene : Scene
   {
-    public override void WhatToDraw(Color c)
+    public override void WhatToDraw()
     {
-      Raylib.ClearBackground(c);
-      Raylib.DrawCircle(100, 100, 200, c);
+      Raylib.ClearBackground(Color.BLACK);
+      Raylib.DrawCircle(100, 200, 100, Color.BROWN);
     }
   }
 }

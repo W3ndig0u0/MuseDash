@@ -6,6 +6,7 @@ namespace Projekt
   public class InitGame
   {
     string windowTitle = "Slutprojekt";
+    CurrentScene currentScene = new CurrentScene();
 
     public InitGame(int WindowWidth, int WindowHeight)
     {
@@ -14,7 +15,7 @@ namespace Projekt
       // Raylib.ToggleFullscreen();
       Raylib.SetTargetFPS(120);
       Console.Clear();
-      //   new Draw().RenderScene();
+      currentScene.PlayScene();
     }
 
   }

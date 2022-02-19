@@ -11,23 +11,21 @@ namespace Projekt
     StartScene startScene = new StartScene();
     Draw draw = new Draw();
 
-    int currentScene;
+    //! -1 är för att den inte ska köra indexen 1, som inte finns just nu
+    int currentScene = -1;
 
-    //the -1 is due to it otherwice would start at 0 and try to run the scene of index 1, which is non exsistent
     public CurrentScene()
     {
-      currentScene = -1;
       this.AddScene(startScene);
     }
 
-    //What scene that should be running
+    //!VIlken Scene som ska rendras
     public void PlayScene()
     {
-      // scenes[currentScene].WhatToDraw(Raylib_cs.Color.MAGENTA);
       draw.RenderScene(scenes[currentScene]);
     }
 
-    //if a scene needs to be added
+    //!För att lägga till en scene
     public void AddScene(Scene scene)
     {
       scenes.Add(scene);

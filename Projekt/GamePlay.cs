@@ -5,10 +5,10 @@ namespace Projekt
 {
   public class GamePlay : Scene
   {
-    public override void WhatToDraw(Color c)
+    public override void WhatToDraw()
     {
-      Raylib.ClearBackground(c);
-      Raylib.DrawCircle(100, 200, 100, c);
+      Raylib.ClearBackground(Color.WHITE);
+      Raylib.DrawCircle(100, 100, 200, Color.BROWN);
     }
   }
 }
