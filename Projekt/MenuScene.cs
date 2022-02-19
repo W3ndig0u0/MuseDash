@@ -7,6 +7,12 @@ namespace Projekt
   {
     GamePlay gamePlay = new GamePlay();
 
+
+    public override void Update()
+    {
+
+    }
+
     public override void WhatToDraw()
     {
       Raylib.ClearBackground(Color.LIGHTGRAY);

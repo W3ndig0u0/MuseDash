@@ -5,9 +5,13 @@ namespace Projekt
 {
   public class StartScene : Scene
   {
-
-    int intro = 0;
+    int intro;
     MenuScene menuScene = new MenuScene();
+
+
+    public override void Update()
+    {
+    }
 
     public override void WhatToDraw()
     {
@@ -15,11 +19,10 @@ namespace Projekt
       Raylib.ClearBackground(Color.BLACK);
       Raylib.DrawFPS(10, 10);
 
+      intro++;
       // Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
       // Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
       // Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
-
-      intro++;
 
       // !FAde in eller nåt
       if (intro < 100)
@@ -33,7 +36,7 @@ namespace Projekt
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 1000)
+      else if (intro < 600)
       {
         InitGame.currentScene.AddScene(menuScene);
         InitGame.draw.RenderScene(menuScene);

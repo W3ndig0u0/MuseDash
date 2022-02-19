@@ -9,8 +9,10 @@ namespace Projekt
   {
     bool areOverlapping;
     Vector2 hitCircle;
-    Vector2 hitCircleMini;
-    int rotation;
+    int rotation = 0;
+
+    //! Texture
+    Texture2D hitCircleTexture;
 
     List<Rectangle> collitionalRectangleList = new List<Rectangle>();
 
@@ -19,15 +21,16 @@ namespace Projekt
     Rectangle greatCollitionalLate;
 
     // !Alla variablar som inte står ovan tas från klassen Objekt
-    public HitPosition(int xPosition, int yPosition, int width, int height, Rectangle CollitionalRectangle)
+    public HitPosition(int xPosition, int yPosition, int width, int height)
     {
       YPosition = yPosition;
       XPosition = xPosition;
       Width = width;
       Height = height;
 
-      hitCircle = new Vector2(XPosition + 20, YPosition + 20);
-      hitCircleMini = new Vector2(XPosition + 20, YPosition + 20);
+      hitCircleTexture = Raylib.LoadTexture("Texture/HitCircle.png");
+
+      hitCircle = new Vector2(XPosition - 10, YPosition - 10);
 
       perfektCollitionalRectangle = new Rectangle(XPosition, YPosition, Width, Height);
       greatCollitionalEarly = new Rectangle(XPosition + 40, YPosition, Width, Height);
@@ -38,34 +41,36 @@ namespace Projekt
       collitionalRectangleList.Add(greatCollitionalLate);
 
 
-      areOverlapping = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, CollitionalRectangle);
-      DrawObject();
-      Update();
-    }
-
-    // !Ritar ut sakerna
-    public override void DrawObject()
-    {
-      Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
-      Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
-      Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
+      for (int i = 0; i < collitionalRectangleList.Count; i++)
+      {
+        // areOverlapping = Raylib.CheckCollisionRecs(collitionalRectangleList[i], CollitionalRectangle);
+      }
     }
 
     // !Animera cirkeln
     public override void Update()
     {
-      Raylib.DrawCircleV(hitCircle, Width / 2, Color.BROWN);
+      // rotation++;
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+      {
+        HitPressed();
+      }
+    }
 
-      //! Texture
-      Texture2D hitCircleTexture = LoadTexture("Texture/HitCircle.png");
+    void HitPressed()
+    {
 
-      int frameWidth = hitCircleTexture.width / 6;
-      int frameHeight = hitCircleTexture.height;
+    }
 
-      Rectangle sourceRec = new Rectangle(0.0f, 0.0f, (float)frameWidth, (float)frameHeight);
-      Rectangle destRec = new Rectangle(1600 / 2.0f, 800 / 2.0f, frameWidth * 2.0f, frameHeight * 2.0f);
-      Raylib.DrawTexturePro(hitCircleTexture, sourceRec, destRec, hitCircle, (float)rotation, Color.WHITE);
-      rotation++;
+    // !Ritar ut sakerna
+    public override void DrawObject()
+    {
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
+      // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
+
+      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, (float)rotation, 1f, Color.WHITE);
+
     }
 
   }

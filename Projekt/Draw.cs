@@ -10,8 +10,9 @@ namespace Projekt
     {
       while (!Raylib.WindowShouldClose())
       {
+        s.Update();
         Raylib.BeginDrawing();
-        InitGame.currentScene.PlayScene();
+        s.WhatToDraw();
         Raylib.EndDrawing();
       }
     }

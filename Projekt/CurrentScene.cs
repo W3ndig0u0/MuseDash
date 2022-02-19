@@ -22,7 +22,7 @@ namespace Projekt
     //!VIlken Scene som ska rendras, den säger till Draw vad som ska rendras
     public void PlayScene()
     {
-      scenes[currentScene].WhatToDraw();
+      InitGame.draw.RenderScene(scenes[currentScene]);
     }
 
     public Scene GetScene(int n)

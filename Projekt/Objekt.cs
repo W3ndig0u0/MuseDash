@@ -64,13 +64,6 @@ namespace Projekt
       set { sprite = value; }
     }
 
-    Rectangle shadow;
-    public Rectangle Shadow
-    {
-      get { return shadow; }
-      set { shadow = value; }
-    }
-
     public abstract void DrawObject();
     public abstract void Update();
 

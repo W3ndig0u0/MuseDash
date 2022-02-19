@@ -8,34 +8,30 @@ namespace Projekt
 
     public Enemy(int xPosition, int yPosition, int width, int height)
     {
-      YPosition = yPosition;
+      YPosition = yPosition - 15;
       XPosition = xPosition;
       Width = width;
       Height = height;
-      Sprite = new Rectangle(XPosition, YPosition, Width, Height);
-
-      // ?Gör så att det inte är 35 utan hälften av fiendens storlek
-      CollitionalRectangle = new Rectangle(XPosition, YPosition, Width - 35, Height - 35);
-
-      // !600 är vart marken beffiner sig
-      Shadow = new Rectangle(XPosition, 600, Width, Height);
-      ObjektList.Add(CollitionalRectangle);
-
-      DrawObject();
-      Update();
     }
 
     public override void DrawObject()
     {
-      Raylib.DrawRectangleRec(Sprite, Color.BLUE);
+      Sprite = new Rectangle(XPosition, YPosition, Width, Height);
+      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, Width - 35, Height - 35);
+
+      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+
+      // !600 är vart Marken beffiner  sig
+      Raylib.DrawEllipse(XPosition + 40, 600, Width - 20, Height - 40, Color.GRAY);
+
     }
 
     public override void Update()
     {
-      // sprite.x--;
-      // collitionalRectangle.x--;
-      // shadow.x--;
+      ObjektList.Add(CollitionalRectangle);
+      XPosition -= 5;
     }
+
   }
 }
