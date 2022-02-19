@@ -10,9 +10,8 @@ namespace Projekt
     public override void WhatToDraw()
     {
       Raylib.ClearBackground(Color.LIGHTGRAY);
-      Raylib.DrawCircle(100, 100, 200, Color.BROWN);
       Raylib.DrawText("Menu", 700, 250, 50, Color.WHITE);
-      new MenuButton(700, 500, 250, 75, Color.BLACK, gamePlay, "Game");
+      new MenuButton(650, 500, 250, 75, Color.BLACK, gamePlay, "Game");
       Raylib.DrawFPS(10, 10);
     }
   }

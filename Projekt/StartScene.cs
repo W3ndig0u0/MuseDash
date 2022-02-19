@@ -11,7 +11,7 @@ namespace Projekt
 
     public override void WhatToDraw()
     {
-      Sound startSound = Raylib.LoadSound("Sound/SoundEffect/Start.wav");
+      // Sound startSound = Raylib.LoadSound("Sound/SoundEffect/Start.wav");
       Raylib.ClearBackground(Color.BLACK);
       Raylib.DrawFPS(10, 10);
 

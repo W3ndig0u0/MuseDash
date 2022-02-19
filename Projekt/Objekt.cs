@@ -48,7 +48,24 @@ namespace Projekt
       set { collitionalRectangle = value; }
     }
 
-    Rectangle Sprite;
+    Rectangle sprite;
+    public Rectangle Sprite
+    {
+      get { return sprite; }
+      set { sprite = value; }
+    }
+
+    // Rectangle sprite;
+    // public Rectangle Sprite
+    // {
+    //   get { return sprite; }
+    //   set { sprite = value; }
+    // }
+
+    public abstract void DrawObject();
+    public abstract void Update();
+
+
   }
 
 }
