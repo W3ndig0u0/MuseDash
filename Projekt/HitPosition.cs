@@ -18,14 +18,14 @@ namespace Projekt
     Rectangle greatCollitionalLate;
 
     // !Alla variablar som inte står ovan tas från klassen Objekt
-    public HitPosition(int xPosition, int yPosition, int width, int height, Objekt target)
+    public HitPosition(int xPosition, int yPosition, int width, int height, Rectangle CollitionalRectangle)
     {
       YPosition = yPosition;
       XPosition = xPosition;
       Width = width;
       Height = height;
 
-      hitCircle = new Vector2(XPosition + 25, YPosition + 25);
+      hitCircle = new Vector2(XPosition + 20, YPosition + 20);
       hitCircleMini = new Vector2(XPosition + 20, YPosition + 20);
 
       perfektCollitionalRectangle = new Rectangle(XPosition, YPosition, Width, Height);
@@ -37,17 +37,18 @@ namespace Projekt
       collitionalRectangleList.Add(greatCollitionalLate);
 
 
-      areOverlapping = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, target.CollitionalRectangle);
+      areOverlapping = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, CollitionalRectangle);
       DrawObject();
     }
 
+    // !Ritar ut sakerna
     public override void DrawObject()
     {
       Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
 
-      //   Raylib.DrawCircleV(hitCircle, Width / 2, Color.BROWN);
+      Raylib.DrawCircleV(hitCircle, Width / 2, Color.BROWN);
 
       //   Raylib.DrawCircleV(hitCircleMini, Width - 10, Color.BLUE);
       //   Raylib.DrawCircleV(hitCircleMini, Width - 20, Color.BLUE);

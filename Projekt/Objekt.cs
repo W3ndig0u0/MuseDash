@@ -1,10 +1,19 @@
-using System;
+using System.Collections.Generic;
 using Raylib_cs;
 
 namespace Projekt
 {
   public abstract class Objekt
   {
+
+    // !Lista över alla Collisions för att kolla collisionen lättare
+    List<Rectangle> objektList = new List<Rectangle>();
+    public List<Rectangle> ObjektList
+    {
+      get { return objektList; }
+      set { objektList = value; }
+    }
+
     int speed;
     public int Speed
     {
@@ -55,12 +64,12 @@ namespace Projekt
       set { sprite = value; }
     }
 
-    // Rectangle sprite;
-    // public Rectangle Sprite
-    // {
-    //   get { return sprite; }
-    //   set { sprite = value; }
-    // }
+    Rectangle shadow;
+    public Rectangle Shadow
+    {
+      get { return shadow; }
+      set { shadow = value; }
+    }
 
     public abstract void DrawObject();
     public abstract void Update();
