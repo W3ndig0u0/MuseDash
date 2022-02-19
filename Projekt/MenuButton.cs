@@ -25,6 +25,7 @@ namespace Projekt
       Height = height;
       ButtonColor = buttonColor;
       Scene = scene;
+      clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
 
       button = new Rectangle(xPosition, yPosition, width, height);
       mousePos = Raylib.GetMousePosition();
@@ -47,6 +48,8 @@ namespace Projekt
       {
         XPosition -= 12;
         ButtonColor.a = 200;
+        // Raylib.PlaySound(clickSound);
+
 
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
@@ -54,8 +57,7 @@ namespace Projekt
 
           // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
           InitGame.currentScene.AddScene(Scene);
-          new Draw().RenderScene(Scene);
-          // Raylib.PlaySound(clickSound);
+          InitGame.draw.RenderScene(Scene);
         }
       }
 

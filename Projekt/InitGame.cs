@@ -15,6 +15,7 @@ namespace Projekt
       Raylib.InitWindow(WindowWidth, WindowHeight, windowTitle);
       // Raylib.ToggleFullscreen();
       Raylib.SetTargetFPS(120);
+      Raylib.InitAudioDevice();
       Console.Clear();
       draw.RenderScene(currentScene.GetScene(0));
     }
