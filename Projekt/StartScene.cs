@@ -9,9 +9,9 @@ namespace Projekt
     {
       Raylib.ClearBackground(Color.BLACK);
       Raylib.DrawCircle(200, 100, 100, Color.WHITE);
-      new MenuButton(750, 300, 250, 75, Color.WHITE);
-      new MenuButton(750, 400, 250, 75, Color.WHITE);
-      new MenuButton(750, 500, 250, 75, Color.WHITE);
+      new MenuButton(700, 300, 250, 75, Color.WHITE);
+      new MenuButton(700, 400, 250, 75, Color.WHITE);
+      new MenuButton(700, 500, 250, 75, Color.WHITE);
       Raylib.DrawFPS(10, 10);
 
     }
