@@ -10,6 +10,7 @@ namespace Projekt
     bool areOverlapping;
     Vector2 hitCircle;
     Vector2 hitCircleMini;
+    int rotation;
 
     List<Rectangle> collitionalRectangleList = new List<Rectangle>();
 
@@ -39,6 +40,7 @@ namespace Projekt
 
       areOverlapping = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, CollitionalRectangle);
       DrawObject();
+      Update();
     }
 
     // !Ritar ut sakerna
@@ -47,16 +49,23 @@ namespace Projekt
       Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
-
-      Raylib.DrawCircleV(hitCircle, Width / 2, Color.BROWN);
-
-      //   Raylib.DrawCircleV(hitCircleMini, Width - 10, Color.BLUE);
-      //   Raylib.DrawCircleV(hitCircleMini, Width - 20, Color.BLUE);
-      //   Raylib.DrawCircleV(hitCircleMini, Width - 30, Color.BLUE);
     }
 
+    // !Animera cirkeln
     public override void Update()
     {
+      Raylib.DrawCircleV(hitCircle, Width / 2, Color.BROWN);
+
+      //! Texture
+      Texture2D hitCircleTexture = LoadTexture("Texture/HitCircle.png");
+
+      int frameWidth = hitCircleTexture.width / 6;
+      int frameHeight = hitCircleTexture.height;
+
+      Rectangle sourceRec = new Rectangle(0.0f, 0.0f, (float)frameWidth, (float)frameHeight);
+      Rectangle destRec = new Rectangle(1600 / 2.0f, 800 / 2.0f, frameWidth * 2.0f, frameHeight * 2.0f);
+      Raylib.DrawTexturePro(hitCircleTexture, sourceRec, destRec, hitCircle, (float)rotation, Color.WHITE);
+      rotation++;
     }
 
   }

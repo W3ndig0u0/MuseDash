@@ -12,9 +12,11 @@ namespace Projekt
 
     public override void WhatToDraw()
     {
-      Raylib.ClearBackground(Color.LIGHTGRAY);
+      Raylib.ClearBackground(Color.WHITE);
       Raylib.DrawText("Game", 700, 50, 50, Color.BLACK);
-      enemy = new Enemy(1400, 450, 70, 70);
+      enemy = new Enemy(1380, 450, 70, 70);
+
+
       hitPositionUp = new HitPosition(300, 450, 40, 40, enemy.CollitionalRectangle);
       hitPositionDown = new HitPosition(300, 250, 40, 40, enemy.CollitionalRectangle);
 
@@ -22,13 +24,10 @@ namespace Projekt
       Rectangle ground = new Rectangle(-10, 500, 2000, 100);
 
       // !Rektangel lines funkar ej, så får göra linjerna själv
-      Raylib.DrawRectangleLines(-10, 553, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 552, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 551, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 550, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 549, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 548, 2000, 100, Raylib_cs.Color.BLACK);
-      Raylib.DrawRectangleLines(-10, 547, 2000, 100, Raylib_cs.Color.BLACK);
+      for (int i = 0; i < 10; i++)
+      {
+        Raylib.DrawRectangleLines(-10, 555 - i, 2000, 100, Raylib_cs.Color.BLACK);
+      }
 
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
