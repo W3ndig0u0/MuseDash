@@ -13,14 +13,13 @@ namespace Projekt
     {
       Sound startSound = Raylib.LoadSound("Sound/SoundEffect/Start.wav");
       Raylib.ClearBackground(Color.BLACK);
-      Raylib.DrawCircle(200, 100, 100, Color.WHITE);
       Raylib.DrawFPS(10, 10);
 
       // Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
       // Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
       // Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
 
-      intro += 2;
+      intro++;
 
       // !FAde in eller nåt
       if (intro < 100)
@@ -34,7 +33,7 @@ namespace Projekt
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 2500)
+      else if (intro < 1000)
       {
         InitGame.currentScene.AddScene(menuScene);
         InitGame.draw.RenderScene(menuScene);

@@ -16,8 +16,9 @@ namespace Projekt
     Rectangle button;
     bool areOverlapping;
     Scene Scene;
+    string Text;
 
-    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene)
+    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene, string text)
     {
       XPosition = xPosition;
       YPosition = yPosition;
@@ -25,8 +26,9 @@ namespace Projekt
       Height = height;
       ButtonColor = buttonColor;
       Scene = scene;
-      clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
+      Text = text;
 
+      // clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
       button = new Rectangle(xPosition, yPosition, width, height);
       mousePos = Raylib.GetMousePosition();
       areOverlapping = Raylib.CheckCollisionPointRec(mousePos, this.button);
@@ -39,6 +41,7 @@ namespace Projekt
     void DrawMenuButton()
     {
       Raylib.DrawRectangleRec(button, ButtonColor);
+      Raylib.DrawText(Text, XPosition + 50, YPosition + 30, 20, Color.WHITE);
     }
 
     // !Animation för Knappen
@@ -63,7 +66,7 @@ namespace Projekt
 
       else
       {
-        XPosition -= 6;
+        XPosition += 8;
         ButtonColor.a = 170;
       }
 
