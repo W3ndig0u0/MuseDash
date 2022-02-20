@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
 
@@ -44,7 +45,7 @@ namespace Projekt
     Rectangle feverRect;
     Rectangle extraRect;
 
-    Random random;
+    Random random = new Random();
     int radius;
     public int Radius
     {
@@ -52,12 +53,16 @@ namespace Projekt
       set { radius = value; }
     }
 
+    Vector2 pos;
+
     Color color;
     public Color Color
     {
       get { return color; }
       set { color = value; }
     }
+
+    List<Vector2> vector2List = new List<Vector2>();
 
 
     public Player(int xPosition, int yPosition, int width, int height)
@@ -109,13 +114,25 @@ namespace Projekt
 
     void RandomCircleDraw()
     {
+      // !Gör nya stats för cirklarna hela tiden
       Radius = random.Next(10, 50);
       Color = new Color(random.Next(0, 50), random.Next(0, 50), random.Next(0, 50), random.Next(0, 255));
+      pos.X = random.Next(700, 800);
+      pos.Y = random.Next(80, 120);
+
+      vector2List.Add(pos);
     }
 
     void ScoreCircle()
     {
+      for (int i = 0; i < vector2List.Count; i++)
+      {
+        // !SKriver ut flera random cirklor med från listan
+        Raylib.DrawCircle((int)Math.Round(vector2List[i].X), (int)Math.Round(vector2List[i].Y), Radius, Color);
+      }
+
       Raylib.DrawCircle(750, 100, Radius, Color);
+
       Raylib.DrawText(Combo.ToString(), 720, 60, 50, Color.BLACK);
     }
 
