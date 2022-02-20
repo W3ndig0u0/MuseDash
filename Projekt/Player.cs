@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using Raylib_cs;
 
 namespace Projekt
@@ -40,8 +41,23 @@ namespace Projekt
     Texture2D hpExtraTexture;
 
     Rectangle hpRect;
-    Rectangle FeverRect;
-    Rectangle Extra;
+    Rectangle feverRect;
+    Rectangle extraRect;
+
+    Random random;
+    int radius;
+    public int Radius
+    {
+      get { return radius; }
+      set { radius = value; }
+    }
+
+    Color color;
+    public Color Color
+    {
+      get { return color; }
+      set { color = value; }
+    }
 
 
     public Player(int xPosition, int yPosition, int width, int height)
@@ -50,9 +66,11 @@ namespace Projekt
       XPosition = xPosition;
       Width = width;
       Height = height;
-      hpRect = new Rectangle(540, 755, 400, 50);
-      FeverRect = new Rectangle(700, 725, 100, 50);
-      Extra = new Rectangle(447, 745, 200, 55);
+
+
+      hpRect = new Rectangle(540, 755, 470, 50);
+      feverRect = new Rectangle(970, 755, 100, 50);
+      extraRect = new Rectangle(447, 745, 100, 55);
 
       hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
       feverTexture = Raylib.LoadTexture("Texture/FeverMeter3.png");
@@ -67,27 +85,10 @@ namespace Projekt
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
-      // !Score, hp, etc
-      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
-      Raylib.DrawText(Score.ToString(), 10, 140, 50, Color.BLACK);
-      Raylib.DrawText(Combo.ToString(), 700, 50, 50, Color.BLACK);
-
-      Raylib.DrawRectangleRec(hpRect, Color.RED);
-      Raylib.DrawRectangleRec(hpRect, Color.RED);
-      Raylib.DrawRectangleRec(hpRect, Color.RED);
-
-      Raylib.DrawTexture(hpTexture, 540, 755, Color.WHITE);
-      Raylib.DrawTexture(feverTexture, 595, 755, Color.WHITE);
-      Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
-
-
-      Raylib.DrawText("Fever", 980, 775, 20, Color.BLACK);
-      Raylib.DrawText("250/250", 730, 775, 20, Color.BLACK);
-
-
       // !600 är vart Marken beffiner  sig
       Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);
-
+      HpFever();
+      ScoreCircle();
     }
 
     // !Spelarens rörelse
@@ -103,6 +104,39 @@ namespace Projekt
       {
         Ground();
       }
+      RandomCircleDraw();
+    }
+
+    void RandomCircleDraw()
+    {
+      Radius = random.Next(10, 50);
+      Color = new Color(random.Next(0, 50), random.Next(0, 50), random.Next(0, 50), random.Next(0, 255));
+    }
+
+    void ScoreCircle()
+    {
+      Raylib.DrawCircle(750, 100, Radius, Color);
+      Raylib.DrawText(Combo.ToString(), 720, 60, 50, Color.BLACK);
+    }
+
+    void HpFever()
+    {
+      // !Score, hp, etc
+      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
+      Raylib.DrawText(Score.ToString(), 10, 140, 50, Color.BLACK);
+
+      // Raylib.DrawRectangleRec(hpRect, Color.RED);
+      // Raylib.DrawRectangleRec(feverRect, Color.BLUE);
+      // Raylib.DrawRectangleRec(extraRect, Color.GREEN);
+
+      Raylib.DrawTexture(hpTexture, 540, 755, Color.WHITE);
+      Raylib.DrawTexture(feverTexture, 595, 755, Color.WHITE);
+      Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
+
+
+      Raylib.DrawText("Fever", 980, 775, 20, Color.BLACK);
+      Raylib.DrawText("250/250", 730, 775, 20, Color.BLACK);
+
     }
 
     // !Vart spelaren hamnar

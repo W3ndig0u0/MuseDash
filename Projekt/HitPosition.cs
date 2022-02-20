@@ -29,8 +29,8 @@ namespace Projekt
     {
       YPosition = yPosition;
       XPosition = xPosition;
-      Width = 20;
-      Height = 20;
+      Width = 40;
+      Height = 40;
 
       hitCircleTexture = Raylib.LoadTexture("Texture/HitCircle.png");
 
@@ -94,31 +94,32 @@ namespace Projekt
       if (areOverlappingPerfect)
       {
         player.Score += target.GiveScore * (player.Combo / 10);
-        DrawTextPoints("PERFECT", target);
+        DrawTextPoints("PERFECT", target, Color.BLUE);
       }
       if (areOverlappingLate || areOverlappingEarly)
       {
         // !Ger mindre poäng
         player.Score += (target.GiveScore / 3) * (player.Combo / 10);
-        DrawTextPoints("GREAT", target);
+        DrawTextPoints("GREAT", target, Color.GREEN);
       }
     }
 
     //! Text när spelaren trycker, för att veta hur precis trycket va
     //? Gör så att det finns kvar mer än 1 frame
-    public void DrawTextPoints(String text, Enemy target)
+    public void DrawTextPoints(String text, Enemy target, Color c)
     {
-      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 30, Color.BLUE);
+      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 30, c);
     }
 
     // !Ritar ut sakerna
     public override void DrawObject()
     {
+      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
+
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
 
-      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
     }
 
   }
