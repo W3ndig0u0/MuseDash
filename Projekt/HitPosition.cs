@@ -78,8 +78,13 @@ namespace Projekt
       // {
       //   scale -= 0.2f;
       // }
-      Timer++;
+      // Timer++;
 
+      TextSpeed++;
+      if (TextSpeed == 50)
+      {
+        TextSpeed = 0;
+      }
     }
 
     // !Kör metoden IsOverlapping om man trycker på knapparna 
@@ -110,30 +115,23 @@ namespace Projekt
       if (areOverlappingPerfect)
       {
         player.Score += target.GiveScore * (player.Combo / 10);
-        // !Vill att Texten ska vara kvar längre 
 
-        for (int i = 0; i < 20; i++)
+        // !Vill att Texten ska vara kvar längre 
+        for (int i = 0; i < 30; i++)
         {
-          if (Timer == 5)
-          {
-            DrawTextPoints("PERFECT", target, Color.BLUE);
-            Timer = 0;
-          }
+          DrawTextPoints("PERFECT", target, Color.BLUE);
         }
       }
-      if (areOverlappingLate || areOverlappingEarly)
+
+      else if (areOverlappingLate || areOverlappingEarly)
       {
         // !Ger mindre poäng
         player.Score += (target.GiveScore / 3) * (player.Combo / 10);
 
         // !Vill att Texten ska vara kvar längre 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 30; i++)
         {
-          if (Timer == 5)
-          {
-            DrawTextPoints("GREAT", target, Color.GREEN);
-            Timer = 0;
-          }
+          DrawTextPoints("GREAT", target, Color.GREEN);
         }
       }
     }
@@ -143,8 +141,8 @@ namespace Projekt
     public void DrawTextPoints(String text, Enemy target, Color c)
     {
       // TextSpeed += random.Next(10, 20);
-      // TextSpeed++;
-      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 50, c);
+      Raylib.DrawText(text, target.XPosition + 20, target.YPosition - TextSpeed, 50, c);
+
     }
 
     // !Ritar ut sakerna

@@ -118,7 +118,7 @@ namespace Projekt
 
       // !Timer för när en ny cirkel ska skapas
       timer++;
-      if (timer == 120f)
+      if (timer == 100f)
       {
         RandomCircleDraw();
         timer = 0f;
@@ -128,12 +128,12 @@ namespace Projekt
     void RandomCircleDraw()
     {
       // !Gör nya stats för cirklarna hela tiden
-      Radius = random.Next(30, 70);
+      Radius = random.Next(40, 70);
       Color = new Color(random.Next(0, 20), random.Next(0, 20), random.Next(0, 20), random.Next(175, 255));
-      pos.X = random.Next(700, 800);
+      pos.X = random.Next(690, 800);
       pos.Y = random.Next(80, 120);
 
-      pos2.X = random.Next(700, 800);
+      pos2.X = random.Next(690, 800);
       pos2.Y = random.Next(80, 120);
 
       vector2List.Add(pos);
@@ -151,8 +151,8 @@ namespace Projekt
         Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
       }
 
-      Raylib.DrawText(Combo.ToString(), 700, 60, 50, Color.WHITE);
-      Raylib.DrawText("COMBO", 690, 100, 30, Color.WHITE);
+      Raylib.DrawText(Combo.ToString(), 690, 60, 50, Color.WHITE);
+      Raylib.DrawText("COMBO", 705, 100, 30, Color.WHITE);
     }
 
     void HpFever()
