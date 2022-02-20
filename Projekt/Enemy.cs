@@ -21,12 +21,16 @@ namespace Projekt
       Height = height;
     }
 
-    public void Bounce()
+    public void Bounce(String text)
     {
+      int x = YPosition - 30;
+      Raylib.DrawText(text, XPosition, x, 30, Color.BLUE);
+
       for (var i = 0; i < 40; i++)
       {
         // !Gör så att det studsar
         YPosition -= 5;
+        x -= 5;
       }
       Dead = true;
 

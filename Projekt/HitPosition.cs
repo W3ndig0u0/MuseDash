@@ -90,7 +90,7 @@ namespace Projekt
         player.Fever += 4;
         player.Combo++;
         player.Score += 300 * (player.Combo / 10);
-        target.Bounce();
+        target.Bounce("PERFECT");
         // ?Gör så att target inte finns kvar
       }
       if (areOverlappingLate || areOverlappingEarly)
@@ -98,7 +98,7 @@ namespace Projekt
         player.Fever += 4;
         player.Combo++;
         player.Score += 100 * (player.Combo / 10);
-        target.Bounce();
+        target.Bounce("GREAT");
         // ?Gör så att target inte finns kvar
       }
     }
