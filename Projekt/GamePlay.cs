@@ -9,11 +9,14 @@ namespace Projekt
     HitPosition hitPositionUp = new HitPosition(300, 250, 40, 40);
     HitPosition hitPositionDown = new HitPosition(300, 450, 40, 40);
 
-    Enemy enemy1 = new Enemy(1300, 450, 70, 70);
-    Enemy enemy2 = new Enemy(1500, 250, 70, 70);
-    Enemy enemy3 = new Enemy(1300, 250, 70, 70);
-    Enemy enemy4 = new Enemy(1200, 250, 70, 70);
-    Enemy enemy5 = new Enemy(1700, 450, 70, 70);
+    Enemy enemy1 = new Enemy(1300, 450, 70, 70, 300);
+    Enemy enemy2 = new Enemy(1500, 250, 70, 70, 300);
+    Enemy enemy3 = new Enemy(1300, 250, 70, 70, 300);
+    Enemy enemy4 = new Enemy(1200, 250, 70, 70, 300);
+    Enemy enemy5 = new Enemy(1700, 450, 70, 70, 300);
+
+    LargeEnemy largeEnemy = new LargeEnemy(1700, 450, 90, 120, 600);
+    Boss boss = new Boss(1500, 400, 140, 200, 900);
 
     public override void Update()
     {
@@ -26,10 +29,12 @@ namespace Projekt
       player.Update();
 
       enemy1.Update();
-      // enemy2.Update();
-      // enemy3.Update();
-      // enemy4.Update();
-      // enemy5.Update();
+      enemy2.Update();
+      enemy3.Update();
+      enemy4.Update();
+      enemy5.Update();
+      largeEnemy.Update();
+      boss.Update();
     }
 
     public override void WhatToDraw()
@@ -41,6 +46,7 @@ namespace Projekt
       Raylib.DrawFPS(10, 10);
       Raylib.DrawText("GetTime: " + Raylib.GetTime().ToString(), 10, 30, 20, Color.GREEN);
       Raylib.DrawText("FrameTime: " + Raylib.GetFrameTime().ToString(), 10, 50, 20, Color.GREEN);
+
 
       Rectangle ground = new Rectangle(-10, 500, 2000, 100);
 
@@ -61,10 +67,13 @@ namespace Projekt
       player.DrawObject();
 
       enemy1.DrawObject();
-      enemy2.DrawObject();
-      enemy3.DrawObject();
-      enemy4.DrawObject();
-      enemy5.DrawObject();
+      // enemy2.DrawObject();
+      // enemy3.DrawObject();
+      // enemy4.DrawObject();
+      // enemy5.DrawObject();
+
+      largeEnemy.DrawObject();
+      boss.DrawObject();
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
       new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu");

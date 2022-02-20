@@ -12,8 +12,8 @@ namespace Projekt
     bool areOverlappingLate;
 
     Vector2 hitCircle;
-    int rotation = 0;
-    float scale = 1f;
+    float rotation = 0f;
+    float scale = 0.8f;
 
     //! Texture
     Texture2D hitCircleTexture;
@@ -53,18 +53,16 @@ namespace Projekt
     // !Animera cirkeln
     public override void Update()
     {
-      // rotation++;
-      // if (scale == 1.2)
+      // rotation += 0.05f;
+
+      // if (scale >= 0.8)
       // {
-      //   scale--;
+      //   scale += 0.2f;
       // }
-      // if (scale == 0.8)
+
+      // if (scale <= 1.2)
       // {
-      //   scale++;
-      // }
-      // else
-      // {
-      //   scale++;
+      //   scale -= 0.2f;
       // }
     }
 
@@ -85,22 +83,32 @@ namespace Projekt
       areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, target.CollitionalRectangle);
       areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, target.CollitionalRectangle);
 
+      if (areOverlappingPerfect || areOverlappingEarly || areOverlappingLate)
+      {
+        player.Fever += target.GiveFever;
+        player.Combo++;
+        target.Bounce();
+        // ?Gör så att target inte finns kvar
+      }
+
       if (areOverlappingPerfect)
       {
-        player.Fever += 4;
-        player.Combo++;
-        player.Score += 300 * (player.Combo / 10);
-        target.Bounce("PERFECT");
-        // ?Gör så att target inte finns kvar
+        player.Score += target.GiveScore * (player.Combo / 10);
+        DrawTextPoints("PERFECT", target);
       }
       if (areOverlappingLate || areOverlappingEarly)
       {
-        player.Fever += 4;
-        player.Combo++;
-        player.Score += 100 * (player.Combo / 10);
-        target.Bounce("GREAT");
-        // ?Gör så att target inte finns kvar
+        // !Ger mindre poäng
+        player.Score += (target.GiveScore / 3) * (player.Combo / 10);
+        DrawTextPoints("GREAT", target);
       }
+    }
+
+    //! Text när spelaren trycker, för att veta hur precis trycket va
+    //? Gör så att det finns kvar mer än 1 frame
+    public void DrawTextPoints(String text, Enemy target)
+    {
+      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 30, Color.BLUE);
     }
 
     // !Ritar ut sakerna
@@ -110,7 +118,7 @@ namespace Projekt
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
 
-      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, (float)rotation, scale, Color.WHITE);
+      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
     }
 
   }

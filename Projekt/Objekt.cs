@@ -14,6 +14,13 @@ namespace Projekt
       set { objektList = value; }
     }
 
+    int giveScore;
+    public int GiveScore
+    {
+      get { return giveScore; }
+      set { giveScore = value; }
+    }
+
     int speed;
     public int Speed
     {
