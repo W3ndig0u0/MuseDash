@@ -87,7 +87,7 @@ namespace Projekt
       {
         player.Fever += target.GiveFever;
         player.Combo++;
-        target.Bounce();
+        // target.Bounce();
         // ?Gör så att target inte finns kvar
       }
 

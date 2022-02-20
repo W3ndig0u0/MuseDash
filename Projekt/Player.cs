@@ -34,10 +34,15 @@ namespace Projekt
       set { combo = value; }
     }
 
-    //! Texture
+    //! Texture2D
     Texture2D hpTexture;
     Texture2D feverTexture;
     Texture2D hpExtraTexture;
+
+    Rectangle hpRect;
+    Rectangle FeverRect;
+    Rectangle Extra;
+
 
     public Player(int xPosition, int yPosition, int width, int height)
     {
@@ -45,9 +50,12 @@ namespace Projekt
       XPosition = xPosition;
       Width = width;
       Height = height;
+      hpRect = new Rectangle(540, 755, 400, 50);
+      FeverRect = new Rectangle(700, 725, 100, 50);
+      Extra = new Rectangle(447, 745, 200, 55);
 
       hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
-      feverTexture = Raylib.LoadTexture("Texture/FeverMeter.png");
+      feverTexture = Raylib.LoadTexture("Texture/FeverMeter3.png");
       hpExtraTexture = Raylib.LoadTexture("Texture/ExtraUI.png");
     }
 
@@ -64,9 +72,17 @@ namespace Projekt
       Raylib.DrawText(Score.ToString(), 10, 140, 50, Color.BLACK);
       Raylib.DrawText(Combo.ToString(), 700, 50, 50, Color.BLACK);
 
-      Raylib.DrawTexture(hpTexture, 500, 750, Color.WHITE);
-      Raylib.DrawTexture(feverTexture, 500, 700, Color.WHITE);
-      Raylib.DrawTexture(hpExtraTexture, 500, 700, Color.WHITE);
+      Raylib.DrawRectangleRec(hpRect, Color.RED);
+      Raylib.DrawRectangleRec(hpRect, Color.RED);
+      Raylib.DrawRectangleRec(hpRect, Color.RED);
+
+      Raylib.DrawTexture(hpTexture, 540, 755, Color.WHITE);
+      Raylib.DrawTexture(feverTexture, 595, 755, Color.WHITE);
+      Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
+
+
+      Raylib.DrawText("Fever", 980, 775, 20, Color.BLACK);
+      Raylib.DrawText("250/250", 730, 775, 20, Color.BLACK);
 
 
       // !600 är vart Marken beffiner  sig

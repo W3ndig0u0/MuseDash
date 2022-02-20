@@ -26,6 +26,12 @@ namespace Projekt
       hitPositionDown.IsOverlapping(enemy1, player);
       hitPositionUp.IsOverlapping(enemy1, player);
 
+      hitPositionDown.IsOverlapping(boss, player);
+      hitPositionUp.IsOverlapping(boss, player);
+
+      hitPositionDown.IsOverlapping(largeEnemy, player);
+      hitPositionUp.IsOverlapping(largeEnemy, player);
+
       player.Update();
 
       enemy1.Update();
