@@ -20,7 +20,14 @@ namespace Projekt
     // !Random
     Random random = new Random();
 
+    int TextSpeed;
+
     float timer;
+    public float Timer
+    {
+      get { return timer; }
+      set { timer = value; }
+    }
 
     //! Texture
     Texture2D hitCircleTexture;
@@ -71,6 +78,8 @@ namespace Projekt
       // {
       //   scale -= 0.2f;
       // }
+      Timer++;
+
     }
 
     // !Kör metoden IsOverlapping om man trycker på knapparna 
@@ -101,12 +110,15 @@ namespace Projekt
       if (areOverlappingPerfect)
       {
         player.Score += target.GiveScore * (player.Combo / 10);
-        // !Timer för hur länge texten är kvar 
-        timer++;
-        while (timer != 20f)
+        // !Vill att Texten ska vara kvar längre 
+
+        for (int i = 0; i < 20; i++)
         {
-          DrawTextPoints("PERFECT", target, Color.BLUE);
-          timer = 0f;
+          if (Timer == 5)
+          {
+            DrawTextPoints("PERFECT", target, Color.BLUE);
+            Timer = 0;
+          }
         }
       }
       if (areOverlappingLate || areOverlappingEarly)
@@ -114,12 +126,14 @@ namespace Projekt
         // !Ger mindre poäng
         player.Score += (target.GiveScore / 3) * (player.Combo / 10);
 
-        // !Timer för hur länge texten är kvar 
-        timer++;
-        while (timer != 20f)
+        // !Vill att Texten ska vara kvar längre 
+        for (int i = 0; i < 20; i++)
         {
-          DrawTextPoints("GREAT", target, Color.GREEN);
-          timer = 0f;
+          if (Timer == 5)
+          {
+            DrawTextPoints("GREAT", target, Color.GREEN);
+            Timer = 0;
+          }
         }
       }
     }
@@ -128,16 +142,15 @@ namespace Projekt
     //? Gör så att det finns kvar mer än 1 frame
     public void DrawTextPoints(String text, Enemy target, Color c)
     {
-
-      target.XPosition += random.Next(10, 20);
-      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 30, c);
+      // TextSpeed += random.Next(10, 20);
+      // TextSpeed++;
+      Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 50, c);
     }
 
     // !Ritar ut sakerna
     public override void DrawObject()
     {
       Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
-
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
