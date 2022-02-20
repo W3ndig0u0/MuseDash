@@ -7,7 +7,10 @@ namespace Projekt
 {
   public class HitPosition : Objekt
   {
-    bool areOverlapping;
+    bool areOverlappingPerfect;
+    bool areOverlappingEarly;
+    bool areOverlappingLate;
+
     Vector2 hitCircle;
     int rotation = 0;
 
@@ -36,15 +39,17 @@ namespace Projekt
       greatCollitionalEarly = new Rectangle(XPosition + 40, YPosition, Width, Height);
       greatCollitionalLate = new Rectangle(XPosition - 40, YPosition, Width, Height);
 
-      collitionalRectangleList.Add(perfektCollitionalRectangle);
-      collitionalRectangleList.Add(greatCollitionalEarly);
-      collitionalRectangleList.Add(greatCollitionalLate);
+      // collitionalRectangleList.Add(perfektCollitionalRectangle);
+      // collitionalRectangleList.Add(greatCollitionalEarly);
+      // collitionalRectangleList.Add(greatCollitionalLate);
 
 
-      for (int i = 0; i < collitionalRectangleList.Count; i++)
-      {
-        // areOverlapping = Raylib.CheckCollisionRecs(collitionalRectangleList[i], CollitionalRectangle);
-      }
+      // for (int i = 0; i < collitionalRectangleList.Count; i++)
+      // {
+      areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, CollitionalRectangle);
+      areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, CollitionalRectangle);
+      areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, CollitionalRectangle);
+      // }
     }
 
     // !Animera cirkeln
@@ -60,6 +65,14 @@ namespace Projekt
     void HitPressed()
     {
 
+    }
+
+    void isOverlapping(Rectangle CollitionalRectangle, Player player)
+    {
+      if (areOverlappingPerfect)
+      {
+        // player.Score += 300;
+      }
     }
 
     // !Ritar ut sakerna

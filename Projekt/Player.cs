@@ -6,8 +6,32 @@ namespace Projekt
   public class Player : Objekt
   {
     int hp;
+    public int Hp
+    {
+      get { return hp; }
+      set { hp = value; }
+    }
+
     int fever;
+    public int Fever
+    {
+      get { return fever; }
+      set { fever = value; }
+    }
+
     int score;
+    public int Score
+    {
+      get { return score; }
+      set { score = value; }
+    }
+
+    int combo;
+    public int Combo
+    {
+      get { return combo; }
+      set { combo = value; }
+    }
 
     public Player(int xPosition, int yPosition, int width, int height)
     {
