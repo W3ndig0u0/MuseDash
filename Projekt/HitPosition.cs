@@ -13,6 +13,7 @@ namespace Projekt
 
     Vector2 hitCircle;
     int rotation = 0;
+    float scale = 1f;
 
     //! Texture
     Texture2D hitCircleTexture;
@@ -46,9 +47,6 @@ namespace Projekt
 
       // for (int i = 0; i < collitionalRectangleList.Count; i++)
       // {
-      areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, CollitionalRectangle);
-      areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, CollitionalRectangle);
-      areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, CollitionalRectangle);
       // }
     }
 
@@ -56,24 +54,51 @@ namespace Projekt
     public override void Update()
     {
       // rotation++;
-      if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+      if (scale <= 1.2)
       {
-        HitPressed();
+        scale--;
+      }
+      if (scale == 0.8)
+      {
+        scale++;
+      }
+      else
+      {
+        scale++;
       }
     }
 
-    void HitPressed()
+    // !Kör metoden IsOverlapping om man trycker på knapparna 
+    public void HitPressed(Objekt objekt, Player player)
     {
-
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO) || Raylib.IsKeyPressed(KeyboardKey.KEY_THREE))
+      {
+        IsOverlapping(objekt, player);
+      }
     }
 
-    void isOverlapping(Rectangle CollitionalRectangle, Player player)
+    // !Kollar collision
+    public void IsOverlapping(Objekt objekt, Player player)
     {
+      areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, objekt.CollitionalRectangle);
+      areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, objekt.CollitionalRectangle);
+      areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, objekt.CollitionalRectangle);
+
+      // ?gör koden bättre...
       if (areOverlappingPerfect)
       {
-        // player.Score += 300;
+        player.Fever += 4;
+        player.Combo++;
+        player.Score += 300 * (player.Combo / 10);
+      }
+      if (areOverlappingLate || areOverlappingEarly)
+      {
+        player.Fever += 4;
+        player.Combo++;
+        player.Score += 100 * (player.Combo / 10);
       }
     }
+
 
     // !Ritar ut sakerna
     public override void DrawObject()
@@ -82,8 +107,7 @@ namespace Projekt
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
 
-      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, (float)rotation, 1f, Color.WHITE);
-
+      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, (float)rotation, scale, Color.WHITE);
     }
 
   }

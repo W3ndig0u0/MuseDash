@@ -49,13 +49,39 @@ namespace Projekt
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
 
       // !600 är vart Marken beffiner  sig
-      Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 100, Color.GRAY);
+      Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);
 
     }
 
+    // !Spelarens rörelse
+
+    // !GÖr så att man läser detta från settings text + kan ändra knapparna
     public override void Update()
     {
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO))
+      {
+        Air();
+      }
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_THREE))
+      {
+        Ground();
+      }
+    }
 
+    // !Vart spelaren hamnar
+    void Air()
+    {
+      if (YPosition != 200)
+      {
+        YPosition -= 20;
+      }
+    }
+    void Ground()
+    {
+      if (YPosition != 400)
+      {
+        YPosition += 20;
+      }
     }
   }
 }

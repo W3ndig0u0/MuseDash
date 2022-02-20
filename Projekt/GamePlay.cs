@@ -19,6 +19,8 @@ namespace Projekt
     {
       hitPositionUp.Update();
       hitPositionDown.Update();
+      hitPositionDown.IsOverlapping(enemy1, player);
+      hitPositionUp.IsOverlapping(enemy1, player);
       player.Update();
 
       enemy1.Update();
@@ -31,22 +33,30 @@ namespace Projekt
     public override void WhatToDraw()
     {
       Raylib.ClearBackground(Color.WHITE);
-      Raylib.DrawText("Game", 700, 50, 50, Color.BLACK);
+      Raylib.DrawText(player.Combo.ToString(), 700, 50, 50, Color.BLACK);
+
+      // !Debugging Stats
+      Raylib.DrawFPS(10, 10);
+      Raylib.DrawText("GetTime: " + Raylib.GetTime().ToString(), 10, 30, 20, Color.GREEN);
+      Raylib.DrawText("FrameTime: " + Raylib.GetFrameTime().ToString(), 10, 50, 20, Color.GREEN);
 
       Rectangle ground = new Rectangle(-10, 500, 2000, 100);
 
-      // !Rektangel lines funkar ej, så får göra linjerna själv
-      for (int i = 0; i < 10; i++)
+
+      // !Rektangel lines funkar ej, så får göra linjerna själv... :(
+      for (int i = 0; i < 14; i++)
       {
         Raylib.DrawRectangleLines(-10, 555 - i, 2000, 100, Raylib_cs.Color.BLACK);
       }
 
 
-      Raylib.DrawText("Score", 20, 20, 50, Color.BLACK);
-      Raylib.DrawText("0", 20, 60, 50, Color.BLACK);
+      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
+      Raylib.DrawText(player.Score.ToString(), 10, 140, 50, Color.BLACK);
+      Console.WriteLine(player.Score);
 
       hitPositionDown.DrawObject();
       hitPositionUp.DrawObject();
+
       player.DrawObject();
 
       enemy1.DrawObject();
@@ -57,7 +67,6 @@ namespace Projekt
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
       new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu");
-      Raylib.DrawFPS(10, 10);
     }
   }
 }
