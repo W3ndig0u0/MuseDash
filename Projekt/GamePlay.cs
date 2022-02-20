@@ -6,17 +6,17 @@ namespace Projekt
   public class GamePlay : Scene
   {
     Player player = new Player(170, 400, 90, 140);
-    HitPosition hitPositionUp = new HitPosition(300, 250, 40, 40);
-    HitPosition hitPositionDown = new HitPosition(300, 450, 40, 40);
+    HitPosition hitPositionUp = new HitPosition(300, 250);
+    HitPosition hitPositionDown = new HitPosition(300, 450);
 
-    Enemy enemy1 = new Enemy(1300, 450, 70, 70, 300);
-    Enemy enemy2 = new Enemy(1500, 250, 70, 70, 300);
-    Enemy enemy3 = new Enemy(1300, 250, 70, 70, 300);
-    Enemy enemy4 = new Enemy(1200, 250, 70, 70, 300);
-    Enemy enemy5 = new Enemy(1700, 450, 70, 70, 300);
+    SmallEnemy enemy1 = new SmallEnemy(1300, 450);
+    SmallEnemy enemy2 = new SmallEnemy(1500, 250);
+    SmallEnemy enemy3 = new SmallEnemy(1300, 250);
+    SmallEnemy enemy4 = new SmallEnemy(1200, 250);
+    SmallEnemy enemy5 = new SmallEnemy(1700, 450);
 
-    LargeEnemy largeEnemy = new LargeEnemy(1700, 450, 90, 120, 600);
-    Boss boss = new Boss(1500, 400, 140, 200, 900);
+    LargeEnemy largeEnemy = new LargeEnemy(1800, 400);
+    Boss boss = new Boss(2200, 350);
 
     public override void Update()
     {
@@ -67,10 +67,10 @@ namespace Projekt
       player.DrawObject();
 
       enemy1.DrawObject();
-      // enemy2.DrawObject();
-      // enemy3.DrawObject();
-      // enemy4.DrawObject();
-      // enemy5.DrawObject();
+      enemy2.DrawObject();
+      enemy3.DrawObject();
+      enemy4.DrawObject();
+      enemy5.DrawObject();
 
       largeEnemy.DrawObject();
       boss.DrawObject();

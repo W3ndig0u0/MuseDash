@@ -20,13 +20,10 @@ namespace Projekt
     }
 
 
-    public Enemy(int xPosition, int yPosition, int width, int height, int giveScore)
+    public Enemy(int xPosition, int yPosition)
     {
       YPosition = yPosition - 15;
       XPosition = xPosition;
-      Width = width;
-      Height = height;
-      GiveScore = giveScore;
       GiveFever = 4;
     }
 
@@ -39,20 +36,10 @@ namespace Projekt
         YPosition -= 5;
       }
       Dead = true;
-
     }
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPosition, Width, Height);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, Width - 35, Height - 35);
-
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
-
-      // !600 är vart Marken beffiner  sig
-      // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 40, 600, Width - 20, Height - 50, Color.GRAY);
     }
 
     public override void Update()

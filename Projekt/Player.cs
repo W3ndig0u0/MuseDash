@@ -45,9 +45,10 @@ namespace Projekt
     public override void DrawObject()
     {
       Sprite = new Rectangle(XPosition, YPosition, Width, Height);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, Width - 35, Height - 35);
+      CollitionalRectangle = new Rectangle(XPosition + 35, YPosition, Width - 35, Height);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);

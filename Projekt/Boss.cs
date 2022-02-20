@@ -5,28 +5,36 @@ namespace Projekt
 {
   public class Boss : Enemy
   {
-    public Boss(int xPosition, int yPosition, int width, int height, int giveScore) : base(xPosition, yPosition, width, height, giveScore)
+
+    int WidthBoos;
+    int HeightBoss;
+
+    public Boss(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
+      // !Detta gör att det blir lättare med level editorn
       GiveFever = 8;
+      WidthBoos = 160;
+      HeightBoss = 200;
+      GiveScore = 600;
     }
 
     // ?3 Attack modes
     // ?Kasta enemy
     // ?Spring mot spelaren men spelaren slår en gång
-    // ?Spring mot spelaren men spelaren kan slå många ggr
+    // ?Mash attack
 
     public override void DrawObject()
     {
 
-      Sprite = new Rectangle(XPosition, YPosition, Width, Height);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition, Width - 55, Height);
+      Sprite = new Rectangle(XPosition, YPosition, WidthBoos, HeightBoss);
+      CollitionalRectangle = new Rectangle(XPosition, YPosition + 60, WidthBoos - 100, HeightBoss - 130);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 40, 600, Width - 80, Height - 160, Color.GRAY);
+      Raylib.DrawEllipse(XPosition + 80, 600, WidthBoos - 80, HeightBoss - 180, Color.GRAY);
     }
 
   }

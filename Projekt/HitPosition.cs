@@ -25,12 +25,12 @@ namespace Projekt
     Rectangle greatCollitionalLate;
 
     // !Alla variablar som inte står ovan tas från klassen Objekt
-    public HitPosition(int xPosition, int yPosition, int width, int height)
+    public HitPosition(int xPosition, int yPosition)
     {
       YPosition = yPosition;
       XPosition = xPosition;
-      Width = width;
-      Height = height;
+      Width = 20;
+      Height = 20;
 
       hitCircleTexture = Raylib.LoadTexture("Texture/HitCircle.png");
 

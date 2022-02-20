@@ -9,25 +9,27 @@ namespace Projekt
     int HeightLargeEnemy;
     int YPositionLargeEnemy;
 
-    public LargeEnemy(int xPosition, int yPosition, int width, int height, int giveScore) : base(xPosition, yPosition, width, height, giveScore)
+    public LargeEnemy(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
-      WidthLargeEnemy = width;
-      HeightLargeEnemy = height;
+      // !Detta gör att det blir lättare med level editorn
+      WidthLargeEnemy = 90;
+      HeightLargeEnemy = 120;
       GiveFever = 6;
-      YPositionLargeEnemy = yPosition - 10;
+      GiveScore = 400;
+      YPositionLargeEnemy = yPosition;
     }
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPosition, Width, Height);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, Width - 55, Height - 55);
+      Sprite = new Rectangle(XPosition, YPositionLargeEnemy, WidthLargeEnemy, HeightLargeEnemy);
+      CollitionalRectangle = new Rectangle(XPosition, YPositionLargeEnemy + 20, WidthLargeEnemy - 55, HeightLargeEnemy - 55);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 40, 600, Width - 40, Height - 100, Color.GRAY);
+      Raylib.DrawEllipse(XPosition + 40, 600, WidthLargeEnemy - 50, HeightLargeEnemy - 100, Color.GRAY);
     }
 
   }
