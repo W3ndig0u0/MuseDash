@@ -47,19 +47,18 @@ namespace Projekt
 
     public override void Update()
     {
-      
+      // !Om Enemy inte har dött
       if (!dead)
       {
-
+        ObjektList.Add(CollitionalRectangle);
+        XPosition -= 5;
       }
-      ObjektList.Add(CollitionalRectangle);
-      XPosition -= 5;
 
       // !Så att jag har mer tid att debugga 
-      if (XPosition <= 0)
-      {
-        XPosition = 1600;
-      }
+      // if (XPosition <= 0)
+      // {
+      //   XPosition = 1600;
+      // }
     }
 
   }
