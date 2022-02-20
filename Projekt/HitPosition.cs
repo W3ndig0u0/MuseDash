@@ -7,13 +7,20 @@ namespace Projekt
 {
   public class HitPosition : Objekt
   {
+    // !Kollision
     bool areOverlappingPerfect;
     bool areOverlappingEarly;
     bool areOverlappingLate;
 
+    // !HitCircle
     Vector2 hitCircle;
     float rotation = 0f;
     float scale = 0.8f;
+
+    // !Random
+    Random random = new Random();
+
+    float timer;
 
     //! Texture
     Texture2D hitCircleTexture;
@@ -94,13 +101,26 @@ namespace Projekt
       if (areOverlappingPerfect)
       {
         player.Score += target.GiveScore * (player.Combo / 10);
-        DrawTextPoints("PERFECT", target, Color.BLUE);
+        // !Timer för hur länge texten är kvar 
+        timer++;
+        while (timer != 20f)
+        {
+          DrawTextPoints("PERFECT", target, Color.BLUE);
+          timer = 0f;
+        }
       }
       if (areOverlappingLate || areOverlappingEarly)
       {
         // !Ger mindre poäng
         player.Score += (target.GiveScore / 3) * (player.Combo / 10);
-        DrawTextPoints("GREAT", target, Color.GREEN);
+
+        // !Timer för hur länge texten är kvar 
+        timer++;
+        while (timer != 20f)
+        {
+          DrawTextPoints("GREAT", target, Color.GREEN);
+          timer = 0f;
+        }
       }
     }
 
@@ -108,6 +128,8 @@ namespace Projekt
     //? Gör så att det finns kvar mer än 1 frame
     public void DrawTextPoints(String text, Enemy target, Color c)
     {
+
+      target.XPosition += random.Next(10, 20);
       Raylib.DrawText(text, target.XPosition, target.YPosition - 30, 30, c);
     }
 

@@ -53,7 +53,10 @@ namespace Projekt
       set { radius = value; }
     }
 
+    // !Detta är för combo cirkeln
     Vector2 pos;
+    Vector2 pos2;
+    float timer;
 
     Color color;
     public Color Color
@@ -80,6 +83,9 @@ namespace Projekt
       hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
       feverTexture = Raylib.LoadTexture("Texture/FeverMeter3.png");
       hpExtraTexture = Raylib.LoadTexture("Texture/ExtraUI.png");
+
+
+      RandomCircleDraw();
     }
 
     public override void DrawObject()
@@ -109,31 +115,44 @@ namespace Projekt
       {
         Ground();
       }
-      RandomCircleDraw();
+
+      // !Timer för när en ny cirkel ska skapas
+      timer++;
+      if (timer == 120f)
+      {
+        RandomCircleDraw();
+        timer = 0f;
+      }
     }
 
     void RandomCircleDraw()
     {
       // !Gör nya stats för cirklarna hela tiden
-      Radius = random.Next(10, 50);
-      Color = new Color(random.Next(0, 50), random.Next(0, 50), random.Next(0, 50), random.Next(0, 255));
+      Radius = random.Next(30, 70);
+      Color = new Color(random.Next(0, 20), random.Next(0, 20), random.Next(0, 20), random.Next(175, 255));
       pos.X = random.Next(700, 800);
       pos.Y = random.Next(80, 120);
 
+      pos2.X = random.Next(700, 800);
+      pos2.Y = random.Next(80, 120);
+
       vector2List.Add(pos);
+      vector2List.Add(pos2);
     }
 
     void ScoreCircle()
     {
+
       for (int i = 0; i < vector2List.Count; i++)
       {
         // !SKriver ut flera random cirklor med från listan
         Raylib.DrawCircle((int)Math.Round(vector2List[i].X), (int)Math.Round(vector2List[i].Y), Radius, Color);
+        Raylib.DrawCircle((int)Math.Round(vector2List[i].X - 10), (int)Math.Round(vector2List[i].Y - 20), Radius / 2, Color);
+        Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
       }
 
-      Raylib.DrawCircle(750, 100, Radius, Color);
-
-      Raylib.DrawText(Combo.ToString(), 720, 60, 50, Color.BLACK);
+      Raylib.DrawText(Combo.ToString(), 700, 60, 50, Color.WHITE);
+      Raylib.DrawText("COMBO", 690, 100, 30, Color.WHITE);
     }
 
     void HpFever()
