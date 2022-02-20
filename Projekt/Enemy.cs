@@ -5,6 +5,13 @@ namespace Projekt
 {
   public class Enemy : Objekt
   {
+    bool dead = false;
+    public bool Dead
+    {
+      get { return dead; }
+      set { dead = value; }
+    }
+
 
     public Enemy(int xPosition, int yPosition, int width, int height)
     {
@@ -21,6 +28,8 @@ namespace Projekt
         // !Gör så att det studsar
         YPosition -= 5;
       }
+      Dead = true;
+
     }
 
     public override void DrawObject()
@@ -38,6 +47,11 @@ namespace Projekt
 
     public override void Update()
     {
+      
+      if (!dead)
+      {
+
+      }
       ObjektList.Add(CollitionalRectangle);
       XPosition -= 5;
 

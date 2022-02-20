@@ -80,23 +80,18 @@ namespace Projekt
     // !Kollar collision
     public void IsOverlapping(Enemy target, Player player)
     {
+      // ?gör koden bättre...
       areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, target.CollitionalRectangle);
       areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, target.CollitionalRectangle);
       areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, target.CollitionalRectangle);
 
-      // ?gör koden bättre...
       if (areOverlappingPerfect)
       {
         player.Fever += 4;
         player.Combo++;
         player.Score += 300 * (player.Combo / 10);
         target.Bounce();
-        // !Gör så att target inte finns kvar
-        if (target.YPosition <= 200)
-        {
-          target = null;
-          Console.WriteLine(target);
-        }
+        // ?Gör så att target inte finns kvar
       }
       if (areOverlappingLate || areOverlappingEarly)
       {
@@ -104,12 +99,7 @@ namespace Projekt
         player.Combo++;
         player.Score += 100 * (player.Combo / 10);
         target.Bounce();
-        // !Gör så att target inte finns kvar
-        if (target.YPosition <= 200)
-        {
-          target = null;
-          Console.WriteLine(target);
-        }
+        // ?Gör så att target inte finns kvar
       }
     }
 
