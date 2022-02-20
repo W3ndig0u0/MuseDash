@@ -34,12 +34,21 @@ namespace Projekt
       set { combo = value; }
     }
 
+    //! Texture
+    Texture2D hpTexture;
+    Texture2D feverTexture;
+    Texture2D hpExtraTexture;
+
     public Player(int xPosition, int yPosition, int width, int height)
     {
       YPosition = yPosition;
       XPosition = xPosition;
       Width = width;
       Height = height;
+
+      hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
+      feverTexture = Raylib.LoadTexture("Texture/FeverMeter.png");
+      hpExtraTexture = Raylib.LoadTexture("Texture/ExtraUI.png");
     }
 
     public override void DrawObject()
@@ -49,6 +58,16 @@ namespace Projekt
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+
+      // !Score, hp, etc
+      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
+      Raylib.DrawText(Score.ToString(), 10, 140, 50, Color.BLACK);
+      Raylib.DrawText(Combo.ToString(), 700, 50, 50, Color.BLACK);
+
+      Raylib.DrawTexture(hpTexture, 500, 750, Color.WHITE);
+      Raylib.DrawTexture(feverTexture, 500, 700, Color.WHITE);
+      Raylib.DrawTexture(hpExtraTexture, 500, 700, Color.WHITE);
+
 
       // !600 är vart Marken beffiner  sig
       Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);

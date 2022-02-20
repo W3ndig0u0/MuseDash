@@ -40,7 +40,6 @@ namespace Projekt
     public override void WhatToDraw()
     {
       Raylib.ClearBackground(Color.WHITE);
-      Raylib.DrawText(player.Combo.ToString(), 700, 50, 50, Color.BLACK);
 
       // !Debugging Stats
       Raylib.DrawFPS(10, 10);
@@ -56,10 +55,6 @@ namespace Projekt
       {
         Raylib.DrawRectangleLines(-10, 555 - i, 2000, 100, Raylib_cs.Color.BLACK);
       }
-
-
-      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
-      Raylib.DrawText(player.Score.ToString(), 10, 140, 50, Color.BLACK);
 
       hitPositionDown.DrawObject();
       hitPositionUp.DrawObject();
