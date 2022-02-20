@@ -54,35 +54,35 @@ namespace Projekt
     public override void Update()
     {
       // rotation++;
-      if (scale <= 1.2)
-      {
-        scale--;
-      }
-      if (scale == 0.8)
-      {
-        scale++;
-      }
-      else
-      {
-        scale++;
-      }
+      // if (scale == 1.2)
+      // {
+      //   scale--;
+      // }
+      // if (scale == 0.8)
+      // {
+      //   scale++;
+      // }
+      // else
+      // {
+      //   scale++;
+      // }
     }
 
     // !Kör metoden IsOverlapping om man trycker på knapparna 
-    public void HitPressed(Objekt objekt, Player player)
+    public void HitPressed(Enemy target, Player player)
     {
       if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO) || Raylib.IsKeyPressed(KeyboardKey.KEY_THREE))
       {
-        IsOverlapping(objekt, player);
+        IsOverlapping(target, player);
       }
     }
 
     // !Kollar collision
-    public void IsOverlapping(Objekt objekt, Player player)
+    public void IsOverlapping(Enemy target, Player player)
     {
-      areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, objekt.CollitionalRectangle);
-      areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, objekt.CollitionalRectangle);
-      areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, objekt.CollitionalRectangle);
+      areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, target.CollitionalRectangle);
+      areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, target.CollitionalRectangle);
+      areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, target.CollitionalRectangle);
 
       // ?gör koden bättre...
       if (areOverlappingPerfect)
@@ -90,15 +90,28 @@ namespace Projekt
         player.Fever += 4;
         player.Combo++;
         player.Score += 300 * (player.Combo / 10);
+        target.Bounce();
+        // !Gör så att target inte finns kvar
+        if (target.YPosition <= 200)
+        {
+          target = null;
+          Console.WriteLine(target);
+        }
       }
       if (areOverlappingLate || areOverlappingEarly)
       {
         player.Fever += 4;
         player.Combo++;
         player.Score += 100 * (player.Combo / 10);
+        target.Bounce();
+        // !Gör så att target inte finns kvar
+        if (target.YPosition <= 200)
+        {
+          target = null;
+          Console.WriteLine(target);
+        }
       }
     }
-
 
     // !Ritar ut sakerna
     public override void DrawObject()

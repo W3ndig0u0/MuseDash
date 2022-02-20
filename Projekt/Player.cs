@@ -5,6 +5,7 @@ namespace Projekt
 {
   public class Player : Objekt
   {
+
     int hp;
     public int Hp
     {
@@ -71,17 +72,12 @@ namespace Projekt
     // !Vart spelaren hamnar
     void Air()
     {
-      if (YPosition != 200)
-      {
-        YPosition -= 20;
-      }
+      YPosition = 200;
     }
     void Ground()
     {
-      if (YPosition != 400)
-      {
-        YPosition += 20;
-      }
+      YPosition = 400;
     }
+
   }
 }

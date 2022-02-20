@@ -19,15 +19,17 @@ namespace Projekt
     {
       hitPositionUp.Update();
       hitPositionDown.Update();
+
       hitPositionDown.IsOverlapping(enemy1, player);
       hitPositionUp.IsOverlapping(enemy1, player);
+
       player.Update();
 
       enemy1.Update();
-      enemy2.Update();
-      enemy3.Update();
-      enemy4.Update();
-      enemy5.Update();
+      // enemy2.Update();
+      // enemy3.Update();
+      // enemy4.Update();
+      // enemy5.Update();
     }
 
     public override void WhatToDraw()
@@ -52,7 +54,6 @@ namespace Projekt
 
       Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
       Raylib.DrawText(player.Score.ToString(), 10, 140, 50, Color.BLACK);
-      Console.WriteLine(player.Score);
 
       hitPositionDown.DrawObject();
       hitPositionUp.DrawObject();

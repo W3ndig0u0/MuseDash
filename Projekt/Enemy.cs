@@ -14,6 +14,15 @@ namespace Projekt
       Height = height;
     }
 
+    public void Bounce()
+    {
+      for (var i = 0; i < 40; i++)
+      {
+        // !Gör så att det studsar
+        YPosition -= 5;
+      }
+    }
+
     public override void DrawObject()
     {
       Sprite = new Rectangle(XPosition, YPosition, Width, Height);
