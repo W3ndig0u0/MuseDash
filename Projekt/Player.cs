@@ -151,7 +151,7 @@ namespace Projekt
         Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
       }
 
-      Raylib.DrawText(Combo.ToString(), 690, 60, 50, Color.WHITE);
+      Raylib.DrawText(Combo.ToString(), 710, 60, 50, Color.WHITE);
       Raylib.DrawText("COMBO", 705, 100, 30, Color.WHITE);
     }
 
@@ -175,14 +175,21 @@ namespace Projekt
 
     }
 
-    // !Vart spelaren hamnar
-    void Air()
+    // !Vart spelaren hamnar när den slår fienden
+    // ?Det är public bara för automatiskt, årkar inte spela själv...
+    public void Air()
     {
       YPosition = 200;
     }
-    void Ground()
+    public void Ground()
     {
       YPosition = 400;
+    }
+
+    // ?GeiminiEnemy har två rectanglar med collision i båda hållen, om spelaren trycker på båda sammtidigt,hamnar spelaren i "mitten"
+    public void MiddleAir()
+    {
+      YPosition = 300;
     }
 
   }

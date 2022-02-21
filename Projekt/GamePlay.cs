@@ -6,20 +6,27 @@ namespace Projekt
 {
   public class GamePlay : Scene
   {
+    List<Enemy> enemyList = new List<Enemy>();
+
     Player player = new Player(170, 400, 90, 140);
     HitPosition hitPositionUp = new HitPosition(300, 250);
     HitPosition hitPositionDown = new HitPosition(300, 450);
 
-    SmallEnemy enemy1 = new SmallEnemy(1300, 450);
+    SmallEnemy enemy1 = new SmallEnemy(800, 450);
     SmallEnemy enemy2 = new SmallEnemy(1500, 250);
     SmallEnemy enemy3 = new SmallEnemy(1300, 250);
     SmallEnemy enemy4 = new SmallEnemy(1200, 250);
     SmallEnemy enemy5 = new SmallEnemy(1700, 450);
 
-    List<Enemy> enemyList = new List<Enemy>();
-
     LargeEnemy largeEnemy = new LargeEnemy(1800, 400);
+    LargeEnemy largeEnemy2 = new LargeEnemy(2700, 200);
+
+    MashEnemy mashEnemy = new MashEnemy(2500, 400);
+    GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2500, 400);
+    GearObstacle gearObstacle = new GearObstacle(700, 200);
+
     Boss boss = new Boss(2200, 350);
+
     bool isDone = false;
 
     public override void Update()
@@ -35,8 +42,11 @@ namespace Projekt
         enemyList.Add(enemy4);
         enemyList.Add(enemy5);
         enemyList.Add(largeEnemy);
+        enemyList.Add(largeEnemy2);
+        // enemyList.Add(mashEnemy);
+        enemyList.Add(geiminiEnemy);
+        enemyList.Add(gearObstacle);
         enemyList.Add(boss);
-        Console.WriteLine("YEAAG");
         isDone = true;
       }
 

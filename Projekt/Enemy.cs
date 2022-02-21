@@ -51,9 +51,9 @@ namespace Projekt
       }
 
       // !Så att jag har mer tid att debugga 
-      if (XPosition <= 0)
+      if (XPosition <= -100)
       {
-        XPosition = 1600;
+        XPosition = 2500;
       }
     }
 

@@ -110,6 +110,9 @@ namespace Projekt
         player.Combo++;
         // target.Bounce();
         // ?Gör så att target inte finns kvar
+
+        // !Automatiskt spelande
+        Auto(target, player);
       }
 
       if (areOverlappingPerfect)
@@ -136,13 +139,25 @@ namespace Projekt
       }
     }
 
-    //! Text när spelaren trycker, för att veta hur precis trycket va
-    //? Gör så att det finns kvar mer än 1 frame
-    public void DrawTextPoints(String text, Enemy target, Color c)
+    void Auto(Enemy target, Player player)
     {
-      // TextSpeed += random.Next(10, 20);
-      Raylib.DrawText(text, target.XPosition + 20, target.YPosition - TextSpeed, 50, c);
+      // !Om Enemy target är en geiminiEnemy så hamnar spelaren i "mitten"
+      if (target is GeiminiEnemy)
+      {
+        player.MiddleAir();
+      }
 
+      // !Om enemy är uppe i luften och får en kollision
+      else if (this.YPosition == 250)
+      {
+        player.Air();
+      }
+
+      // !Om enemy är nere och får en kollision
+      else if (this.YPosition == 450)
+      {
+        player.Ground();
+      }
     }
 
     // !Ritar ut sakerna
@@ -152,7 +167,14 @@ namespace Projekt
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
+    }
 
+    //! Text när spelaren trycker, för att veta hur precis trycket va
+    //? Gör så att det finns kvar mer än 1 frame
+    void DrawTextPoints(String text, Enemy target, Color c)
+    {
+      // TextSpeed += random.Next(10, 20);
+      Raylib.DrawText(text, target.XPosition + 20, target.YPosition - TextSpeed, 50, c);
     }
 
   }
