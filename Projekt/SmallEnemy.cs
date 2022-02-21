@@ -23,7 +23,7 @@ namespace Projekt
       CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthSmallEnemy - 35, HeightSmallEnemy - 35);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       // !Detta är skuggan

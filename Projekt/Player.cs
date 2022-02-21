@@ -94,7 +94,7 @@ namespace Projekt
       CollitionalRectangle = new Rectangle(XPosition + 35, YPosition, Width - 35, Height);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);
@@ -151,8 +151,8 @@ namespace Projekt
         Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
       }
 
-      Raylib.DrawText(Combo.ToString(), 710, 60, 50, Color.WHITE);
-      Raylib.DrawText("COMBO", 705, 100, 30, Color.WHITE);
+      Raylib.DrawText(Combo.ToString(), 700, 60, 50, Color.WHITE);
+      Raylib.DrawText("COMBO", 690, 100, 30, Color.WHITE);
     }
 
     void HpFever()

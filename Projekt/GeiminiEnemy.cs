@@ -43,8 +43,8 @@ namespace Projekt
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       Raylib.DrawRectangleRec(sprite2, Color.BLACK);
 
-      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
-      Raylib.DrawRectangleRec(collitionalRectangle2, Color.GREEN);
+      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(collitionalRectangle2, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       // !Detta är skuggan

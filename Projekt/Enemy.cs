@@ -24,7 +24,6 @@ namespace Projekt
     {
       YPosition = yPosition - 15;
       XPosition = xPosition;
-      GiveFever = 4;
     }
 
     public void Bounce()

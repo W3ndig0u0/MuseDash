@@ -23,7 +23,7 @@ namespace Projekt
 
     MashEnemy mashEnemy = new MashEnemy(2500, 400);
     GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2500, 400);
-    GearObstacle gearObstacle = new GearObstacle(700, 200);
+    GearObstacle gearObstacle = new GearObstacle(500, 200);
 
     Boss boss = new Boss(2200, 350);
 
