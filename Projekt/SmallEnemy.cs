@@ -13,8 +13,8 @@ namespace Projekt
       // !Detta gör att det blir lättare med level editorn
       WidthSmallEnemy = 70;
       HeightSmallEnemy = 70;
-      GiveFever = 4;
-      GiveScore = 300;
+      GiveFever = 2;
+      GiveScore = 200;
     }
 
     public override void DrawObject()

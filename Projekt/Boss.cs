@@ -12,10 +12,10 @@ namespace Projekt
     public Boss(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
       // !Detta gör att det blir lättare med level editorn
-      GiveFever = 8;
+      GiveFever = 4;
       WidthBoos = 160;
       HeightBoss = 200;
-      GiveScore = 600;
+      GiveScore = 400;
     }
 
     // ?3 Attack modes

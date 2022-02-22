@@ -65,16 +65,15 @@ namespace Projekt
     public void TimerMash(int timerOut)
     {
       //! Timerout kommer bero på hur länge den kan mashas
-      if (Timer != timerOut)
+      if (Timer > timerOut)
       {
         MashMethod();
-        Console.WriteLine(timerOut);
       }
 
-      // if (Timer == timerOut)
-      // {
-      //   Bounce();
-      // }
+      if (Timer == timerOut)
+      {
+        DeadMethod();
+      }
     }
 
     void MashMethod()
@@ -95,6 +94,11 @@ namespace Projekt
 
     public override void Update()
     {
+      Bounce();
+    }
+
+    void Bounce()
+    {
       // !Om Enemy inte har dött
       if (!Dead)
       {
@@ -106,31 +110,26 @@ namespace Projekt
       if (Dead)
       {
 
-        // FakeGravity += 6;
+        // FakeGravity += fakeGravity / 2;
         // !Gör så att det studsar
-        TimerDead++;
-        XPosition -= 5;
+        // TimerDead++;
         Dead = true;
 
-        if (TimerDead != 500 && XPosition > -100)
-        {
-          // FakeGravity = ;
-          YPosition = XPosition;
+        // if (TimerDead != 500 && XPosition > -100)
+        // {
 
-          // !Kurvan när fienden dör
-          if (XPosition <= 200)
-          {
-            XPosition += 10;
-          }
-        }
+        // !Kurvan när fienden dör
+
+        XPosition -= 5;
+        YPosition -= 10;
+
+
+        // !Så att jag har mer tid att debugga 
+        // if (XPosition <= -100)
+        // {
+        //   XPosition = 2500;
+        // }
       }
-
-      // !Så att jag har mer tid att debugga 
-      // if (XPosition <= -100)
-      // {
-      //   XPosition = 2500;
-      // }
     }
-
   }
 }

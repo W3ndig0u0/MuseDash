@@ -23,8 +23,8 @@ namespace Projekt
     LargeEnemy largeEnemy2 = new LargeEnemy(2700, 200);
 
     MashEnemy mashEnemy = new MashEnemy(3000, 400);
-    GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2500, 400);
-    GearObstacle gearObstacle = new GearObstacle(500, 200);
+    GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2500, 450, 250);
+    GearObstacle gearObstacle = new GearObstacle(500, 480);
 
     Boss boss = new Boss(2200, 350);
 
@@ -38,22 +38,19 @@ namespace Projekt
       // !Koden körs bara en gång
       if (isDone == false)
       {
-        enemyList.Add(enemy1);
+        // enemyList.Add(enemy1);
         // enemyList.Add(enemy2);
         // enemyList.Add(enemy3);
         // enemyList.Add(enemy4);
         // enemyList.Add(enemy5);
         // enemyList.Add(largeEnemy);
         // enemyList.Add(largeEnemy2);
-        // enemyList.Add(mashEnemy);
+        enemyList.Add(mashEnemy);
         // enemyList.Add(geiminiEnemy);
         // enemyList.Add(gearObstacle);
         // enemyList.Add(boss);
         isDone = true;
       }
-
-      // Raylib.DrawRectangle(0, 0, 500, 500, Color.GRAY);
-
 
       // !Går genom alla Fiender
       for (int i = 0; i < enemyList.Count; i++)

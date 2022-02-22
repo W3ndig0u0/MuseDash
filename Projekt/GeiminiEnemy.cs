@@ -7,36 +7,34 @@ namespace Projekt
   {
     int WidthGeiminiEnemy;
     int HeightGeiminiEnemy;
-    int YPositionGeiminiEnemy;
 
     // !Detta är för den övre delen av fienden
-    int YPositionGeiminiEnemy2;
+    public int YPositionGeiminiEnemy2;
     Rectangle sprite2;
     Rectangle collitionalRectangle2;
 
     // !Delen som är mellan de övre och nedre delen
     Rectangle spriteMiddle;
 
-    public GeiminiEnemy(int xPosition, int yPosition) : base(xPosition, yPosition)
+    public GeiminiEnemy(int xPosition, int yPosition, int yPosition2) : base(xPosition, yPosition)
     {
       // !Detta gör att det blir lättare med level editorn
       WidthGeiminiEnemy = 70;
       HeightGeiminiEnemy = 70;
-      GiveFever = 6;
+      GiveFever = 4;
       GiveScore = 400;
-      YPositionGeiminiEnemy = 450;
-      YPositionGeiminiEnemy2 = 250;
+      YPositionGeiminiEnemy2 = yPosition2;
     }
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPositionGeiminiEnemy, WidthGeiminiEnemy, HeightGeiminiEnemy);
+      Sprite = new Rectangle(XPosition, YPosition, WidthGeiminiEnemy, HeightGeiminiEnemy);
       sprite2 = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy, HeightGeiminiEnemy);
       // !200 är avståndet mellan övre och nedre delen
       spriteMiddle = new Rectangle(XPosition + 20, YPositionGeiminiEnemy2 + 70, 30, 200);
 
 
-      CollitionalRectangle = new Rectangle(XPosition, YPositionGeiminiEnemy + 20, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
+      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
       collitionalRectangle2 = new Rectangle(XPosition, YPositionGeiminiEnemy2 + 20, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
 
       Raylib.DrawRectangleRec(spriteMiddle, Color.BLACK);

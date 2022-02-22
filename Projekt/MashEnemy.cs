@@ -8,7 +8,6 @@ namespace Projekt
   {
     int WidthMashEnemy;
     int HeightMashEnemy;
-    int YPositionMashEnemy;
 
     public MashEnemy(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
@@ -17,13 +16,12 @@ namespace Projekt
       HeightMashEnemy = 140;
       GiveFever = 0;
       GiveScore = 20;
-      YPositionMashEnemy = 400;
     }
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPositionMashEnemy, WidthMashEnemy, HeightMashEnemy);
-      CollitionalRectangle = new Rectangle(XPosition, YPositionMashEnemy + 20, WidthMashEnemy - 55, HeightMashEnemy - 55);
+      Sprite = new Rectangle(XPosition, YPosition, WidthMashEnemy, HeightMashEnemy);
+      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthMashEnemy - 55, HeightMashEnemy - 55);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);

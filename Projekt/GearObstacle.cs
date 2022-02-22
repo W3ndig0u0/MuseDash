@@ -16,7 +16,7 @@ namespace Projekt
       HeightGearObstacle = 130;
       GiveFever = 3;
       GiveScore = 400;
-      YPositionGearObstacle = 480;
+      YPositionGearObstacle = yPosition;
     }
 
     public override void DrawObject()
