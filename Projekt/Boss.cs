@@ -78,8 +78,13 @@ namespace Projekt
       {
         XPosition -= 5;
       }
+      else
+      {
+        timer++;
+      }
 
-      timer++;
+      Console.WriteLine(timer);
+
       if (timer >= 500)
       {
         SprintAttack();

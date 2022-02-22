@@ -26,7 +26,7 @@ namespace Projekt
     GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2700, 430, 250);
     GearObstacle gearObstacle = new GearObstacle(500, 480);
 
-    Boss boss = new Boss(4000, 350);
+    Boss boss = new Boss(3100, 350);
 
 
     bool isDone = false;
