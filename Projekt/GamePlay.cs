@@ -15,18 +15,18 @@ namespace Projekt
 
     SmallEnemy enemy1 = new SmallEnemy(800, 250);
     SmallEnemy enemy2 = new SmallEnemy(1500, 250);
-    SmallEnemy enemy3 = new SmallEnemy(1300, 450);
+    SmallEnemy enemy3 = new SmallEnemy(1300, 430);
     SmallEnemy enemy4 = new SmallEnemy(1100, 250);
-    SmallEnemy enemy5 = new SmallEnemy(1700, 450);
+    SmallEnemy enemy5 = new SmallEnemy(1700, 430);
 
     LargeEnemy largeEnemy = new LargeEnemy(2400, 400);
     LargeEnemy largeEnemy2 = new LargeEnemy(2000, 200);
 
-    MashEnemy mashEnemy = new MashEnemy(29000, 300);
-    GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2700, 450, 250);
+    MashEnemy mashEnemy = new MashEnemy(2900, 300);
+    GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2700, 430, 250);
     GearObstacle gearObstacle = new GearObstacle(500, 480);
 
-    Boss boss = new Boss(3100, 350);
+    Boss boss = new Boss(4000, 350);
 
 
     bool isDone = false;

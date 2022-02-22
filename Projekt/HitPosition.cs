@@ -241,7 +241,7 @@ namespace Projekt
     public override void DrawObject()
     {
       Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
-      Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);

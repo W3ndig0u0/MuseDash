@@ -32,7 +32,7 @@ namespace Projekt
       Sprite = new Rectangle(XPosition, YPositionGeiminiEnemy1, WidthGeiminiEnemy, HeightGeiminiEnemy);
       sprite2 = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy, HeightGeiminiEnemy);
       // !200 är avståndet mellan övre och nedre delen
-      spriteMiddle = new Rectangle(XPosition + 20, YPositionGeiminiEnemy2 + 70, 30, 200);
+      spriteMiddle = new Rectangle(XPosition + 20, YPositionGeiminiEnemy2 + 70, 30, 180);
 
 
       CollitionalRectangle = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
