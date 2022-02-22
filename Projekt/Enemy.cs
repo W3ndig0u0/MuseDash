@@ -40,6 +40,13 @@ namespace Projekt
       set { mash = value; }
     }
 
+    bool isHurt;
+    public bool IsHurt
+    {
+      get { return isHurt; }
+      set { isHurt = value; }
+    }
+
     // !För mash
     int mashCombo;
     int fakeGravity;
@@ -65,12 +72,12 @@ namespace Projekt
     public void TimerMash(int timerOut)
     {
       //! Timerout kommer bero på hur länge den kan mashas
-      if (Timer > timerOut)
+      if (Timer < timerOut)
       {
         MashMethod();
       }
 
-      if (Timer == timerOut)
+      else if (Timer == timerOut)
       {
         DeadMethod();
       }
@@ -79,12 +86,14 @@ namespace Projekt
     void MashMethod()
     {
       Mash = true;
+      Console.WriteLine("ss");
+
       // ?Combo ökar när man tryckers
       mashCombo++;
       Timer++;
 
       this.XPosition += 5;
-      Raylib.DrawText(mashCombo.ToString(), XPosition, YPosition - 50, 50, Color.BLACK);
+      Raylib.DrawText(mashCombo.ToString(), XPosition, YPosition - 90, 50, Color.BLACK);
     }
 
 
@@ -102,7 +111,14 @@ namespace Projekt
       // !Om Enemy inte har dött
       if (!Dead)
       {
+        // !Boss ska inte springa rakt mot spelaren, utan stannar
+        if (this is Boss)
+        {
+          return;
+        }
+
         XPosition -= 5;
+
         // !Kurvan när fienden dör
       }
 

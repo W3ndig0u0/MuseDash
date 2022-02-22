@@ -152,12 +152,17 @@ namespace Projekt
 
           // !Automatiskt speland
           TextActive = true;
-          Auto(target, player);
+          PlayerPosition(target, player);
 
-          TextXPos = target.XPosition + 10;
-          TextYPos = target.YPosition - 20;
+          TextXPos = target.XPosition;
+          TextYPos = target.YPosition - 50;
+          if (target is MashEnemy || target is Boss)
+          {
+            return;
+          }
 
           target.DeadMethod();
+
           // ?Gör så att target inte finns kvar
 
         }
@@ -175,7 +180,7 @@ namespace Projekt
       }
     }
 
-    void Auto(Enemy target, Player player)
+    void PlayerPosition(Enemy target, Player player)
     {
       // !Spelaren rör bara om enemy lever
       // !Om Enemy target är en mash kommer mash aktiveras
@@ -184,6 +189,7 @@ namespace Projekt
       {
         // ?Ändra på 100 så att det beror på hur mycket som står i Gameplay.cs
         target.TimerMash(130);
+        player.MiddleAir();
       }
 
       // !Om Enemy target är en geiminiEnemy så hamnar spelaren i "mitten"
@@ -191,6 +197,12 @@ namespace Projekt
       {
         player.MiddleAir();
         player.Combo++;
+      }
+
+      // !Om Enemy target är en Boss så kommer den skadas
+      if (target is Boss)
+      {
+        target.IsHurt = true;
       }
 
       // !Om enemy är uppe i luften och får en kollision
@@ -216,7 +228,7 @@ namespace Projekt
       if (TextYPos != 0)
       {
         DrawTextPointsGreat();
-        DrawTextPointsPerfect();
+
       }
     }
 
@@ -225,7 +237,6 @@ namespace Projekt
     // ?Gör så att dessa är bara en metod
     void DrawTextPointsGreat()
     {
-      // TextSpeed += random.Next(10, 20);
       Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, Color.BLACK);
     }
 

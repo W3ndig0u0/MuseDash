@@ -22,7 +22,7 @@ namespace Projekt
     LargeEnemy largeEnemy = new LargeEnemy(1800, 400);
     LargeEnemy largeEnemy2 = new LargeEnemy(2700, 200);
 
-    MashEnemy mashEnemy = new MashEnemy(3000, 400);
+    MashEnemy mashEnemy = new MashEnemy(3000, 300);
     GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2500, 450, 250);
     GearObstacle gearObstacle = new GearObstacle(500, 480);
 
@@ -33,6 +33,7 @@ namespace Projekt
 
     public override void Update()
     {
+
 
       // !Lägger till alla fiender
       // !Koden körs bara en gång
@@ -45,10 +46,10 @@ namespace Projekt
         // enemyList.Add(enemy5);
         // enemyList.Add(largeEnemy);
         // enemyList.Add(largeEnemy2);
-        enemyList.Add(mashEnemy);
+        // enemyList.Add(mashEnemy);
         // enemyList.Add(geiminiEnemy);
         // enemyList.Add(gearObstacle);
-        // enemyList.Add(boss);
+        enemyList.Add(boss);
         isDone = true;
       }
 
@@ -59,6 +60,7 @@ namespace Projekt
         hitPositionDown.IsOverlapping(enemyList[i], player);
         hitPositionUp.IsOverlapping(enemyList[i], player);
       }
+
 
       hitPositionUp.Update();
       hitPositionDown.Update();

@@ -21,7 +21,7 @@ namespace Projekt
     public override void DrawObject()
     {
       Sprite = new Rectangle(XPosition, YPosition, WidthMashEnemy, HeightMashEnemy);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthMashEnemy - 55, HeightMashEnemy - 55);
+      CollitionalRectangle = new Rectangle(XPosition, YPosition - 100, WidthMashEnemy - 55, HeightMashEnemy - 55);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
       // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
