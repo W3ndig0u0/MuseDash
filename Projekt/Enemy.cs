@@ -106,7 +106,7 @@ namespace Projekt
         {
           XPosition -= 5;
           // !Kurvan när fienden dör
-          YPosition = XPosition ^ 2;
+          YPosition = ((XPosition - 5) * (1 / 3)) ^ 2;
         }
       }
 
