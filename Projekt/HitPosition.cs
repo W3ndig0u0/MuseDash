@@ -44,7 +44,11 @@ namespace Projekt
     }
 
     bool textActive = false;
-
+    public bool TextActive
+    {
+      get { return textActive; }
+      set { textActive = value; }
+    }
     //! Texture
     Texture2D hitCircleTexture;
 
@@ -94,15 +98,29 @@ namespace Projekt
       // {
       //   scale -= 0.2f;
       // }
-      if (textActive)
+      if (TextActive)
       {
         Timer++;
       }
 
-      textSpeed++;
-      if (textSpeed == 50)
+      if (Timer < 50)
       {
+        TextYPos -= textSpeed;
+      }
+      else
+      {
+        // !Texten försvinner
+        TextActive = false;
+        Timer += 0;
+        Timer = 0;
+        TextYPos = 0;
         textSpeed = 0;
+      }
+
+      textSpeed++;
+      if (textSpeed > 2)
+      {
+        textSpeed = 1;
       }
     }
 
@@ -132,25 +150,15 @@ namespace Projekt
           player.Combo++;
 
 
-          // !Automatiskt spelande
+          // !Automatiskt speland
+          TextActive = true;
           Auto(target, player);
+
+          TextXPos = target.XPosition + 10;
+          TextYPos = target.YPosition - 20;
 
           target.DeadMethod();
           // ?Gör så att target inte finns kvar
-
-          textActive = true;
-          TextYPos = target.YPosition - 30;
-          TextXPos = target.XPosition + 20;
-
-          if (Timer <= 50)
-          {
-            TextYPos++;
-          }
-          else
-          {
-            textActive = false;
-            Timer = 0;
-          }
 
         }
 
@@ -205,8 +213,11 @@ namespace Projekt
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
-      DrawTextPointsGreat();
-      DrawTextPointsPerfect();
+      if (TextYPos != 0)
+      {
+        DrawTextPointsGreat();
+        DrawTextPointsPerfect();
+      }
     }
 
     //! Text när spelaren trycker, för att veta hur precis trycket va
@@ -215,13 +226,13 @@ namespace Projekt
     void DrawTextPointsGreat()
     {
       // TextSpeed += random.Next(10, 20);
-      Raylib.DrawText("GREAT", TextXPos, TextYPos, 50, Color.BLACK);
+      Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, Color.BLACK);
     }
 
     void DrawTextPointsPerfect()
     {
       // TextSpeed += random.Next(10, 20);
-      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 50, Color.BLACK);
+      // Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, Color.BLACK);
     }
 
   }
