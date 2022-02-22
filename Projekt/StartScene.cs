@@ -30,13 +30,13 @@ namespace Projekt
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
       }
 
-      else if (intro < 500)
+      else if (intro < 300)
       {
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 600)
+      else if (intro < 400)
       {
         InitGame.currentScene.AddScene(menuScene);
         InitGame.draw.RenderScene(menuScene);

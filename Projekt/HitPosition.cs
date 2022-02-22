@@ -9,6 +9,7 @@ namespace Projekt
   {
     // !Kollision
     bool areOverlappingPerfect;
+    bool areOverlappingPerfectAUTO;
     bool areOverlappingEarly;
     bool areOverlappingLate;
 
@@ -55,6 +56,7 @@ namespace Projekt
     List<Rectangle> collitionalRectangleList = new List<Rectangle>();
 
     Rectangle perfektCollitionalRectangle;
+    Rectangle perfektCollitionalRectangleAUTO;
     Rectangle greatCollitionalEarly;
     Rectangle greatCollitionalLate;
 
@@ -69,6 +71,8 @@ namespace Projekt
       hitCircleTexture = Raylib.LoadTexture("Texture/HitCircle.png");
 
       hitCircle = new Vector2(XPosition - 10, YPosition - 10);
+
+      perfektCollitionalRectangleAUTO = new Rectangle(XPosition + 10, YPosition, 5, Height);
 
       perfektCollitionalRectangle = new Rectangle(XPosition, YPosition, Width, Height);
       greatCollitionalEarly = new Rectangle(XPosition + 40, YPosition, Width, Height);
@@ -103,7 +107,7 @@ namespace Projekt
         Timer++;
       }
 
-      if (Timer < 50)
+      if (Timer < 80)
       {
         TextYPos -= textSpeed;
       }
@@ -113,7 +117,7 @@ namespace Projekt
         TextActive = false;
         Timer += 0;
         Timer = 0;
-        TextYPos = 0;
+        TextYPos = 10000;
         textSpeed = 0;
       }
 
@@ -137,6 +141,7 @@ namespace Projekt
     public void IsOverlapping(Enemy target, Player player)
     {
       // ?gör koden bättre...
+      areOverlappingPerfectAUTO = Raylib.CheckCollisionRecs(perfektCollitionalRectangleAUTO, target.CollitionalRectangle);
       areOverlappingPerfect = Raylib.CheckCollisionRecs(perfektCollitionalRectangle, target.CollitionalRectangle);
       areOverlappingLate = Raylib.CheckCollisionRecs(greatCollitionalLate, target.CollitionalRectangle);
       areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, target.CollitionalRectangle);
@@ -144,19 +149,24 @@ namespace Projekt
       // !Om den redan är död, bryr sig inte koden längre
       if (target.Dead == false)
       {
-        if (areOverlappingPerfect || areOverlappingEarly || areOverlappingLate)
+
+        if (areOverlappingPerfectAUTO)
         {
+          // !mer poäng
+          player.Score += (target.GiveScore * (player.Combo / 10)) / 100;
+
+          // !Automatiskt speland
           player.Fever += target.GiveFever;
           player.Combo++;
 
-
-          // !Automatiskt speland
           TextActive = true;
           PlayerPosition(target, player);
 
           TextXPos = target.XPosition;
           TextYPos = target.YPosition - 50;
-          if (target is MashEnemy || target is Boss)
+
+          //! Mashenemy, GeiminiEnemy och bossen dör inte
+          if (target is MashEnemy || target is Boss || target is GeiminiEnemy)
           {
             return;
           }
@@ -164,11 +174,11 @@ namespace Projekt
           target.DeadMethod();
 
           // ?Gör så att target inte finns kvar
-
         }
 
-        if (areOverlappingPerfect)
+        else if (areOverlappingPerfectAUTO)
         {
+          // !mer poäng
           player.Score += target.GiveScore * (player.Combo / 10);
         }
 
@@ -183,13 +193,13 @@ namespace Projekt
     void PlayerPosition(Enemy target, Player player)
     {
       // !Spelaren rör bara om enemy lever
-      // !Om Enemy target är en mash kommer mash aktiveras
 
+      // !Om Enemy target är en mash kommer mash aktiveras
       if (target is MashEnemy)
       {
-        // ?Ändra på 100 så att det beror på hur mycket som står i Gameplay.cs
-        target.TimerMash(130);
         player.MiddleAir();
+        // ?Ändra på 130 så att det beror på hur mycket som står i Gameplay.cs
+        target.TimerMash(130);
       }
 
       // !Om Enemy target är en geiminiEnemy så hamnar spelaren i "mitten"
@@ -197,17 +207,25 @@ namespace Projekt
       {
         player.MiddleAir();
         player.Combo++;
+        target.IsHurt = true;
       }
 
       // !Om Enemy target är en Boss så kommer den skadas
       if (target is Boss)
       {
         target.IsHurt = true;
+        player.Ground();
       }
 
       // !Om enemy är uppe i luften och får en kollision
       else if (this.YPosition == 250)
       {
+        // ?FIXA DETTA
+        if (target is MashEnemy || target is GeiminiEnemy)
+        {
+          player.MiddleAir();
+          return;
+        }
         player.Air();
       }
 
@@ -216,18 +234,20 @@ namespace Projekt
       {
         player.Ground();
       }
+
     }
 
     // !Ritar ut sakerna
     public override void DrawObject()
     {
       Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
+      Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
       // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
-      if (TextYPos != 0)
+      if (TextYPos != 0 || TextYPos != 10000)
       {
-        DrawTextPointsGreat();
+        DrawTextPointsPerfect();
 
       }
     }
@@ -237,13 +257,13 @@ namespace Projekt
     // ?Gör så att dessa är bara en metod
     void DrawTextPointsGreat()
     {
-      Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, Color.BLACK);
+      // Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, Color.BLACK);
     }
 
     void DrawTextPointsPerfect()
     {
       // TextSpeed += random.Next(10, 20);
-      // Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, Color.BLACK);
+      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, Color.BLACK);
     }
 
   }

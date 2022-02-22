@@ -79,14 +79,13 @@ namespace Projekt
 
       else if (Timer == timerOut)
       {
-        DeadMethod();
+        IsHurt = true;
       }
     }
 
     void MashMethod()
     {
       Mash = true;
-      Console.WriteLine("ss");
 
       // ?Combo ökar när man tryckers
       mashCombo++;

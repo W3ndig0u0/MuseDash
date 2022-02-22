@@ -9,7 +9,9 @@ namespace Projekt
     int WidthBoos;
     int HeightBoss;
     int timer;
+    int attacked;
     bool isAttack = false;
+    int xBase = 1300;
 
     public Boss(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
@@ -28,26 +30,39 @@ namespace Projekt
     // !Bossen går mot spelaren och sen ska spelaren masha
     public void MashAttack()
     {
+      // !Sista attacken när den är nästan "död"
+      if (attacked == 2)
+      {
 
+      }
     }
 
     // !Bossen springer mot spelaren och sen ska spelaren slå bort bossen med ett slag
     public void SprintAttack()
     {
       isAttack = true;
-      XPosition -= 10;
-      Console.WriteLine("s");
 
       if (IsHurt)
       {
         // !Om bossen blir skadad, kommer den antigen gå tillbaka till kastning attacken, eller springa iväg
-        if (XPosition != 1000)
+        if (XPosition <= xBase)
         {
-          XPosition += 10;
-          timer = 0;
+          XPosition += 5;
           isAttack = false;
         }
+        if (XPosition == xBase)
+        {
+          // !Resta timern när bossen är tillbaka
+          timer = 0;
+          IsHurt = false;
+          attacked++;
+        }
       }
+      else
+      {
+        XPosition -= 20;
+      }
+
     }
 
     // !Bossen kastar små fiender på spelaren, deafualt attacken
@@ -59,7 +74,7 @@ namespace Projekt
     public override void Update()
     {
       // !Går fram till bossens "ställe" om den inte är skadad och inte där än
-      if (XPosition != 1000 && !isAttack)
+      if (XPosition >= xBase && !isAttack)
       {
         XPosition -= 5;
       }
@@ -67,7 +82,6 @@ namespace Projekt
       timer++;
       if (timer >= 500)
       {
-        Console.WriteLine("FIRE");
         SprintAttack();
       }
     }

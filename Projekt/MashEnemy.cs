@@ -31,6 +31,25 @@ namespace Projekt
       Raylib.DrawEllipse(XPosition + 40, 600, WidthMashEnemy - 50, HeightMashEnemy - 100, Color.GRAY);
     }
 
+    public override void Update()
+    {
+      MashDead();
+    }
+
+    void MashDead()
+    {
+
+      if (IsHurt)
+      {
+        XPosition += 5;
+        YPosition -= 10;
+      }
+      else
+      {
+        XPosition -= 5;
+      }
+    }
+
 
 
     // ?Om den nuddar collision, har man en timer att slå sönder
