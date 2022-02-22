@@ -26,12 +26,14 @@ namespace Projekt
       CollitionalRectangle = new Rectangle(XPosition, YPositionMashEnemy + 20, WidthMashEnemy - 55, HeightMashEnemy - 55);
 
       Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !600 är vart Marken beffiner  sig
       // !Detta är skuggan
       Raylib.DrawEllipse(XPosition + 40, 600, WidthMashEnemy - 50, HeightMashEnemy - 100, Color.GRAY);
     }
+
+
 
     // ?Om den nuddar collision, har man en timer att slå sönder
 

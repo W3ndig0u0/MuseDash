@@ -108,7 +108,9 @@ namespace Projekt
       {
         player.Fever += target.GiveFever;
         player.Combo++;
-        // target.Bounce();
+
+        target.DeadMethod();
+
         // ?Gör så att target inte finns kvar
 
         // !Automatiskt spelande
@@ -141,22 +143,33 @@ namespace Projekt
 
     void Auto(Enemy target, Player player)
     {
-      // !Om Enemy target är en geiminiEnemy så hamnar spelaren i "mitten"
-      if (target is GeiminiEnemy)
+      // !Spelaren rör bara om enemy lever
+      if (!target.Dead)
       {
-        player.MiddleAir();
-      }
+        // !Om Enemy target är en mash kommer mash aktiveras
+        if (target is MashEnemy)
+        {
+          // ?Ändra på 100 så att det beror på hur mycket som står i Gameplay.cs
+          target.TimerMash(130);
+        }
 
-      // !Om enemy är uppe i luften och får en kollision
-      else if (this.YPosition == 250)
-      {
-        player.Air();
-      }
+        // !Om Enemy target är en geiminiEnemy så hamnar spelaren i "mitten"
+        if (target is GeiminiEnemy)
+        {
+          player.MiddleAir();
+        }
 
-      // !Om enemy är nere och får en kollision
-      else if (this.YPosition == 450)
-      {
-        player.Ground();
+        // !Om enemy är uppe i luften och får en kollision
+        else if (this.YPosition == 250)
+        {
+          player.Air();
+        }
+
+        // !Om enemy är nere och får en kollision
+        else if (this.YPosition == 450)
+        {
+          player.Ground();
+        }
       }
     }
 

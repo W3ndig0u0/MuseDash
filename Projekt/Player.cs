@@ -186,7 +186,7 @@ namespace Projekt
       YPosition = 400;
     }
 
-    // ?GeiminiEnemy har två rectanglar med collision i båda hållen, om spelaren trycker på båda sammtidigt,hamnar spelaren i "mitten"
+    // !GeiminiEnemy har två rectanglar med collision i båda hållen, om spelaren trycker på båda sammtidigt,hamnar spelaren i "mitten"
     public void MiddleAir()
     {
       YPosition = 300;
