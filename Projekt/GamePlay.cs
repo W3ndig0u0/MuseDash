@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using System.Collections.Generic;
 using Raylib_cs;
 
@@ -27,6 +28,7 @@ namespace Projekt
 
     Boss boss = new Boss(2200, 350);
 
+
     bool isDone = false;
 
     public override void Update()
@@ -49,6 +51,9 @@ namespace Projekt
         // enemyList.Add(boss);
         isDone = true;
       }
+
+      // Raylib.DrawRectangle(0, 0, 500, 500, Color.GRAY);
+
 
       // !Går genom alla Fiender
       for (int i = 0; i < enemyList.Count; i++)

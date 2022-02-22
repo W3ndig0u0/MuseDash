@@ -42,6 +42,12 @@ namespace Projekt
 
     // !För mash
     int mashCombo;
+    int fakeGravity;
+    public int FakeGravity
+    {
+      get { return fakeGravity; }
+      set { fakeGravity = value; }
+    }
 
     public Enemy(int xPosition, int yPosition)
     {
@@ -93,20 +99,29 @@ namespace Projekt
       if (!Dead)
       {
         XPosition -= 5;
+        // !Kurvan när fienden dör
       }
 
       // !När Enemy är död
       if (Dead)
       {
+
+        // FakeGravity += 6;
         // !Gör så att det studsar
         TimerDead++;
+        XPosition -= 5;
         Dead = true;
 
-        if (TimerDead != 500)
+        if (TimerDead != 500 && XPosition > -100)
         {
-          XPosition -= 5;
+          // FakeGravity = ;
+          YPosition = XPosition;
+
           // !Kurvan när fienden dör
-          YPosition = ((XPosition - 5) * (1 / 3)) ^ 2;
+          if (XPosition <= 200)
+          {
+            XPosition += 10;
+          }
         }
       }
 
