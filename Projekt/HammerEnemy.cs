@@ -53,7 +53,7 @@ namespace Projekt
       {
         // ? fixa så att den inte måste ha 7 i speed
         XPosition -= 5 + 2;
-        xPosLine -= 3;
+        xPosLine -= 4;
 
         // !Kurvan när fienden dör
         // ?Jag fixar detta senare
@@ -77,7 +77,6 @@ namespace Projekt
         {
           YPosition -= 1;
         }
-        System.Console.WriteLine(YPosition);
 
       }
     }
