@@ -63,11 +63,11 @@ namespace Projekt
         }
         else if (XPosition <= 1000 && XPosition > 801)
         {
-          YPosition += 5;
+          YPosition += 6;
         }
         else if (XPosition <= 800 && XPosition > 601)
         {
-          YPosition += 3;
+          YPosition += 4;
         }
         else if (XPosition <= 600 && XPosition > 401)
         {
@@ -77,6 +77,7 @@ namespace Projekt
         {
           YPosition -= 1;
         }
+        System.Console.WriteLine(YPosition);
 
       }
     }

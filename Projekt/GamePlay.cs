@@ -59,10 +59,10 @@ namespace Projekt
         // gamePlay.enemyList.Add(boss);
 
         gamePlay.enemyList.Add(HammerEnemy1);
-        gamePlay.enemyList.Add(HammerEnemy2);
-        gamePlay.enemyList.Add(HammerEnemy3);
-        gamePlay.enemyList.Add(HammerEnemy4);
-        gamePlay.enemyList.Add(HammerEnemy5);
+        // gamePlay.enemyList.Add(HammerEnemy2);
+        // gamePlay.enemyList.Add(HammerEnemy3);
+        // gamePlay.enemyList.Add(HammerEnemy4);
+        // gamePlay.enemyList.Add(HammerEnemy5);
         gamePlay.enemyList.Add(HammerEnemy6);
 
 
