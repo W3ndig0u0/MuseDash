@@ -26,6 +26,10 @@ namespace Projekt
     GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2700, 430, 250);
     GearObstacle gearObstacle = new GearObstacle(500, 480);
 
+    HammerEnemy HammerEnemy1 = new HammerEnemy(800, 430, 300, 430);
+    HammerEnemy HammerEnemy2 = new HammerEnemy(820, 480, 300, 250);
+    HammerEnemy HammerEnemy3 = new HammerEnemy(840, 250, 300, 430);
+
     Boss boss = new Boss(3100, 350);
 
 
@@ -48,7 +52,11 @@ namespace Projekt
         // gamePlay.enemyList.Add(largeEnemy2);
         // gamePlay.enemyList.Add(mashEnemy);
         // gamePlay.enemyList.Add(geiminiEnemy);
-        gamePlay.enemyList.Add(boss);
+        // gamePlay.enemyList.Add(boss);
+
+        gamePlay.enemyList.Add(HammerEnemy1);
+        gamePlay.enemyList.Add(HammerEnemy2);
+        gamePlay.enemyList.Add(HammerEnemy3);
 
 
         // enemyList.Add(gearObstacle);

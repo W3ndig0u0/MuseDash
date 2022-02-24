@@ -125,41 +125,44 @@ namespace Projekt
       if (Dead)
       {
         TimerDead++;
-        if (timer <= 50)
-        {
-          XPosition -= 5;
-          FakeGravity -= 10;
-        }
-        else if (timer == 70)
-        {
-          XPosition -= 4;
-          FakeGravity -= 5;
-        }
-        else if (timer == 90)
-        {
-          XPosition -= 3;
-          FakeGravity -= 1;
-        }
-        else if (timer == 110)
-        {
-          XPosition -= 3;
-          FakeGravity += 1;
-        }
-        else if (timer >= 130)
-        {
-          XPosition -= 2;
-          FakeGravity += 5;
-        }
+        // Console.WriteLine(TimerDead);
 
-        FakeGravity += fakeGravity / 2;
-        // !Gör så att det studsar
-        // TimerDead++;
-        Dead = true;
-
-        // if (TimerDead != 500 && XPosition > -100)
-        // {
+        XPosition -= 5;
 
         // !Kurvan när fienden dör
+        if (TimerDead >= 0 && TimerDead < 15)
+        {
+          YPosition -= 10;
+        }
+        else if (TimerDead > 15 && TimerDead < 25)
+        {
+          YPosition -= 5;
+        }
+        else if (TimerDead > 25 && TimerDead < 35)
+        {
+          YPosition -= 3;
+        }
+        else if (TimerDead > 35 && TimerDead < 40)
+        {
+          YPosition -= 1;
+        }
+        else if (TimerDead > 40 && TimerDead < 50)
+        {
+          YPosition += 1;
+        }
+        else if (TimerDead > 50 && TimerDead < 60)
+        {
+          YPosition += 5;
+        }
+        else if (TimerDead > 60)
+        {
+          YPosition += 10;
+        }
+
+        // TimerDead++;
+        Dead = true;
+        // if (TimerDead != 500 && XPosition > -100)
+        // {
 
 
 

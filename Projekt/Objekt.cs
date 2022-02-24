@@ -7,12 +7,12 @@ namespace Projekt
   {
 
     // !Lista över alla Collisions för att kolla collisionen lättare
-    List<Rectangle> objektList = new List<Rectangle>();
-    public List<Rectangle> ObjektList
-    {
-      get { return objektList; }
-      set { objektList = value; }
-    }
+    // List<Rectangle> objektList = new List<Rectangle>();
+    // public List<Rectangle> ObjektList
+    // {
+    //   get { return objektList; }
+    //   set { objektList = value; }
+    // }
 
     int giveScore;
     public int GiveScore

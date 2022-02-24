@@ -21,7 +21,7 @@ namespace Projekt
     {
 
       // !Ritar inte sakerna om de inte är med i skärmen
-      if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1600 && YPosition <= 1000)
+      if (XPosition >= -100 && YPosition >= -200 && XPosition <= 1800 && YPosition <= 1000)
       {
         Sprite = new Rectangle(XPosition, YPosition, WidthLargeEnemy, HeightLargeEnemy);
         CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthLargeEnemy - 55, HeightLargeEnemy - 55);

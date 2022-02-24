@@ -20,12 +20,11 @@ namespace Projekt
     public override void DrawObject()
     {
       // !Ritar inte sakerna om de inte är med i skärmen
-      if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1600 && YPosition <= 900)
+      if (XPosition >= -100 && YPosition >= -200 && XPosition <= 1800 && YPosition <= 1000)
       {
 
         Sprite = new Rectangle(XPosition, YPosition, WidthSmallEnemy, HeightSmallEnemy);
         CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthSmallEnemy - 35, HeightSmallEnemy - 35);
-
         Raylib.DrawRectangleRec(Sprite, Color.BLACK);
         // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
