@@ -124,8 +124,34 @@ namespace Projekt
       // !När Enemy är död
       if (Dead)
       {
+        TimerDead++;
+        if (timer <= 50)
+        {
+          XPosition -= 5;
+          FakeGravity -= 10;
+        }
+        else if (timer == 70)
+        {
+          XPosition -= 4;
+          FakeGravity -= 5;
+        }
+        else if (timer == 90)
+        {
+          XPosition -= 3;
+          FakeGravity -= 1;
+        }
+        else if (timer == 110)
+        {
+          XPosition -= 3;
+          FakeGravity += 1;
+        }
+        else if (timer >= 130)
+        {
+          XPosition -= 2;
+          FakeGravity += 5;
+        }
 
-        // FakeGravity += fakeGravity / 2;
+        FakeGravity += fakeGravity / 2;
         // !Gör så att det studsar
         // TimerDead++;
         Dead = true;
@@ -135,8 +161,6 @@ namespace Projekt
 
         // !Kurvan när fienden dör
 
-        XPosition -= 5;
-        YPosition -= 10;
 
 
         // !Så att jag har mer tid att debugga 

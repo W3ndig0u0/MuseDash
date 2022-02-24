@@ -19,15 +19,20 @@ namespace Projekt
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPosition, WidthSmallEnemy, HeightSmallEnemy);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthSmallEnemy - 35, HeightSmallEnemy - 35);
+      // !Ritar inte sakerna om de inte är med i skärmen
+      if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1600 && YPosition <= 900)
+      {
 
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+        Sprite = new Rectangle(XPosition, YPosition, WidthSmallEnemy, HeightSmallEnemy);
+        CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthSmallEnemy - 35, HeightSmallEnemy - 35);
 
-      // !600 är vart Marken beffiner  sig
-      // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 40, 600, WidthSmallEnemy - 20, HeightSmallEnemy - 50, Color.GRAY);
+        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+        // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+
+        // !600 är vart Marken beffiner  sig
+        // !Detta är skuggan
+        Raylib.DrawEllipse(XPosition + 40, 600, WidthSmallEnemy - 20, HeightSmallEnemy - 50, Color.GRAY);
+      }
     }
 
   }

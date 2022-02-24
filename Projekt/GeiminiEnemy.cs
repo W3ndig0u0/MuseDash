@@ -29,23 +29,28 @@ namespace Projekt
 
     public override void DrawObject()
     {
-      Sprite = new Rectangle(XPosition, YPositionGeiminiEnemy1, WidthGeiminiEnemy, HeightGeiminiEnemy);
-      sprite2 = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy, HeightGeiminiEnemy);
-      // !200 är avståndet mellan övre och nedre delen
-      spriteMiddle = new Rectangle(XPosition + 20, YPositionGeiminiEnemy2 + 70, 30, 180);
+
+      // !Ritar inte sakerna om de inte är med i skärmen
+      if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1700 && YPosition <= 1000)
+      {
+        Sprite = new Rectangle(XPosition, YPositionGeiminiEnemy1, WidthGeiminiEnemy, HeightGeiminiEnemy);
+        sprite2 = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy, HeightGeiminiEnemy);
+        // !200 är avståndet mellan övre och nedre delen
+        spriteMiddle = new Rectangle(XPosition + 20, YPositionGeiminiEnemy2 + 70, 30, 180);
 
 
-      CollitionalRectangle = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
+        CollitionalRectangle = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
 
-      Raylib.DrawRectangleRec(spriteMiddle, Color.BLACK);
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      Raylib.DrawRectangleRec(sprite2, Color.BLACK);
+        Raylib.DrawRectangleRec(spriteMiddle, Color.BLACK);
+        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+        Raylib.DrawRectangleRec(sprite2, Color.BLACK);
 
-      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+        // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
-      // !600 är vart Marken beffiner  sig
-      // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 40, 600, WidthGeiminiEnemy - 50, HeightGeiminiEnemy - 100, Color.GRAY);
+        // !600 är vart Marken beffiner  sig
+        // !Detta är skuggan
+        Raylib.DrawEllipse(XPosition + 40, 600, WidthGeiminiEnemy - 50, HeightGeiminiEnemy - 100, Color.GRAY);
+      }
     }
 
 

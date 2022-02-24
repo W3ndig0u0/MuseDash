@@ -7,7 +7,7 @@ namespace Projekt
 {
   public class GamePlay : Scene
   {
-    List<Enemy> enemyList = new List<Enemy>();
+    public static GameController gamePlay = new GameController();
 
     Player player = new Player(170, 400, 90, 140);
     HitPosition hitPositionUp = new HitPosition(300, 250);
@@ -39,16 +39,16 @@ namespace Projekt
       // !Koden körs bara en gång
       if (isDone == false)
       {
-        enemyList.Add(enemy1);
-        enemyList.Add(enemy2);
-        enemyList.Add(enemy3);
-        enemyList.Add(enemy4);
-        enemyList.Add(enemy5);
-        enemyList.Add(largeEnemy);
-        enemyList.Add(largeEnemy2);
-        enemyList.Add(mashEnemy);
-        enemyList.Add(geiminiEnemy);
-        enemyList.Add(boss);
+        // gamePlay.enemyList.Add(enemy1);
+        // gamePlay.enemyList.Add(enemy2);
+        // gamePlay.enemyList.Add(enemy3);
+        // gamePlay.enemyList.Add(enemy4);
+        // gamePlay.enemyList.Add(enemy5);
+        // gamePlay.enemyList.Add(largeEnemy);
+        // gamePlay.enemyList.Add(largeEnemy2);
+        // gamePlay.enemyList.Add(mashEnemy);
+        // gamePlay.enemyList.Add(geiminiEnemy);
+        gamePlay.enemyList.Add(boss);
 
 
         // enemyList.Add(gearObstacle);
@@ -56,17 +56,18 @@ namespace Projekt
       }
 
       // !Går genom alla Fiender
-      for (int i = 0; i < enemyList.Count; i++)
+      for (int i = 0; i < gamePlay.enemyList.Count; i++)
       {
-        enemyList[i].Update();
-        hitPositionDown.IsOverlapping(enemyList[i], player);
-        hitPositionUp.IsOverlapping(enemyList[i], player);
+        gamePlay.enemyList[i].Update();
+        hitPositionDown.IsOverlapping(gamePlay.enemyList[i], player);
+        hitPositionUp.IsOverlapping(gamePlay.enemyList[i], player);
       }
 
 
       hitPositionUp.Update();
       hitPositionDown.Update();
       player.Update();
+      // boss.ThrowAttack(430);
 
     }
 
@@ -91,9 +92,11 @@ namespace Projekt
       }
 
       // !Går genom alla Fiender
-      for (int i = 0; i < enemyList.Count; i++)
+      for (int i = 0; i < gamePlay.enemyList.Count; i++)
       {
-        enemyList[i].DrawObject();
+        gamePlay.enemyList[i].DrawObject();
+        // Console.WriteLine(gamePlay.enemyList[i].GetType());
+
       }
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn

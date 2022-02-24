@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Raylib_cs;
 
 namespace Projekt
@@ -10,8 +11,11 @@ namespace Projekt
     int HeightBoss;
     int timer;
     int attacked;
-    bool isAttack = false;
+    bool isSprintAttack = false;
+    bool isThrowingAttack = false;
     int xBase = 1300;
+    List<SmallEnemy> enemies = new List<SmallEnemy>();
+
 
     public Boss(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
@@ -40,7 +44,7 @@ namespace Projekt
     // !Bossen springer mot spelaren och sen ska spelaren slå bort bossen med ett slag
     public void SprintAttack()
     {
-      isAttack = true;
+      isSprintAttack = true;
 
       if (IsHurt)
       {
@@ -48,7 +52,7 @@ namespace Projekt
         if (XPosition <= xBase)
         {
           XPosition += 5;
-          isAttack = false;
+          isSprintAttack = false;
         }
         if (XPosition == xBase)
         {
@@ -66,15 +70,24 @@ namespace Projekt
     }
 
     // !Bossen kastar små fiender på spelaren, deafualt attacken
-    public void ThrowAttack()
+    public void ThrowAttack(int yPos)
     {
+      // if (XPosition == xBase)
+      // {
+      isThrowingAttack = false;
+      SmallEnemy enemy = new SmallEnemy(XPosition, yPos);
 
+      GamePlay.gamePlay.enemyList.Add(enemy);
+      // Console.WriteLine(enemy.XPosition);
+      // !Lägger in Fienden till Listan som finns i GamePLay
+      // isThrowingAttack = true;
+      // }
     }
 
     public override void Update()
     {
       // !Går fram till bossens "ställe" om den inte är skadad och inte där än
-      if (XPosition >= xBase && !isAttack)
+      if (XPosition >= xBase && !isSprintAttack)
       {
         XPosition -= 5;
       }
@@ -83,26 +96,37 @@ namespace Projekt
         timer++;
       }
 
-      Console.WriteLine(timer);
+      // Console.WriteLine(timer);
+
+      // if (timer == 200)
+      // {
+      ThrowAttack(250);
+      ThrowAttack(430);
+      // }
 
       if (timer >= 500)
       {
         SprintAttack();
       }
+
     }
 
     public override void DrawObject()
     {
 
-      Sprite = new Rectangle(XPosition, YPosition, WidthBoos, HeightBoss);
-      CollitionalRectangle = new Rectangle(XPosition, YPosition + 60, WidthBoos - 100, HeightBoss - 130);
+      // !Ritar inte sakerna om de inte är med i skärmen
+      if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1600 && YPosition <= 1000)
+      {
+        Sprite = new Rectangle(XPosition, YPosition, WidthBoos, HeightBoss);
+        CollitionalRectangle = new Rectangle(XPosition, YPosition + 60, WidthBoos - 100, HeightBoss - 130);
 
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-      // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+        // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
-      // !600 är vart Marken beffiner  sig
-      // !Detta är skuggan
-      Raylib.DrawEllipse(XPosition + 80, 600, WidthBoos - 80, HeightBoss - 180, Color.GRAY);
+        // !600 är vart Marken beffiner  sig
+        // !Detta är skuggan
+        Raylib.DrawEllipse(XPosition + 80, 600, WidthBoos - 80, HeightBoss - 180, Color.GRAY);
+      }
     }
 
   }
