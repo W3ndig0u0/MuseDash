@@ -7,19 +7,20 @@ namespace Projekt
   {
     int WidthHammerEnemy;
     int HeightHammerEnemy;
-    int GoalYPosition;
-    int GoalXPosition;
-    int timer;
 
-    public HammerEnemy(int xPosition, int yPosition, int goalXPosition, int goalYPosition) : base(xPosition, yPosition)
+    int xPosLine;
+    int yPosLine;
+
+    public HammerEnemy(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
-      GoalYPosition = goalYPosition;
-      GoalXPosition = goalXPosition;
-
       WidthHammerEnemy = 90;
       HeightHammerEnemy = 90;
       GiveFever = 2;
       GiveScore = 200;
+
+
+      xPosLine = xPosition;
+      yPosLine = yPosition;
     }
 
     public override void DrawObject()
@@ -33,6 +34,12 @@ namespace Projekt
         Raylib.DrawRectangleRec(Sprite, Color.BLACK);
         // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
+        // !Thicknes vill ej funka, få göra det själv...
+        for (int i = 0; i < 5; i++)
+        {
+          Raylib.DrawLine(xPosLine - i, yPosLine - i, XPosition - i, YPosition - i + 40, Color.BLACK);
+        }
+
         // !600 är vart Marken beffiner  sig
         // !Detta är skuggan
         Raylib.DrawEllipse(XPosition + 40, 600, WidthHammerEnemy - 20, HeightHammerEnemy - 50, Color.GRAY);
@@ -42,38 +49,33 @@ namespace Projekt
     public override void Update()
     {
       // Console.WriteLine(TimerDead);
-      if (YPosition != GoalYPosition && XPosition != GoalXPosition && IsHurt == false)
+      if (IsHurt == false)
       {
-        timer++;
+        // ? fixa så att den inte måste ha 7 i speed
+        XPosition -= 5 + 2;
+        xPosLine -= 3;
 
         // !Kurvan när fienden dör
-        if (timer >= 0 && timer < 15)
+        // ?Jag fixar detta senare
+        if (XPosition <= 1200 && XPosition > 1001)
         {
-          YPosition += 10;
+          YPosition += 8;
         }
-        else if (timer > 15 && timer < 25)
+        else if (XPosition <= 1000 && XPosition > 801)
         {
           YPosition += 5;
         }
-        else if (timer > 25 && timer < 35)
+        else if (XPosition <= 800 && XPosition > 601)
         {
           YPosition += 3;
         }
-        else if (timer > 35 && timer < 40)
+        else if (XPosition <= 600 && XPosition > 401)
         {
           YPosition += 1;
         }
-        else if (timer > 40 && timer < 50)
+        else if (XPosition <= 400)
         {
           YPosition -= 1;
-        }
-        else if (timer > 50 && timer < 60)
-        {
-          YPosition -= 5;
-        }
-        else if (timer > 60)
-        {
-          YPosition -= 10;
         }
 
       }
