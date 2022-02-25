@@ -23,7 +23,7 @@ namespace Projekt
       {
         // !Ändrar färgerna
         Black = Color.WHITE;
-        White = Color.WHITE;
+        White = Color.BLACK;
       }
       else if (player.IsFeverMode)
       {

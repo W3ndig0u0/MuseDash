@@ -73,6 +73,7 @@ namespace Projekt
     Vector2 pos;
     Vector2 pos2;
     float timer;
+    float feverTimer;
 
     Color color;
     public Color Color
@@ -141,15 +142,16 @@ namespace Projekt
       // !Aktiverar Fever
       if (Fever >= MaxFever)
       {
-        timer++;
+        feverTimer++;
         IsFeverMode = true;
-        Console.WriteLine(timer);
+        Fever--;
+        Console.WriteLine(feverTimer);
 
-        if (timer == 200)
+        if (feverTimer == 300)
         {
           IsFeverMode = false;
           Fever = 0;
-          timer = 0;
+          feverTimer = 0;
         }
       }
 
@@ -163,12 +165,12 @@ namespace Projekt
       }
 
       // !Timer för när en ny cirkel ska skapas
-      timer++;
-      if (timer == 100f)
-      {
-        RandomCircleDraw();
-        timer = 0f;
-      }
+      // timer++;
+      // if (timer == 100f)
+      // {
+      //   RandomCircleDraw();
+      //   timer = 0f;
+      // }
     }
 
     void RandomCircleDraw()
@@ -208,9 +210,8 @@ namespace Projekt
       Raylib.DrawText(Score.ToString(), 10, 140, 50, GamePlay.gamePlay.Black);
 
       Raylib.DrawRectangleRec(hpMaxRect, GamePlay.gamePlay.Black);
-      Raylib.DrawRectangleRec(hpRect, Color.RED);
-
       Raylib.DrawRectangleRec(feverMaxRect, GamePlay.gamePlay.Black);
+      Raylib.DrawRectangleRec(hpRect, Color.RED);
       Raylib.DrawRectangleRec(feverRect, Color.BLUE);
       // Raylib.DrawRectangleRec(extraRect, Color.GREEN);
 
@@ -219,8 +220,8 @@ namespace Projekt
       // Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
 
 
-      Raylib.DrawText("Fever", 730, 780, 30, GamePlay.gamePlay.Black);
-      Raylib.DrawText(hp + "/" + maxHp, 780, 735, 30, GamePlay.gamePlay.Black);
+      Raylib.DrawText("Fever", 710, 720, 30, GamePlay.gamePlay.Black);
+      Raylib.DrawText(hp + "/" + maxHp, 720, 760, 30, GamePlay.gamePlay.Black);
 
     }
 
