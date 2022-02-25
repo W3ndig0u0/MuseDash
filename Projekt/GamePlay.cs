@@ -47,23 +47,23 @@ namespace Projekt
       // !Koden körs bara en gång
       if (isDone == false)
       {
-        // gamePlay.enemyList.Add(enemy1);
-        // gamePlay.enemyList.Add(enemy2);
-        // gamePlay.enemyList.Add(enemy3);
-        // gamePlay.enemyList.Add(enemy4);
-        // gamePlay.enemyList.Add(enemy5);
-        // gamePlay.enemyList.Add(largeEnemy);
-        // gamePlay.enemyList.Add(largeEnemy2);
-        // gamePlay.enemyList.Add(mashEnemy);
-        // gamePlay.enemyList.Add(geiminiEnemy);
-        // gamePlay.enemyList.Add(boss);
+        gamePlay.enemyList.Add(enemy1);
+        gamePlay.enemyList.Add(enemy2);
+        gamePlay.enemyList.Add(enemy3);
+        gamePlay.enemyList.Add(enemy4);
+        gamePlay.enemyList.Add(enemy5);
+        gamePlay.enemyList.Add(largeEnemy);
+        gamePlay.enemyList.Add(largeEnemy2);
+        gamePlay.enemyList.Add(mashEnemy);
+        gamePlay.enemyList.Add(geiminiEnemy);
+        gamePlay.enemyList.Add(boss);
 
-        gamePlay.enemyList.Add(HammerEnemy1);
+        // gamePlay.enemyList.Add(HammerEnemy1);
         // gamePlay.enemyList.Add(HammerEnemy2);
         // gamePlay.enemyList.Add(HammerEnemy3);
         // gamePlay.enemyList.Add(HammerEnemy4);
         // gamePlay.enemyList.Add(HammerEnemy5);
-        gamePlay.enemyList.Add(HammerEnemy6);
+        // gamePlay.enemyList.Add(HammerEnemy6);
 
 
         // enemyList.Add(gearObstacle);
@@ -78,6 +78,7 @@ namespace Projekt
         hitPositionUp.IsOverlapping(gamePlay.enemyList[i], player);
       }
 
+      gamePlay.FeverMode(player);
 
       hitPositionUp.Update();
       hitPositionDown.Update();
@@ -88,7 +89,7 @@ namespace Projekt
 
     public override void WhatToDraw()
     {
-      Raylib.ClearBackground(Color.WHITE);
+      Raylib.ClearBackground(gamePlay.White);
 
       // !Debugging Stats
       Raylib.DrawFPS(10, 10);
@@ -103,7 +104,7 @@ namespace Projekt
       // !Rektangel lines funkar ej, så får göra linjerna själv... :(
       for (int i = 0; i < 14; i++)
       {
-        Raylib.DrawRectangleLines(-10, 555 - i, 2000, 100, Raylib_cs.Color.BLACK);
+        Raylib.DrawRectangleLines(-10, 555 - i, 2000, 100, gamePlay.Black);
       }
 
       // !Går genom alla Fiender

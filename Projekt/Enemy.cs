@@ -92,7 +92,7 @@ namespace Projekt
       Timer++;
 
       this.XPosition += 5;
-      Raylib.DrawText(mashCombo.ToString(), XPosition, YPosition - 90, 50, Color.BLACK);
+      Raylib.DrawText(mashCombo.ToString(), XPosition, YPosition - 90, 50, GamePlay.gamePlay.Black);
     }
 
 

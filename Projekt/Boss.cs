@@ -12,7 +12,6 @@ namespace Projekt
     int timer;
     int attacked;
     bool isSprintAttack = false;
-    bool isThrowingAttack = false;
     int xBase = 1300;
     List<SmallEnemy> enemies = new List<SmallEnemy>();
 
@@ -74,13 +73,11 @@ namespace Projekt
     {
       // if (XPosition == xBase)
       // {
-      isThrowingAttack = false;
       SmallEnemy enemy = new SmallEnemy(XPosition, yPos);
 
       GamePlay.gamePlay.enemyList.Add(enemy);
       // Console.WriteLine(enemy.XPosition);
       // !Lägger in Fienden till Listan som finns i GamePLay
-      // isThrowingAttack = true;
       // }
     }
 
@@ -98,11 +95,11 @@ namespace Projekt
 
       // Console.WriteLine(timer);
 
-      // if (timer == 200)
-      // {
-      ThrowAttack(250);
-      ThrowAttack(430);
-      // }
+      if (timer == 200)
+      {
+        ThrowAttack(250);
+        ThrowAttack(430);
+      }
 
       if (timer >= 500)
       {
@@ -120,7 +117,7 @@ namespace Projekt
         Sprite = new Rectangle(XPosition, YPosition, WidthBoos, HeightBoss);
         CollitionalRectangle = new Rectangle(XPosition, YPosition + 60, WidthBoos - 100, HeightBoss - 130);
 
-        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+        Raylib.DrawRectangleRec(Sprite, GamePlay.gamePlay.Black);
         // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
         // !600 är vart Marken beffiner  sig

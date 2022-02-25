@@ -15,6 +15,20 @@ namespace Projekt
       set { hp = value; }
     }
 
+    int maxHp;
+    public int MaxHp
+    {
+      get { return maxHp; }
+      set { maxHp = value; }
+    }
+
+    int maxFever;
+    public int MaxFever
+    {
+      get { return maxFever; }
+      set { maxFever = value; }
+    }
+
     int fever;
     public int Fever
     {
@@ -42,7 +56,9 @@ namespace Projekt
     Texture2D hpExtraTexture;
 
     Rectangle hpRect;
+    Rectangle hpMaxRect;
     Rectangle feverRect;
+    Rectangle feverMaxRect;
     Rectangle extraRect;
 
     Random random = new Random();
@@ -67,6 +83,13 @@ namespace Projekt
 
     List<Vector2> vector2List = new List<Vector2>();
 
+    bool isFeverMode = false;
+    public bool IsFeverMode
+    {
+      get { return isFeverMode; }
+      set { isFeverMode = value; }
+    }
+
 
     public Player(int xPosition, int yPosition, int width, int height)
     {
@@ -75,10 +98,10 @@ namespace Projekt
       Width = width;
       Height = height;
 
-
-      hpRect = new Rectangle(540, 755, 470, 50);
-      feverRect = new Rectangle(970, 755, 100, 50);
-      extraRect = new Rectangle(447, 745, 100, 55);
+      Hp = 300;
+      maxHp = hp;
+      Fever = 0;
+      maxFever = 100;
 
       hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
       feverTexture = Raylib.LoadTexture("Texture/FeverMeter3.png");
@@ -93,8 +116,16 @@ namespace Projekt
       Sprite = new Rectangle(XPosition, YPosition, Width, Height);
       CollitionalRectangle = new Rectangle(XPosition + 35, YPosition, Width - 35, Height);
 
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+      Raylib.DrawRectangleRec(Sprite, GamePlay.gamePlay.Black);
       // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
+
+      hpRect = new Rectangle(555, 755, Hp, 40);
+      feverRect = new Rectangle(555, 705, Fever, 40);
+      feverMaxRect = new Rectangle(555, 705, maxFever, 40);
+      hpMaxRect = new Rectangle(555, 755, maxHp, 40);
+      // hpRectOutline = new Rectangle(XPosition, YPosition, Width, Height);
+      // feverRectOutline = new Rectangle(XPosition, YPosition, Width, Height);
+
 
       // !600 är vart Marken beffiner  sig
       Raylib.DrawEllipse(XPosition + 40, 600, Width - 35, Height - 120, Color.GRAY);
@@ -107,6 +138,21 @@ namespace Projekt
     // !GÖr så att man läser detta från settings text + kan ändra knapparna
     public override void Update()
     {
+      // !Aktiverar Fever
+      if (Fever >= MaxFever)
+      {
+        timer++;
+        IsFeverMode = true;
+        Console.WriteLine(timer);
+
+        if (timer == 200)
+        {
+          IsFeverMode = false;
+          Fever = 0;
+          timer = 0;
+        }
+      }
+
       if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO))
       {
         Air();
@@ -143,35 +189,38 @@ namespace Projekt
     void ScoreCircle()
     {
 
-      for (int i = 0; i < vector2List.Count; i++)
-      {
-        // !SKriver ut flera random cirklor med från listan
-        Raylib.DrawCircle((int)Math.Round(vector2List[i].X), (int)Math.Round(vector2List[i].Y), Radius, Color);
-        Raylib.DrawCircle((int)Math.Round(vector2List[i].X - 10), (int)Math.Round(vector2List[i].Y - 20), Radius / 2, Color);
-        Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
-      }
+      // for (int i = 0; i < vector2List.Count; i++)
+      // {
+      //   // !SKriver ut flera random cirklor med från listan
+      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X), (int)Math.Round(vector2List[i].Y), Radius, Color);
+      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X - 10), (int)Math.Round(vector2List[i].Y - 20), Radius / 2, Color);
+      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
+      // }
 
-      Raylib.DrawText(Combo.ToString(), 700, 60, 50, Color.WHITE);
-      Raylib.DrawText("COMBO", 690, 100, 30, Color.WHITE);
+      Raylib.DrawText(Combo.ToString(), 700, 60, 50, GamePlay.gamePlay.Black);
+      Raylib.DrawText("COMBO", 690, 100, 30, GamePlay.gamePlay.Black);
     }
 
     void HpFever()
     {
       // !Score, hp, etc
-      Raylib.DrawText("Score", 10, 80, 50, Color.BLACK);
-      Raylib.DrawText(Score.ToString(), 10, 140, 50, Color.BLACK);
+      Raylib.DrawText("Score", 10, 80, 50, GamePlay.gamePlay.Black);
+      Raylib.DrawText(Score.ToString(), 10, 140, 50, GamePlay.gamePlay.Black);
 
-      // Raylib.DrawRectangleRec(hpRect, Color.RED);
-      // Raylib.DrawRectangleRec(feverRect, Color.BLUE);
+      Raylib.DrawRectangleRec(hpMaxRect, GamePlay.gamePlay.Black);
+      Raylib.DrawRectangleRec(hpRect, Color.RED);
+
+      Raylib.DrawRectangleRec(feverMaxRect, GamePlay.gamePlay.Black);
+      Raylib.DrawRectangleRec(feverRect, Color.BLUE);
       // Raylib.DrawRectangleRec(extraRect, Color.GREEN);
 
-      Raylib.DrawTexture(hpTexture, 540, 755, Color.WHITE);
-      Raylib.DrawTexture(feverTexture, 595, 755, Color.WHITE);
-      Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
+      // Raylib.DrawTexture(hpTexture, 540, 755, Color.WHITE);
+      // Raylib.DrawTexture(feverTexture, 595, 755, Color.WHITE);
+      // Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
 
 
-      Raylib.DrawText("Fever", 980, 775, 20, Color.BLACK);
-      Raylib.DrawText("250/250", 730, 775, 20, Color.BLACK);
+      Raylib.DrawText("Fever", 730, 780, 30, GamePlay.gamePlay.Black);
+      Raylib.DrawText(hp + "/" + maxHp, 780, 735, 30, GamePlay.gamePlay.Black);
 
     }
 

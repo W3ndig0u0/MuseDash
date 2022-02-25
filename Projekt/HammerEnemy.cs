@@ -31,14 +31,14 @@ namespace Projekt
 
         Sprite = new Rectangle(XPosition, YPosition, WidthHammerEnemy, HeightHammerEnemy);
         CollitionalRectangle = new Rectangle(XPosition, YPosition + 20, WidthHammerEnemy - 35, HeightHammerEnemy - 35);
-        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+        Raylib.DrawRectangleRec(Sprite, GamePlay.gamePlay.Black);
 
         // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
         // !Thicknes vill ej funka, få göra det själv...
         for (int i = 0; i < 5; i++)
         {
-          Raylib.DrawLine(xPosLine + i, yPosLine + i, XPosition + i + 40, YPosition + i + 40, Color.BLACK);
+          Raylib.DrawLine(xPosLine + i, yPosLine + i, XPosition + i + 40, YPosition + i + 40, GamePlay.gamePlay.Black);
         }
 
         // !600 är vart Marken beffiner sig
@@ -51,60 +51,73 @@ namespace Projekt
     {
       if (!Dead)
       {
-        // ? fixa så att den inte måste ha 7 i speed
-        XPosition -= 5 + 2;
-        xPosLine -= 4;
-
-        // !Kurvan när fienden kommer
-        // ?Jag fixar detta senare
-        if (XPosition <= 1200 && XPosition > 1001)
-        {
-          YPosition += 8;
-        }
-        else if (XPosition <= 1000 && XPosition > 801)
-        {
-          YPosition += 6;
-        }
-        else if (XPosition <= 800 && XPosition > 601)
-        {
-          YPosition += 4;
-        }
-        else if (XPosition <= 600 && XPosition > 401)
-        {
-          YPosition += 1;
-        }
-        else if (XPosition <= 400)
-        {
-          YPosition -= 1;
-        }
+        EntryAnimation();
       }
 
       else if (Dead)
       {
-
-        // ? fixa så att den inte måste ha 7 i speed
-        XPosition += 5 + 2;
-        xPosLine += 4;
-        // !Kurvan när fienden träffas
-        // ?Jag fixar detta senare
-        if (XPosition <= 600)
-        {
-          YPosition -= 1;
-        }
-        else if (XPosition <= 700 && XPosition > 601)
-        {
-          YPosition -= 3;
-        }
-        else if (XPosition <= 1000 && XPosition > 701)
-        {
-          YPosition -= 6;
-        }
-        else if (XPosition >= 1001)
-        {
-          YPosition -= 8;
-        }
-
+        DeadAnimation();
       }
     }
+
+    void DeadAnimation()
+    {
+      // ? fixa så att den inte måste ha 7 i speed
+      XPosition += 5 + 2;
+      xPosLine += 4;
+      // !Kurvan när fienden träffas
+      // ?Jag fixar detta senare
+      if (XPosition <= 500)
+      {
+        YPosition += 1;
+      }
+      else if (XPosition < 501 && XPosition >= 550)
+      {
+        YPosition -= 1;
+      }
+      else if (XPosition < 551 && XPosition >= 650)
+      {
+        YPosition -= 3;
+      }
+      else if (XPosition < 651 && XPosition >= 700)
+      {
+        YPosition -= 6;
+      }
+      else if (XPosition >= 701)
+      {
+        YPosition -= 8;
+      }
+    }
+
+    void EntryAnimation()
+    {
+      // ? fixa så att den inte måste ha 7 i speed
+      XPosition -= 5 + 2;
+      xPosLine -= 4;
+
+      // !Kurvan när fienden kommer
+      // ?Jag fixar detta senare
+      if (XPosition <= 1200 && XPosition > 1001)
+      {
+        YPosition += 8;
+      }
+      else if (XPosition <= 1000 && XPosition > 801)
+      {
+        YPosition += 6;
+      }
+      else if (XPosition <= 800 && XPosition > 601)
+      {
+        YPosition += 4;
+      }
+      else if (XPosition <= 600 && XPosition > 401)
+      {
+        YPosition += 1;
+      }
+      else if (XPosition <= 400)
+      {
+        YPosition -= 1;
+      }
+    }
+
   }
 }

@@ -41,9 +41,9 @@ namespace Projekt
 
         CollitionalRectangle = new Rectangle(XPosition, YPositionGeiminiEnemy2, WidthGeiminiEnemy - 35, HeightGeiminiEnemy - 35);
 
-        Raylib.DrawRectangleRec(spriteMiddle, Color.BLACK);
-        Raylib.DrawRectangleRec(Sprite, Color.BLACK);
-        Raylib.DrawRectangleRec(sprite2, Color.BLACK);
+        Raylib.DrawRectangleRec(spriteMiddle, GamePlay.gamePlay.Black);
+        Raylib.DrawRectangleRec(Sprite, GamePlay.gamePlay.Black);
+        Raylib.DrawRectangleRec(sprite2, GamePlay.gamePlay.Black);
 
         // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 

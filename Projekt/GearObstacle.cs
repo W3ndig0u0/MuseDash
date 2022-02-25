@@ -24,7 +24,7 @@ namespace Projekt
       Sprite = new Rectangle(XPosition, YPositionGearObstacle, WidthGearObstacle, HeightGearObstacle);
       CollitionalRectangle = new Rectangle(XPosition, YPositionGearObstacle - 20, WidthGearObstacle - 55, HeightGearObstacle);
 
-      Raylib.DrawRectangleRec(Sprite, Color.BLACK);
+      Raylib.DrawRectangleRec(Sprite, GamePlay.gamePlay.Black);
       // Raylib.DrawRectangleRec(CollitionalRectangle, Color.GREEN);
 
       // !Ingen skugga för den här fienden
