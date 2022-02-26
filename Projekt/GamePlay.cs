@@ -77,12 +77,12 @@ namespace Projekt
         hitPositionDown.IsOverlapping(gamePlay.enemyList[i], player);
         hitPositionUp.IsOverlapping(gamePlay.enemyList[i], player);
       }
+      player.Update();
 
       gamePlay.FeverMode(player);
 
       hitPositionUp.Update();
       hitPositionDown.Update();
-      player.Update();
       // boss.ThrowAttack(430);
 
     }

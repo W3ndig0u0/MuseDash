@@ -102,14 +102,16 @@ namespace Projekt
       Hp = 300;
       maxHp = hp;
       Fever = 0;
-      maxFever = 100;
+      maxFever = 300;
+
+      IsFeverMode = false;
 
       hpTexture = Raylib.LoadTexture("Texture/HpMeter.png");
       feverTexture = Raylib.LoadTexture("Texture/FeverMeter3.png");
       hpExtraTexture = Raylib.LoadTexture("Texture/ExtraUI.png");
 
 
-      RandomCircleDraw();
+      // RandomCircleDraw();
     }
 
     public override void DrawObject()
@@ -139,21 +141,7 @@ namespace Projekt
     // !GÖr så att man läser detta från settings text + kan ändra knapparna
     public override void Update()
     {
-      // !Aktiverar Fever
-      if (Fever >= MaxFever)
-      {
-        feverTimer++;
-        IsFeverMode = true;
-        Fever--;
-        Console.WriteLine(feverTimer);
-
-        if (feverTimer == 300)
-        {
-          IsFeverMode = false;
-          Fever = 0;
-          feverTimer = 0;
-        }
-      }
+      FeverMode();
 
       if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO))
       {
@@ -165,12 +153,38 @@ namespace Projekt
       }
 
       // !Timer för när en ny cirkel ska skapas
-      // timer++;
-      // if (timer == 100f)
-      // {
-      //   RandomCircleDraw();
-      //   timer = 0f;
-      // }
+      timer++;
+      if (timer == 100f)
+      {
+        RandomCircleDraw();
+        timer = 0f;
+      }
+    }
+
+    void FeverMode()
+    {
+      // !Aktiverar Fever
+      if (Fever >= MaxFever)
+      {
+        IsFeverMode = true;
+      }
+      // !När fever tar slut
+      else if (Fever == 0)
+      {
+        IsFeverMode = false;
+        feverTimer = 0;
+      }
+
+      // !När Fevermode är akriverad
+      if (IsFeverMode)
+      {
+        feverTimer++;
+        if (feverTimer == 5)
+        {
+          Fever -= 2;
+          feverTimer = 0;
+        }
+      }
     }
 
     void RandomCircleDraw()
@@ -220,8 +234,8 @@ namespace Projekt
       // Raylib.DrawTexture(hpExtraTexture, 447, 745, Color.WHITE);
 
 
-      Raylib.DrawText("Fever", 710, 720, 30, GamePlay.gamePlay.Black);
-      Raylib.DrawText(hp + "/" + maxHp, 720, 760, 30, GamePlay.gamePlay.Black);
+      Raylib.DrawText("Fever", 670, 710, 25, GamePlay.gamePlay.White);
+      Raylib.DrawText(hp + "/" + maxHp, 645, 760, 25, GamePlay.gamePlay.White);
 
     }
 

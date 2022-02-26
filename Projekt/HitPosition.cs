@@ -155,8 +155,11 @@ namespace Projekt
           // !mer poäng
           player.Score += (target.GiveScore * (player.Combo / 10)) / 100;
 
+          if (!player.IsFeverMode)
+          {
+            player.Fever += target.GiveFever;
+          }
           // !Automatiskt speland
-          player.Fever += target.GiveFever;
           player.Combo++;
 
           TextActive = true;
@@ -257,13 +260,13 @@ namespace Projekt
     // ?Gör så att dessa är bara en metod
     void DrawTextPointsGreat()
     {
-      // Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, Color.BLACK);
+      // Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
     }
 
     void DrawTextPointsPerfect()
     {
       // TextSpeed += random.Next(10, 20);
-      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, Color.BLACK);
+      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
     }
 
   }

@@ -25,20 +25,9 @@ namespace Projekt
       GiveScore = 400;
     }
 
-    // ?3 Attack modes
+    // ?2 Attack modes
     // ?Kasta små fiender
     // ?Spring mot spelaren snabbt men spelaren slår en gång
-    // ?Spring mot spelaren segt och sen Mash attack
-
-    // !Bossen går mot spelaren och sen ska spelaren masha
-    public void MashAttack()
-    {
-      // !Sista attacken när den är nästan "död"
-      if (attacked == 2)
-      {
-
-      }
-    }
 
     // !Bossen springer mot spelaren och sen ska spelaren slå bort bossen med ett slag
     public void SprintAttack()

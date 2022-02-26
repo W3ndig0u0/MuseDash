@@ -10,7 +10,6 @@ namespace Projekt
     public List<Enemy> enemyList;
     public Color Black = Color.BLACK;
     public Color White = Color.WHITE;
-    int timer;
 
     public GameController()
     {
@@ -19,18 +18,20 @@ namespace Projekt
 
     public void FeverMode(Player player)
     {
+
       if (player.IsFeverMode)
       {
         // !Ändrar färgerna
         Black = Color.WHITE;
         White = Color.BLACK;
       }
-      else if (player.IsFeverMode)
+      else if (!player.IsFeverMode)
       {
-        Black = Color.WHITE;
-        White = Color.BLACK;
+        Black = Color.BLACK;
+        White = Color.WHITE;
       }
     }
+
 
   }
 }

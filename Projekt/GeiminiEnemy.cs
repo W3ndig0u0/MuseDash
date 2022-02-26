@@ -49,7 +49,8 @@ namespace Projekt
 
         // !600 är vart Marken beffiner  sig
         // !Detta är skuggan
-        Raylib.DrawEllipse(XPosition + 40, 600, WidthGeiminiEnemy - 50, HeightGeiminiEnemy - 100, Color.GRAY);
+        Raylib.DrawEllipse(XPosition + 45, 600, WidthGeiminiEnemy - 50, HeightGeiminiEnemy - 100, Color.GRAY);
+        Raylib.DrawEllipse(XPosition + 35, 600, WidthGeiminiEnemy - 50, HeightGeiminiEnemy - 100, Color.GRAY);
       }
     }
 

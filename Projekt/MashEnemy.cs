@@ -32,7 +32,7 @@ namespace Projekt
 
         // !600 är vart Marken beffiner  sig
         // !Detta är skuggan
-        Raylib.DrawEllipse(XPosition + 40, 600, WidthMashEnemy - 50, HeightMashEnemy - 100, Color.GRAY);
+        Raylib.DrawEllipse(XPosition + 40, 600, WidthMashEnemy - 50, HeightMashEnemy - 120, Color.GRAY);
       }
     }
 
