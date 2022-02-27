@@ -42,7 +42,6 @@ namespace Projekt
     public override void Update()
     {
 
-
       // !Lägger till alla fiender
       // !Koden körs bara en gång
       if (isDone == false)
@@ -76,10 +75,23 @@ namespace Projekt
         gamePlay.enemyList[i].Update();
         hitPositionDown.IsOverlapping(gamePlay.enemyList[i], player);
         hitPositionUp.IsOverlapping(gamePlay.enemyList[i], player);
+
+        // !Kör metoden IsOverlapping om man trycker på knapparna 
+        // if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO))
+        // {
+        //   hitPositionUp.IsOverlapping(gamePlay.enemyList[i], player);
+        // }
+
+        // if (Raylib.IsKeyPressed(KeyboardKey.KEY_THREE))
+        // {
+        //   hitPositionDown.IsOverlapping(gamePlay.enemyList[i], player);
+        // }
       }
+
       player.Update();
 
       gamePlay.FeverMode(player);
+      gamePlay.GameOver(player);
 
       hitPositionUp.Update();
       hitPositionDown.Update();

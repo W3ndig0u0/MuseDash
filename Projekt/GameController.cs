@@ -37,19 +37,11 @@ namespace Projekt
     {
       if (player.Hp <= 0)
       {
-        Console.WriteLine("GameOver");
-        // !En liten dö animation
-        if (player.XPosition != 100)
-        {
-          player.XPosition += 5;
-        }
-        else if (player.XPosition == 100)
-        {
-          // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
-          // ?Skapa en gameover scene
-          InitGame.currentScene.AddScene(menuScene);
-          InitGame.draw.RenderScene(menuScene);
-        }
+
+        // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
+        // ?Skapa en gameover scene
+        InitGame.currentScene.AddScene(menuScene);
+        InitGame.currentScene.PlayScene();
       }
     }
 

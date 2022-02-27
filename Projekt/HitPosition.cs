@@ -62,6 +62,7 @@ namespace Projekt
 
     bool pressedGreat = false;
     bool pressedPerfect = false;
+    bool pressedPerfectPlus = false;
 
     // !Alla variablar som inte står ovan tas från klassen Objekt
     public HitPosition(int xPosition, int yPosition)
@@ -131,14 +132,6 @@ namespace Projekt
       }
     }
 
-    // !Kör metoden IsOverlapping om man trycker på knapparna 
-    public void HitPressed(Enemy target, Player player)
-    {
-      if (Raylib.IsKeyPressed(KeyboardKey.KEY_TWO) || Raylib.IsKeyPressed(KeyboardKey.KEY_THREE))
-      {
-        IsOverlapping(target, player);
-      }
-    }
 
     // !Kollar collision
     public void IsOverlapping(Enemy target, Player player)
@@ -152,15 +145,12 @@ namespace Projekt
       // !Om den redan är död, bryr sig inte koden längre
       if (!target.Dead)
       {
-
         // !Automatiskt speland
-        if (areOverlappingEarly)
+        if (areOverlappingPerfectAUTO || areOverlappingLate || areOverlappingEarly || areOverlappingPerfect)
+        // if (areOverlappingEarly)
         {
           EnemyPressed(target, player);
         }
-
-        // !Ger poäng bereonde på vart spelren träffar
-        GivePoints(target, player);
 
         //! Om spelaren missar
         Miss(target, player);
@@ -172,16 +162,22 @@ namespace Projekt
     public override void DrawObject()
     {
       Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
-      // Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
-      // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
       // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
       // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
-      if (TextYPos != 0 || TextYPos != 10000 || pressedPerfect)
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.RED);
+
+      if (TextYPos != 0 && pressedPerfectPlus || TextYPos != 10000 && pressedPerfectPlus)
+      {
+        DrawTextPointsPerfectPlus();
+      }
+
+      else if (TextYPos != 0 && pressedPerfect || TextYPos != 10000 && pressedPerfect)
       {
         DrawTextPointsPerfect();
       }
 
-      else if (TextYPos != 0 || TextYPos != 10000 || pressedGreat)
+      else if (TextYPos != 0 && pressedGreat || TextYPos != 10000 && pressedGreat)
       {
         DrawTextPointsGreat();
       }
@@ -194,11 +190,14 @@ namespace Projekt
     {
       Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
     }
-
     void DrawTextPointsPerfect()
     {
       // TextSpeed += random.Next(10, 20);
       Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
+    }
+    void DrawTextPointsPerfectPlus()
+    {
+      Raylib.DrawText("PERFECT+", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
     }
 
 
@@ -206,7 +205,7 @@ namespace Projekt
     void Miss(Enemy target, Player player)
     {
 
-      if (target.XPosition <= 0 && target.Dead)
+      if (target.XPosition <= 0 && !target.Dead)
       {
         //!När spelaren missar,
         // ?Combo ska få MAXCOMBO
@@ -219,18 +218,25 @@ namespace Projekt
 
     void GivePoints(Enemy target, Player player)
     {
-      if (areOverlappingLate || areOverlappingEarly)
-      {
-        // !Ger mindre poäng
-        player.Score += (target.GiveScore / 3) * (player.Combo / 100) / 100;
-        pressedGreat = true;
-      }
-
-      else if (areOverlappingPerfectAUTO || areOverlappingPerfect)
+      if (areOverlappingPerfectAUTO)
       {
         // !Ger mer poäng
-        player.Score += (target.GiveScore * (player.Combo / 100)) / 100;
+        player.Score += (target.GiveScore * 3);
+        pressedPerfectPlus = true;
+      }
+
+      else if (areOverlappingPerfect)
+      {
+        // !Ger mer poäng
+        player.Score += (target.GiveScore * 2);
         pressedPerfect = true;
+      }
+
+      else if (areOverlappingLate || areOverlappingEarly)
+      {
+        // !Ger mindre poäng
+        player.Score += target.GiveScore;
+        pressedGreat = true;
       }
     }
 
@@ -247,6 +253,9 @@ namespace Projekt
 
       // !Ändrar vart Spelaren är
       PlayerPosition(target, player);
+
+      // !Ger poäng bereonde på vart spelren träffar
+      GivePoints(target, player);
 
       // !Ritar Texten
       TextActive = true;
