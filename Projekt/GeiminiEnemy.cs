@@ -21,7 +21,7 @@ namespace Projekt
       // !Detta gör att det blir lättare med level editorn
       WidthGeiminiEnemy = 70;
       HeightGeiminiEnemy = 70;
-      GiveFever = 4;
+      GiveFever = 6;
       GiveScore = 400;
       YPositionGeiminiEnemy2 = yPosition2;
       YPositionGeiminiEnemy1 = yPosition;

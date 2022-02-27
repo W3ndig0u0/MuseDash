@@ -15,11 +15,11 @@ namespace Projekt
     {
       WidthHammerEnemy = 90;
       HeightHammerEnemy = 90;
-      GiveFever = 4;
+      GiveFever = 8;
       GiveScore = 400;
 
 
-      xPosLine = xPosition;
+      xPosLine = 1200;
       yPosLine = yPosition;
     }
 

@@ -10,6 +10,7 @@ namespace Projekt
     public List<Enemy> enemyList;
     public Color Black = Color.BLACK;
     public Color White = Color.WHITE;
+    MenuScene menuScene = new MenuScene();
 
     public GameController()
     {
@@ -32,6 +33,25 @@ namespace Projekt
       }
     }
 
+    public void GameOver(Player player)
+    {
+      if (player.Hp <= 0)
+      {
+        Console.WriteLine("GameOver");
+        // !En liten dö animation
+        if (player.XPosition != 100)
+        {
+          player.XPosition += 5;
+        }
+        else if (player.XPosition == 100)
+        {
+          // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
+          // ?Skapa en gameover scene
+          InitGame.currentScene.AddScene(menuScene);
+          InitGame.draw.RenderScene(menuScene);
+        }
+      }
+    }
 
   }
 }

@@ -60,6 +60,9 @@ namespace Projekt
     Rectangle greatCollitionalEarly;
     Rectangle greatCollitionalLate;
 
+    bool pressedGreat = false;
+    bool pressedPerfect = false;
+
     // !Alla variablar som inte står ovan tas från klassen Objekt
     public HitPosition(int xPosition, int yPosition)
     {
@@ -147,50 +150,116 @@ namespace Projekt
       areOverlappingEarly = Raylib.CheckCollisionRecs(greatCollitionalEarly, target.CollitionalRectangle);
 
       // !Om den redan är död, bryr sig inte koden längre
-      if (target.Dead == false)
+      if (!target.Dead)
       {
 
-        if (areOverlappingPerfectAUTO)
+        // !Automatiskt speland
+        if (areOverlappingEarly)
         {
-          // !mer poäng
-          player.Score += (target.GiveScore * (player.Combo / 10)) / 100;
-
-          if (!player.IsFeverMode)
-          {
-            player.Fever += target.GiveFever;
-          }
-          // !Automatiskt speland
-          player.Combo++;
-
-          TextActive = true;
-          PlayerPosition(target, player);
-
-          TextXPos = target.XPosition;
-          TextYPos = target.YPosition - 50;
-
-          //! Mashenemy, GeiminiEnemy och bossen dör inte
-          if (target is MashEnemy || target is Boss || target is GeiminiEnemy)
-          {
-            return;
-          }
-
-          target.DeadMethod();
-
-          // ?Gör så att target inte finns kvar
+          EnemyPressed(target, player);
         }
 
-        else if (areOverlappingPerfectAUTO)
-        {
-          // !mer poäng
-          player.Score += target.GiveScore * (player.Combo / 10);
-        }
+        // !Ger poäng bereonde på vart spelren träffar
+        GivePoints(target, player);
 
-        else if (areOverlappingLate || areOverlappingEarly)
-        {
-          // !Ger mindre poäng
-          player.Score += (target.GiveScore / 3) * (player.Combo / 10);
-        }
+        //! Om spelaren missar
+        Miss(target, player);
       }
+    }
+
+
+    // !Ritar ut sakerna
+    public override void DrawObject()
+    {
+      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
+      // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
+      // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
+      // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
+      if (TextYPos != 0 || TextYPos != 10000 || pressedPerfect)
+      {
+        DrawTextPointsPerfect();
+      }
+
+      else if (TextYPos != 0 || TextYPos != 10000 || pressedGreat)
+      {
+        DrawTextPointsGreat();
+      }
+    }
+
+    //! Text när spelaren trycker, för att veta hur precis trycket va
+    //? Gör så att det finns kvar mer än 1 frame
+    // ?Gör så att dessa är bara en metod
+    void DrawTextPointsGreat()
+    {
+      Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
+    }
+
+    void DrawTextPointsPerfect()
+    {
+      // TextSpeed += random.Next(10, 20);
+      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
+    }
+
+
+
+    void Miss(Enemy target, Player player)
+    {
+
+      if (target.XPosition <= 0 && target.Dead)
+      {
+        //!När spelaren missar,
+        // ?Combo ska få MAXCOMBO
+        // ?Miss Texture
+        player.Combo = 0;
+        player.Hp -= 50;
+        target.Dead = true;
+      }
+    }
+
+    void GivePoints(Enemy target, Player player)
+    {
+      if (areOverlappingLate || areOverlappingEarly)
+      {
+        // !Ger mindre poäng
+        player.Score += (target.GiveScore / 3) * (player.Combo / 100) / 100;
+        pressedGreat = true;
+      }
+
+      else if (areOverlappingPerfectAUTO || areOverlappingPerfect)
+      {
+        // !Ger mer poäng
+        player.Score += (target.GiveScore * (player.Combo / 100)) / 100;
+        pressedPerfect = true;
+      }
+    }
+
+    void EnemyPressed(Enemy target, Player player)
+    {
+      // !Gör så att Spelaren får Fever när den redan är aktiv
+      if (!player.IsFeverMode)
+      {
+        player.Fever += target.GiveFever;
+      }
+
+      // !Ökar Combo
+      player.Combo++;
+
+      // !Ändrar vart Spelaren är
+      PlayerPosition(target, player);
+
+      // !Ritar Texten
+      TextActive = true;
+      TextXPos = target.XPosition;
+      TextYPos = target.YPosition - 50;
+
+      //! Mashenemy, GeiminiEnemy och bossen dör inte
+      if (target is MashEnemy || target is Boss || target is GeiminiEnemy)
+      {
+        return;
+      }
+
+      target.DeadMethod();
     }
 
     void PlayerPosition(Enemy target, Player player)
@@ -239,35 +308,5 @@ namespace Projekt
       }
 
     }
-
-    // !Ritar ut sakerna
-    public override void DrawObject()
-    {
-      Raylib.DrawTextureEx(hitCircleTexture, hitCircle, rotation, scale, Color.WHITE);
-      // Raylib.DrawRectangleRec(perfektCollitionalRectangleAUTO, Color.GREEN);
-      // Raylib.DrawRectangleRec(perfektCollitionalRectangle, Color.GREEN);
-      // Raylib.DrawRectangleRec(greatCollitionalEarly, Color.BLUE);
-      // Raylib.DrawRectangleRec(greatCollitionalLate, Color.BLUE);
-      if (TextYPos != 0 || TextYPos != 10000)
-      {
-        DrawTextPointsPerfect();
-
-      }
-    }
-
-    //! Text när spelaren trycker, för att veta hur precis trycket va
-    //? Gör så att det finns kvar mer än 1 frame
-    // ?Gör så att dessa är bara en metod
-    void DrawTextPointsGreat()
-    {
-      // Raylib.DrawText("GREAT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
-    }
-
-    void DrawTextPointsPerfect()
-    {
-      // TextSpeed += random.Next(10, 20);
-      Raylib.DrawText("PERFECT", TextXPos, TextYPos, 40, GamePlay.gamePlay.Black);
-    }
-
   }
 }

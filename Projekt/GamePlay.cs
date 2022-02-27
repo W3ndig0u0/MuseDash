@@ -26,13 +26,13 @@ namespace Projekt
     GeiminiEnemy geiminiEnemy = new GeiminiEnemy(2700, 430, 250);
     GearObstacle gearObstacle = new GearObstacle(500, 480);
 
-    HammerEnemy HammerEnemy1 = new HammerEnemy(1500, -100);
-    HammerEnemy HammerEnemy2 = new HammerEnemy(1600, -100);
-    HammerEnemy HammerEnemy3 = new HammerEnemy(1700, -100);
+    HammerEnemy HammerEnemy1 = new HammerEnemy(3100, -100);
+    HammerEnemy HammerEnemy2 = new HammerEnemy(5000, -100);
+    HammerEnemy HammerEnemy3 = new HammerEnemy(5800, -100);
 
-    HammerEnemy HammerEnemy4 = new HammerEnemy(1550, -300);
-    HammerEnemy HammerEnemy5 = new HammerEnemy(1650, -300);
-    HammerEnemy HammerEnemy6 = new HammerEnemy(1750, -300);
+    HammerEnemy HammerEnemy4 = new HammerEnemy(5700, -300);
+    HammerEnemy HammerEnemy5 = new HammerEnemy(5100, -300);
+    HammerEnemy HammerEnemy6 = new HammerEnemy(3000, -300);
 
     Boss boss = new Boss(3100, 350);
 
@@ -58,12 +58,12 @@ namespace Projekt
         gamePlay.enemyList.Add(geiminiEnemy);
         gamePlay.enemyList.Add(boss);
 
-        // gamePlay.enemyList.Add(HammerEnemy1);
-        // gamePlay.enemyList.Add(HammerEnemy2);
-        // gamePlay.enemyList.Add(HammerEnemy3);
-        // gamePlay.enemyList.Add(HammerEnemy4);
-        // gamePlay.enemyList.Add(HammerEnemy5);
-        // gamePlay.enemyList.Add(HammerEnemy6);
+        gamePlay.enemyList.Add(HammerEnemy1);
+        gamePlay.enemyList.Add(HammerEnemy2);
+        gamePlay.enemyList.Add(HammerEnemy3);
+        gamePlay.enemyList.Add(HammerEnemy4);
+        gamePlay.enemyList.Add(HammerEnemy5);
+        gamePlay.enemyList.Add(HammerEnemy6);
 
 
         // enemyList.Add(gearObstacle);

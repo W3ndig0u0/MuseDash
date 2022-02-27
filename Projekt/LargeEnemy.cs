@@ -13,7 +13,7 @@ namespace Projekt
       // !Detta gör att det blir lättare med level editorn
       WidthLargeEnemy = 90;
       HeightLargeEnemy = 120;
-      GiveFever = 4;
+      GiveFever = 6;
       GiveScore = 400;
     }
 
