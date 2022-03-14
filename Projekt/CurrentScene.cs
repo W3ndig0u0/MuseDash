@@ -27,6 +27,10 @@ namespace Projekt
 
     public Scene GetScene(int n)
     {
+      foreach (var scene in scenes)
+      {
+        Console.WriteLine(scene);
+      }
       return scenes[currentScene - n];
     }
 
@@ -35,6 +39,7 @@ namespace Projekt
     {
       scenes.Add(scene);
       currentScene++;
+
     }
   }
 }
