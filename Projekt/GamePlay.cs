@@ -9,12 +9,13 @@ namespace Projekt
   {
     public static GameController gamePlay = new GameController();
 
-    Player player = new Player(170, 400, 90, 140);
-    HitPosition hitPositionUp = new HitPosition(300, 250);
-    HitPosition hitPositionDown = new HitPosition(300, 450);
 
-    SmallEnemy enemy1 = new SmallEnemy(800, 250);
-    SmallEnemy enemy2 = new SmallEnemy(1500, 250);
+    /* Unmerged change from project 'Projekt'
+    Before:
+        Player player = new Player(170, 400, 90, 140); s
+    After:
+        Player player = new Player(170, 400, 90, 140); 
+    */
     SmallEnemy enemy3 = new SmallEnemy(1300, 430);
     SmallEnemy enemy4 = new SmallEnemy(1100, 250);
     SmallEnemy enemy5 = new SmallEnemy(1700, 430);
