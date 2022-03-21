@@ -3,13 +3,22 @@ using Raylib_cs;
 
 namespace Projekt
 {
-  public class StartScene : Scene
+  public class Loading : Scene
   {
     int intro;
-    MenuScene menuScene = new MenuScene();
+    Scene Scene;
+
+    public Loading(Scene scene)
+    {
+      Scene = scene;
+      WhatToDraw();
+      Update();
+    }
 
     public override void Update()
     {
+      intro++;
+
     }
 
     public override void WhatToDraw()
@@ -18,7 +27,6 @@ namespace Projekt
       Raylib.ClearBackground(Color.BLACK);
       Raylib.DrawFPS(10, 10);
 
-      intro++;
       // Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
       // Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
       // Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
@@ -29,15 +37,17 @@ namespace Projekt
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
       }
 
-      else if (intro < 300)
+      else if (intro < 500)
       {
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 400)
+      else if (intro < 1000)
       {
         Raylib.WindowShouldClose();
+        InitGame.currentScene.AddScene(Scene);
+        InitGame.draw.RenderScene(Scene);
       }
 
     }

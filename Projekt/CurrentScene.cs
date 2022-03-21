@@ -8,15 +8,14 @@ namespace Projekt
   public class CurrentScene
   {
     List<Scene> scenes = new List<Scene>();
-    StartScene startScene = new StartScene();
-
+    MenuScene menuScene = new MenuScene();
 
     //! -1 är för att den inte ska köra indexen 1, som inte finns just nu
     int currentScene = -1;
 
     public CurrentScene()
     {
-      AddScene(startScene);
+      AddScene(menuScene);
     }
 
     //!VIlken Scene som ska rendras, den säger till Draw vad som ska rendras

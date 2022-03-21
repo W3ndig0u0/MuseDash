@@ -8,7 +8,6 @@ namespace Projekt
     string windowTitle = "Slutprojekt";
     public static CurrentScene currentScene = new CurrentScene();
     public static Draw draw = new Draw();
-    MenuScene menuScene = new MenuScene();
 
     public InitGame(int WindowWidth, int WindowHeight)
     {
@@ -20,9 +19,7 @@ namespace Projekt
       Raylib.SetExitKey(0);
       Console.Clear();
 
-      InitGame.currentScene.AddScene(menuScene);
-      InitGame.draw.RenderScene(menuScene);
-      // currentScene.PlayScene();
+      currentScene.PlayScene();
     }
 
   }
