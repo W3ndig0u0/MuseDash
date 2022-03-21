@@ -10,7 +10,6 @@ namespace Projekt
     {
       while (!Raylib.WindowShouldClose())
       {
-        Console.WriteLine(s);
         s.Update();
         Raylib.BeginDrawing();
         s.WhatToDraw();

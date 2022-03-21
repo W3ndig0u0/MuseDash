@@ -8,7 +8,6 @@ namespace Projekt
     int intro;
     MenuScene menuScene = new MenuScene();
 
-
     public override void Update()
     {
     }
