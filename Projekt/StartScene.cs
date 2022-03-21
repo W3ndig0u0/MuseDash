@@ -38,8 +38,6 @@ namespace Projekt
       else if (intro < 400)
       {
         Raylib.WindowShouldClose();
-        InitGame.currentScene.AddScene(menuScene);
-        InitGame.draw.RenderScene(menuScene);
       }
 
     }
