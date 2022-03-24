@@ -70,21 +70,26 @@ namespace Projekt
       if (XPosition <= 500)
       {
         YPosition += 1;
+        Console.WriteLine("1");
       }
       else if (XPosition < 501 && XPosition >= 550)
       {
+        Console.WriteLine("2");
         YPosition -= 1;
       }
       else if (XPosition < 551 && XPosition >= 650)
       {
+        Console.WriteLine("3");
         YPosition -= 3;
       }
       else if (XPosition < 651 && XPosition >= 700)
       {
+        Console.WriteLine("4");
         YPosition -= 6;
       }
       else if (XPosition >= 701)
       {
+        Console.WriteLine("5");
         YPosition -= 8;
       }
     }

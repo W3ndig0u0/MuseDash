@@ -13,7 +13,6 @@ namespace Projekt
     Color ButtonColor;
     Vector2 mousePos;
     Sound clickSound;
-    Loading loadingScene;
     Rectangle button;
     bool areOverlapping;
     Scene Scene;

@@ -9,7 +9,8 @@ namespace Projekt
   {
     List<Scene> scenes = new List<Scene>();
     MenuScene menuScene = new MenuScene();
-    Loading loadingScene;
+    Loading loadingScene = new Loading();
+    Loading loadingScene2 = new Loading();
 
 
     //! -1 är för att den inte ska köra indexen 1, som inte finns just nu
@@ -17,10 +18,14 @@ namespace Projekt
 
     public CurrentScene()
     {
-      // ?FIxa Loading
-      loadingScene = new Loading(menuScene);
+      // !Vilken scene kommer efter Loading
+      loadingScene2.NextScene = menuScene;
+      loadingScene.NextScene = loadingScene2;
+
       // !Berättar vilken bild loading ska ha
+      loadingScene2.ImgFileName = "Texture/Logo5.png";
       loadingScene.ImgFileName = "Texture/EarphonesIntro.png";
+
       AddScene(loadingScene);
     }
 

@@ -6,10 +6,9 @@ namespace Projekt
   public class Loading : Scene
   {
     int intro;
-    Scene Scene;
     bool sceneRemove;
     bool TexturLoaded = false;
-
+    bool destroyed = false;
 
     Texture2D wallpapperTexture;
     Image wallpapperImg;
@@ -21,16 +20,24 @@ namespace Projekt
       set { imgFileName = value; }
     }
 
-    Color fade = new Color(0, 0, 0, 255);
+    Color fade;
     public Color Fade
     {
       get { return fade; }
       set { fade = value; }
     }
 
-    public Loading(Scene scene)
+    Scene nextScene;
+    public Scene NextScene
     {
-      Scene = scene;
+      get { return nextScene; }
+      set { nextScene = value; }
+    }
+
+    // !Vad Nästa Scene kommer att vara
+    public Loading()
+    {
+      fade = new Color(255, 255, 255, 255);
     }
 
     public override void Update()
@@ -43,7 +50,6 @@ namespace Projekt
     // !Tar bort Scenen när den nästa dyker fram
     public override bool Destroyed()
     {
-      bool destroyed = false;
       if (sceneRemove)
       {
         destroyed = true;
@@ -62,11 +68,7 @@ namespace Projekt
         TexturLoaded = true;
       }
 
-      // FadeInOut();
-
       Raylib.DrawTexture(wallpapperTexture, 0, 0, fade);
-
-      // Console.WriteLine(intro);
 
       Raylib.DrawFPS(10, 10);
 
@@ -84,28 +86,17 @@ namespace Projekt
     void FadeInOut()
     {
       // !Fade in och out animationer
-
-      if (intro <= 50)
+      if (intro >= 150 && fade.r != 0)
       {
-        fade.r += 20;
-        fade.g += 20;
-        fade.b += 20;
-        Console.WriteLine(fade.r);
+        fade.r -= 3;
+        fade.g -= 3;
+        fade.b -= 3;
       }
 
-      // else if (intro <= 150 && intro >= 299)
-      // {
-      //   fade.r -= 20;
-      //   fade.g -= 20;
-      //   fade.b -= 20;
-      //   Console.WriteLine("aaaa");
-      //   Raylib.DrawTexture(wallpapperTexture, 0, 0, Fade);
-      // }
-
-      if (intro == 300)
+      if (intro == 250)
       {
         sceneRemove = true;
-        InitGame.currentScene.AddScene(Scene);
+        InitGame.currentScene.AddScene(NextScene);
         InitGame.currentScene.PlayScene();
       }
 

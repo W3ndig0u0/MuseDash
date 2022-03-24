@@ -39,7 +39,6 @@ namespace Projekt
 
 
     bool isDone = false;
-
     bool sceneRemove;
 
     public override bool Destroyed()
