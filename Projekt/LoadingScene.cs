@@ -21,6 +21,13 @@ namespace Projekt
       set { imgFileName = value; }
     }
 
+    Color fade = new Color(0, 0, 0, 255);
+    public Color Fade
+    {
+      get { return fade; }
+      set { fade = value; }
+    }
+
     public Loading(Scene scene)
     {
       Scene = scene;
@@ -30,6 +37,7 @@ namespace Projekt
     {
       intro++;
       Destroyed();
+      FadeInOut();
     }
 
     // !Tar bort Scenen när den nästa dyker fram
@@ -52,10 +60,13 @@ namespace Projekt
         // Sound startSound = Raylib.LoadSound("Sound/SoundEffect/Start.wav");
         TextureLoad();
         TexturLoaded = true;
-        Console.WriteLine(TexturLoaded);
       }
 
-      FadeInOut();
+      // FadeInOut();
+
+      Raylib.DrawTexture(wallpapperTexture, 0, 0, fade);
+
+      // Console.WriteLine(intro);
 
       Raylib.DrawFPS(10, 10);
 
@@ -72,18 +83,26 @@ namespace Projekt
 
     void FadeInOut()
     {
-      // !FAde in eller nåt
-      if (intro < 100)
+      // !Fade in och out animationer
+
+      if (intro <= 50)
       {
-        Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
+        fade.r += 20;
+        fade.g += 20;
+        fade.b += 20;
+        Console.WriteLine(fade.r);
       }
 
-      else if (intro < 200)
-      {
-        Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
-      }
+      // else if (intro <= 150 && intro >= 299)
+      // {
+      //   fade.r -= 20;
+      //   fade.g -= 20;
+      //   fade.b -= 20;
+      //   Console.WriteLine("aaaa");
+      //   Raylib.DrawTexture(wallpapperTexture, 0, 0, Fade);
+      // }
 
-      else if (intro < 600)
+      if (intro == 300)
       {
         sceneRemove = true;
         InitGame.currentScene.AddScene(Scene);
