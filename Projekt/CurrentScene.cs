@@ -19,6 +19,8 @@ namespace Projekt
     {
       // ?FIxa Loading
       loadingScene = new Loading(menuScene);
+      // !Berättar vilken bild loading ska ha
+      loadingScene.ImgFileName = "Texture/EarphonesIntro.png";
       AddScene(loadingScene);
     }
 
