@@ -13,12 +13,14 @@ namespace Projekt
     Color ButtonColor;
     Vector2 mousePos;
     Sound clickSound;
+    Loading loadingScene;
     Rectangle button;
     bool areOverlapping;
     Scene Scene;
+    Scene LastScene;
     string Text;
 
-    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene, string text)
+    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene, string text, Scene lastScene)
     {
       XPosition = xPosition;
       YPosition = yPosition;
@@ -27,6 +29,7 @@ namespace Projekt
       ButtonColor = buttonColor;
       Scene = scene;
       Text = text;
+      LastScene = lastScene;
 
       // clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
       button = new Rectangle(xPosition, yPosition, width, height);
@@ -57,6 +60,7 @@ namespace Projekt
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
           ButtonColor.a = 255;
+          LastScene.SceneRemove = true;
 
           // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
           InitGame.currentScene.AddScene(Scene);

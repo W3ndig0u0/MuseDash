@@ -40,6 +40,19 @@ namespace Projekt
 
     bool isDone = false;
 
+    bool sceneRemove;
+
+    public override bool Destroyed()
+    {
+      bool destroyed = false;
+      if (sceneRemove == true)
+      {
+        destroyed = true;
+      }
+      return destroyed;
+    }
+
+
     public override void Update()
     {
 
@@ -129,7 +142,7 @@ namespace Projekt
       }
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
-      new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu");
+      new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu", sceneRemove);
     }
   }
 }

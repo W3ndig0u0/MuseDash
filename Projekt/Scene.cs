@@ -10,6 +10,7 @@ namespace Projekt
     //! Säger till CurrentScene, vad den ska rita
     abstract public void WhatToDraw();
     abstract public void Update();
+    abstract public bool Destroyed();
 
   }
 }

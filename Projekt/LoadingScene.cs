@@ -7,6 +7,7 @@ namespace Projekt
   {
     int intro;
     Scene Scene;
+    bool sceneRemove;
 
     public Loading(Scene scene)
     {
@@ -19,6 +20,17 @@ namespace Projekt
     {
       intro++;
 
+    }
+
+
+    public override bool Destroyed()
+    {
+      bool destroyed = false;
+      if (sceneRemove == true)
+      {
+        destroyed = true;
+      }
+      return destroyed;
     }
 
     public override void WhatToDraw()
@@ -37,17 +49,19 @@ namespace Projekt
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
       }
 
-      else if (intro < 500)
+      else if (intro < 200)
       {
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 1000)
+      else if (intro < 400)
       {
         Raylib.WindowShouldClose();
+        sceneRemove = true;
         InitGame.currentScene.AddScene(Scene);
-        InitGame.draw.RenderScene(Scene);
+        InitGame.currentScene.PlayScene();
+
       }
 
     }

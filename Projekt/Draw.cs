@@ -8,7 +8,7 @@ namespace Projekt
 
     public void RenderScene(Scene s)
     {
-      while (!Raylib.WindowShouldClose())
+      while (!Raylib.WindowShouldClose() && !s.Destroyed())
       {
         s.Update();
         Raylib.BeginDrawing();
