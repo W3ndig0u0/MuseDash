@@ -39,20 +39,23 @@ namespace Projekt
       Raylib.ClearBackground(Color.BLACK);
       Raylib.DrawFPS(10, 10);
 
-      // Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
-      // Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
-      // Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
+      Image wallpapperImg = Raylib.LoadImage("Texture/EarphonesIntro.png");
+      Raylib.ImageResize(ref wallpapperImg, 1400, 700);
+      Texture2D wallpapperTexture = Raylib.LoadTextureFromImage(wallpapperImg);
 
       // !FAde in eller nåt
       if (intro < 100)
       {
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
+        Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
       }
 
       else if (intro < 200)
       {
         Raylib.DrawRectangle(0, 0, 1600, 800, Color.BLUE);
         // Raylib.PlaySound(startSound);
+
+        Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
       }
 
       else if (intro < 800)
