@@ -146,8 +146,8 @@ namespace Projekt
       if (!target.Dead)
       {
         // !Automatiskt speland
-        if (areOverlappingPerfectAUTO || areOverlappingLate || areOverlappingEarly || areOverlappingPerfect)
-        // if (areOverlappingEarly)
+        // if (areOverlappingPerfectAUTO || areOverlappingLate || areOverlappingEarly || areOverlappingPerfect)
+        if (areOverlappingPerfectAUTO)
         {
           EnemyPressed(target, player);
         }

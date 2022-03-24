@@ -19,7 +19,7 @@ namespace Projekt
     public override void Update()
     {
       intro++;
-
+      Destroyed();
     }
 
 
@@ -55,9 +55,8 @@ namespace Projekt
         // Raylib.PlaySound(startSound);
       }
 
-      else if (intro < 400)
+      else if (intro < 800)
       {
-        Raylib.WindowShouldClose();
         sceneRemove = true;
         InitGame.currentScene.AddScene(Scene);
         InitGame.currentScene.PlayScene();

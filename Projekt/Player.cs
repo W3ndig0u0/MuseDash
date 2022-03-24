@@ -59,7 +59,6 @@ namespace Projekt
     Rectangle hpMaxRect;
     Rectangle feverRect;
     Rectangle feverMaxRect;
-    Rectangle extraRect;
 
     Random random = new Random();
     int radius;

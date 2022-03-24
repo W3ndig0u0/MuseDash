@@ -142,7 +142,7 @@ namespace Projekt
       }
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
-      new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu", sceneRemove);
+      new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu", InitGame.currentScene.GetScene(1));
     }
   }
 }

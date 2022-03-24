@@ -60,7 +60,6 @@ namespace Projekt
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
           ButtonColor.a = 255;
-          LastScene.SceneRemove = true;
 
           // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
           InitGame.currentScene.AddScene(Scene);

@@ -19,7 +19,7 @@ namespace Projekt
     {
       // ?FIxa Loading
       loadingScene = new Loading(menuScene);
-      AddScene(menuScene);
+      AddScene(loadingScene);
     }
 
     //!VIlken Scene som ska rendras, den säger till Draw vad som ska rendras
@@ -32,7 +32,7 @@ namespace Projekt
     {
       foreach (var scene in scenes)
       {
-        Console.WriteLine(scene);
+        //Console.WriteLine(scene);
       }
       return scenes[currentScene - n];
     }
