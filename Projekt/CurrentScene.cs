@@ -8,25 +8,18 @@ namespace Projekt
   public class CurrentScene
   {
     List<Scene> scenes = new List<Scene>();
-    MenuScene menuScene = new MenuScene();
-    Loading loadingScene = new Loading();
-    Loading loadingScene2 = new Loading();
-
+    AllIntroStart intro = new AllIntroStart();
 
     //! -1 är för att den inte ska köra indexen 1, som inte finns just nu
     int currentScene = -1;
 
     public CurrentScene()
     {
-      // !Vilken scene kommer efter Loading
-      loadingScene2.NextScene = menuScene;
-      loadingScene.NextScene = loadingScene2;
+      // !AllIntroStart initsierar alla intro 
+      intro.InsertLoadingScene();
 
-      // !Berättar vilken bild loading ska ha
-      loadingScene2.ImgFileName = "Texture/Logo5.png";
-      loadingScene.ImgFileName = "Texture/EarphonesIntro.png";
-
-      AddScene(loadingScene);
+      // !intro.loadingScene är den första scenen som ska köras.
+      AddScene(intro.loadingScene);
     }
 
     //!VIlken Scene som ska rendras, den säger till Draw vad som ska rendras
@@ -37,10 +30,6 @@ namespace Projekt
 
     public Scene GetScene(int n)
     {
-      foreach (var scene in scenes)
-      {
-        //Console.WriteLine(scene);
-      }
       return scenes[currentScene - n];
     }
 
