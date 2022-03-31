@@ -4,17 +4,9 @@ using Raylib_cs;
 
 namespace Projekt
 {
-  public class MenuButton
+  public class MenuButton : Button
   {
-    int XPosition;
-    int YPosition;
-    int Width;
-    int Height;
-    Color ButtonColor;
-    Vector2 mousePos;
-    Sound clickSound;
-    Rectangle button;
-    bool areOverlapping;
+
     Scene Scene;
     Scene LastScene;
     string Text;
@@ -31,25 +23,25 @@ namespace Projekt
       LastScene = lastScene;
 
       // clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
-      button = new Rectangle(xPosition, yPosition, width, height);
-      mousePos = Raylib.GetMousePosition();
-      areOverlapping = Raylib.CheckCollisionPointRec(mousePos, this.button);
+      ButtonRectangle = new Rectangle(xPosition, yPosition, width, height);
+      MousePos = Raylib.GetMousePosition();
+      AreOverlapping = Raylib.CheckCollisionPointRec(MousePos, this.ButtonRectangle);
 
       Update();
-      DrawMenuButton();
+      DrawButton();
     }
 
     // !Ritar ut Knappen
-    void DrawMenuButton()
+    public override void DrawButton()
     {
-      Raylib.DrawRectangleRec(button, ButtonColor);
+      Raylib.DrawRectangleRec(ButtonRectangle, ButtonColor);
       Raylib.DrawText(Text, XPosition + 50, YPosition + 30, 20, Color.WHITE);
     }
 
     // !Animation för Knappen
-    void Update()
+    public override void Update()
     {
-      if (areOverlapping)
+      if (AreOverlapping)
       {
         XPosition -= 12;
         ButtonColor.a = 200;

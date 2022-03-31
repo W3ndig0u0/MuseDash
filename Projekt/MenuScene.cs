@@ -20,7 +20,6 @@ namespace Projekt
     }
 
 
-    // Loading loadingScene;
     public override void Update()
     {
       if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
@@ -31,10 +30,10 @@ namespace Projekt
 
     void EscapeMode()
     {
-      Raylib.DrawRectangle(500, 300, 500, 200, Color.BLACK);
-      Raylib.DrawText("Do You Really Want To Leave?", 560, 360, 25, Color.WHITE);
-      Raylib.DrawRectangle(670, 440, 50, 30, Color.GREEN);
-      Raylib.DrawRectangle(770, 440, 50, 30, Color.RED);
+      Raylib.DrawRectangle(530, 300, 500, 200, Color.BLACK);
+      Raylib.DrawText("Do You Really Want To Leave?", 590, 360, 25, Color.WHITE);
+      Raylib.DrawRectangle(700, 440, 50, 30, Color.GREEN);
+      Raylib.DrawRectangle(800, 440, 50, 30, Color.RED);
     }
 
     public override bool Destroyed()
