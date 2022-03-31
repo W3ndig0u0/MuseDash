@@ -11,6 +11,7 @@ namespace Projekt
     public bool menuEnabled = false;
 
     GamePlay gamePlay = new GamePlay();
+    Mapping mapping = new Mapping();
 
     bool sceneRemove;
     public bool SceneRemove
@@ -51,8 +52,8 @@ namespace Projekt
 
       Raylib.ClearBackground(Color.LIGHTGRAY);
       Raylib.DrawText("Menu", 700, 250, 50, Color.WHITE);
-      new MenuButton(650, 500, 250, 75, Color.BLACK, gamePlay, "Game", this);
-      new MenuButton(650, 500, 250, 75, Color.BLACK, gamePlay, "Game", this);
+      new MenuButton(530, 450, 250, 75, Color.BLACK, gamePlay, "Game", this);
+      new MenuButton(830, 450, 250, 75, Color.BLACK, mapping, "Mapping", this);
 
       if (menuEnabled)
       {

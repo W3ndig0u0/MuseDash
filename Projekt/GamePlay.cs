@@ -9,7 +9,6 @@ namespace Projekt
   {
     public static GameController gamePlay = new GameController();
 
-
     Player player = new Player(170, 400, 90, 140);
     SmallEnemy enemy1 = new SmallEnemy(1000, 250);
     SmallEnemy enemy2 = new SmallEnemy(800, 430);
@@ -54,6 +53,11 @@ namespace Projekt
 
     public override void Update()
     {
+
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
+      {
+        sceneRemove = true;
+      }
 
       // !Lägger till alla fiender
       // !Koden körs bara en gång
