@@ -32,8 +32,8 @@ namespace Projekt
     }
 
     TextBox MapName = new TextBox("Map Name", 400, 200);
-    TextBox ArtistName = new TextBox("Map Name", 400, 400);
-    TextBox Diff = new TextBox("Map Name", 400, 600);
+    TextBox ArtistName = new TextBox("Artist Name", 400, 400);
+    TextBox Diff = new TextBox("Diff", 400, 600);
 
     public override void WhatToDraw()
     {

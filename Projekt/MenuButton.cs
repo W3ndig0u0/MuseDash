@@ -8,7 +8,6 @@ namespace Projekt
   {
 
     public Scene Scene;
-    Scene LastScene;
     string Text;
 
     public Rectangle buttonRectangle;
@@ -58,20 +57,27 @@ namespace Projekt
 
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
+          Console.WriteLine(Scene);
+
           ButtonColor.a = 255;
+          // !Om scene är tom, return
+          if (Scene != null)
+          {
+            // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
+            InitGame.currentScene.AddScene(Scene);
+            InitGame.draw.RenderScene(Scene);
+          }
 
-          // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
-          InitGame.currentScene.AddScene(Scene);
-          InitGame.draw.RenderScene(Scene);
         }
-      }
 
-      else
-      {
-        XPosition += 8;
-        ButtonColor.a = 170;
-      }
+        else
+        {
+          XPosition += 8;
+          ButtonColor.a = 170;
+        }
 
+      }
     }
+
   }
 }
