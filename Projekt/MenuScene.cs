@@ -29,26 +29,31 @@ namespace Projekt
         menuEnabled = true;
       }
 
-
-
-      if (exitAreOverlapping)
-      {
-
-      }
     }
 
     void EscapeMode()
     {
-      
+      // !Detta aktiveras när esc trycks
       Raylib.DrawRectangle(530, 200, 500, 200, Color.BLACK);
       Raylib.DrawText("Do You Really Want To Leave?", 590, 260, 25, Color.WHITE);
-      new MenuButton(700, 340, 50, 30, Color.GREEN, gamePlay, "No", this);
-      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, gamePlay, "Yes", this);
-      
-    
-      Vector2 mousePos = Raylib.GetMousePosition();
-      bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit);
+      MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No");
+      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes");
 
+      Vector2 mousePos = Raylib.GetMousePosition();
+      bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit.ButtonRectangle);
+      bool yesAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, yes.ButtonRectangle);
+
+      // !Lämna spelet
+      if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && exitAreOverlapping)
+      {
+        sceneRemove = true;
+      }
+
+      // !Lämna exit mode
+      if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && yesAreOverlapping)
+      {
+        menuEnabled = false;
+      }
     }
 
     public override bool Destroyed()
@@ -66,8 +71,12 @@ namespace Projekt
 
       Raylib.ClearBackground(Color.LIGHTGRAY);
       Raylib.DrawText("Menu", 700, 250, 50, Color.WHITE);
-      new MenuButton(530, 450, 250, 75, Color.BLACK, gamePlay, "Game", this);
-      new MenuButton(830, 450, 250, 75, Color.BLACK, mapping, "Mapping", this);
+      MenuButton GameButton = new MenuButton(530, 450, 250, 75, Color.BLACK, "Game");
+      MenuButton MapButton = new MenuButton(830, 450, 250, 75, Color.BLACK, "Mapping");
+      // ? gör så att man inte behöver lägga in scenerna manuelt utan att förstöra för knappar som inte har scener
+      GameButton.Scene = gamePlay;
+      MapButton.Scene = mapping;
+
 
       if (menuEnabled)
       {

@@ -7,25 +7,25 @@ namespace Projekt
   public class MenuButton : Button
   {
 
-    Scene Scene;
+    public Scene Scene;
     Scene LastScene;
     string Text;
 
-    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, Scene scene, string text, Scene lastScene)
+    public Rectangle buttonRectangle;
+
+    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, string text)
     {
       XPosition = xPosition;
       YPosition = yPosition;
       Width = width;
       Height = height;
       ButtonColor = buttonColor;
-      Scene = scene;
       Text = text;
-      LastScene = lastScene;
 
       // clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
-      ButtonRectangle = new Rectangle(xPosition, yPosition, width, height);
+      buttonRectangle = new Rectangle(xPosition, yPosition, width, height);
       MousePos = Raylib.GetMousePosition();
-      AreOverlapping = Raylib.CheckCollisionPointRec(MousePos, this.ButtonRectangle);
+      AreOverlapping = Raylib.CheckCollisionPointRec(MousePos, buttonRectangle);
 
       Update();
       DrawButton();
@@ -34,7 +34,7 @@ namespace Projekt
     // !Ritar ut Knappen
     public override void DrawButton()
     {
-      Raylib.DrawRectangleRec(ButtonRectangle, ButtonColor);
+      Raylib.DrawRectangleRec(buttonRectangle, ButtonColor);
       // !Så att texten inte är utanför boxen om knappen är liten
       if (Width <= 100)
       {
