@@ -6,7 +6,7 @@ namespace Projekt
   public class MapFileEncoder
   {
     public string[] fileInfo;
-    string fileName = "Tamogotchi SaveFile.txt";
+    string fileName = "MapFile.txt";
     string text = "New Game;0;0";
     int maxFile = 1;
 

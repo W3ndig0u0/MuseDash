@@ -31,6 +31,10 @@ namespace Projekt
       return destroyed;
     }
 
+    TextBox MapName = new TextBox("Map Name", 400, 200);
+    TextBox ArtistName = new TextBox("Map Name", 400, 400);
+    TextBox Diff = new TextBox("Map Name", 400, 600);
+
     public override void WhatToDraw()
     {
       // !Debugging Stats
@@ -38,9 +42,12 @@ namespace Projekt
       Raylib.DrawText("GetTime: " + Raylib.GetTime().ToString(), 10, 30, 20, Color.GREEN);
       Raylib.DrawText("FrameTime: " + Raylib.GetFrameTime().ToString(), 10, 50, 20, Color.GREEN);
 
+      MapName.DrawBox();
+      ArtistName.DrawBox();
+      Diff.DrawBox();
 
       Raylib.ClearBackground(Color.WHITE);
-      Raylib.DrawText("MAPPING", 700, 250, 50, Color.BLACK);
+      Raylib.DrawText("Maping Forum", 700, 100, 50, Color.BLACK);
 
       // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
       new MenuButton(1450, 5, 150, 75, Color.BLACK, InitGame.currentScene.GetScene(1), "Menu", InitGame.currentScene.GetScene(1));
