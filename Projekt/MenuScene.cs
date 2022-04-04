@@ -1,5 +1,6 @@
 using System;
 using Raylib_cs;
+using System.Numerics;
 
 namespace Projekt
 {
@@ -27,14 +28,27 @@ namespace Projekt
       {
         menuEnabled = true;
       }
+
+
+
+      if (exitAreOverlapping)
+      {
+
+      }
     }
 
     void EscapeMode()
     {
-      Raylib.DrawRectangle(530, 300, 500, 200, Color.BLACK);
-      Raylib.DrawText("Do You Really Want To Leave?", 590, 360, 25, Color.WHITE);
-      Raylib.DrawRectangle(700, 440, 50, 30, Color.GREEN);
-      Raylib.DrawRectangle(800, 440, 50, 30, Color.RED);
+      
+      Raylib.DrawRectangle(530, 200, 500, 200, Color.BLACK);
+      Raylib.DrawText("Do You Really Want To Leave?", 590, 260, 25, Color.WHITE);
+      new MenuButton(700, 340, 50, 30, Color.GREEN, gamePlay, "No", this);
+      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, gamePlay, "Yes", this);
+      
+    
+      Vector2 mousePos = Raylib.GetMousePosition();
+      bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit);
+
     }
 
     public override bool Destroyed()

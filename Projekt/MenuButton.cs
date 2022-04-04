@@ -35,7 +35,15 @@ namespace Projekt
     public override void DrawButton()
     {
       Raylib.DrawRectangleRec(ButtonRectangle, ButtonColor);
-      Raylib.DrawText(Text, XPosition + 50, YPosition + 30, 20, Color.WHITE);
+      // !Så att texten inte är utanför boxen om knappen är liten
+      if (Width <= 100)
+      {
+        Raylib.DrawText(Text, XPosition, YPosition, 12, Color.WHITE);
+      }
+      else
+      {
+        Raylib.DrawText(Text, XPosition + 50, YPosition + 30, 20, Color.WHITE);
+      }
     }
 
     // !Animation för Knappen
