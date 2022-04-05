@@ -7,7 +7,13 @@ namespace Projekt
   public class MenuButton : Button
   {
 
-    public Scene Scene;
+    Scene scene;
+    public Scene Scene
+    {
+      get { return scene; }
+      set { scene = value; }
+    }
+
     string Text;
 
     public Rectangle buttonRectangle;
@@ -37,7 +43,7 @@ namespace Projekt
       // !Så att texten inte är utanför boxen om knappen är liten
       if (Width <= 100)
       {
-        Raylib.DrawText(Text, XPosition, YPosition, 12, Color.WHITE);
+        Raylib.DrawText(Text, XPosition + 10, YPosition + 20, 12, Color.WHITE);
       }
       else
       {
@@ -57,15 +63,14 @@ namespace Projekt
 
         if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
         {
-          Console.WriteLine(Scene);
-
+          Console.WriteLine("scene: " + scene);
           ButtonColor.a = 255;
-          // !Om scene är tom, return
-          if (Scene != null)
+          // !Om scene är inte är tom
+          if (scene != null)
           {
             // !"Återanvinner" CurrentScene som InitGame skapade, vill inte att varje knapp ska skapa en ny current Scene
-            InitGame.currentScene.AddScene(Scene);
-            InitGame.draw.RenderScene(Scene);
+            InitGame.currentScene.AddScene(scene);
+            InitGame.draw.RenderScene(scene);
           }
 
         }
