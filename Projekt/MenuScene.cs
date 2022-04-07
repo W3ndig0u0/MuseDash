@@ -24,9 +24,14 @@ namespace Projekt
 
     public override void Update()
     {
-      if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE))
+      // !Om EscapeMode är på och man trycker på esc knappen aktiveras Escape men annars stängs escape av (om den redan är på)
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && !menuEnabled)
       {
         menuEnabled = true;
+      }
+      else if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && menuEnabled)
+      {
+        menuEnabled = false;
       }
 
     }
@@ -36,8 +41,9 @@ namespace Projekt
       // !Detta aktiveras när esc trycks
       Raylib.DrawRectangle(530, 200, 500, 200, Color.BLACK);
       Raylib.DrawText("Do You Really Want To Leave?", 590, 260, 25, Color.WHITE);
-      MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No");
-      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes");
+      // ?JAG FIxar att knapparna inte gör nåt senare...
+      MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No", this);
+      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes", this);
 
       Vector2 mousePos = Raylib.GetMousePosition();
       bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit.ButtonRectangle);
@@ -71,11 +77,9 @@ namespace Projekt
 
       Raylib.ClearBackground(Color.LIGHTGRAY);
       Raylib.DrawText("Menu", 700, 250, 50, Color.WHITE);
-      MenuButton GameButton = new MenuButton(530, 450, 250, 75, Color.BLACK, "Game");
-      MenuButton MapButton = new MenuButton(830, 450, 250, 75, Color.BLACK, "Mapping");
+      MenuButton GameButton = new MenuButton(530, 450, 250, 75, Color.BLACK, "Game", gamePlay);
+      MenuButton MapButton = new MenuButton(830, 450, 250, 75, Color.BLACK, "Mapping", mapping);
       // ? gör så att man inte behöver lägga in scenerna manuelt utan att förstöra för knappar som inte har scener
-      GameButton.Scene = gamePlay;
-      MapButton.Scene = mapping;
 
 
       if (menuEnabled)

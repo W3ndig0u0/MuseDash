@@ -18,7 +18,7 @@ namespace Projekt
 
     public Rectangle buttonRectangle;
 
-    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, string text)
+    public MenuButton(int xPosition, int yPosition, int width, int height, Color buttonColor, string text, Scene scene)
     {
       XPosition = xPosition;
       YPosition = yPosition;
@@ -26,6 +26,7 @@ namespace Projekt
       Height = height;
       ButtonColor = buttonColor;
       Text = text;
+      Scene = scene;
 
       // clickSound = Raylib.LoadSound("Sound/SoundEffect/BtnClickSound.mp3");
       buttonRectangle = new Rectangle(xPosition, yPosition, width, height);

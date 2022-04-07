@@ -39,13 +39,13 @@ namespace Projekt
 
       Rect = new Rectangle(x, y, width, height);
       mousePos = Raylib.GetMousePosition();
-      //   DrawBox();
     }
 
     public void DrawBox()
     {
       // !Ritar Rectangeln och texten
-      Raylib.DrawRectangleRec(rect, Color.BLACK);
+      Raylib.DrawRectangleRec(rect, Color.WHITE);
+      Raylib.DrawRectangleLinesEx(rect, 1, Color.BLACK);
       Raylib.DrawText(TextBefore, X, Y, 30, Color.BLACK);
     }
 
