@@ -45,7 +45,8 @@ namespace Projekt
     {
       // !Ritar Rectangeln och texten
       Raylib.DrawRectangleRec(rect, Color.WHITE);
-      Raylib.DrawRectangleLinesEx(rect, 1, Color.BLACK);
+      Raylib.DrawRectangleLinesEx(rect, 1, Color.GRAY);
+      // Raylib.DrawLine(rect.x, rect.y, rect.x + width, rect.y + height, Color.GRAY);
       Raylib.DrawText(TextBefore, X, Y, 30, Color.BLACK);
     }
 
