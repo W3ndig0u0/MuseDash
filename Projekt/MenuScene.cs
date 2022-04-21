@@ -25,14 +25,14 @@ namespace Projekt
     public override void Update()
     {
       // !Om EscapeMode är på och man trycker på esc knappen aktiveras Escape men annars stängs escape av (om den redan är på)
-      if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && !menuEnabled)
-      {
-        menuEnabled = true;
-      }
-      else if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && menuEnabled)
-      {
-        menuEnabled = false;
-      }
+      // if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && !menuEnabled)
+      // {
+      //   menuEnabled = true;
+      // }
+      // else if (Raylib.IsKeyPressed(KeyboardKey.KEY_ESCAPE) && menuEnabled)
+      // {
+      //   menuEnabled = false;
+      // }
 
     }
 
@@ -43,24 +43,24 @@ namespace Projekt
       Raylib.DrawText("Do You Really Want To Leave?", 590, 260, 25, Color.WHITE);
       // ?JAG FIxar att knapparna inte gör nåt senare...
 
-      MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No", this);
-      MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes", this);
+      // MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No", this);
+      // MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes", this);
 
       Vector2 mousePos = Raylib.GetMousePosition();
-      bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit.ButtonRectangle);
-      bool yesAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, yes.ButtonRectangle);
+      // bool exitAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, exit.ButtonRectangle);
+      // bool yesAreOverlapping = Raylib.CheckCollisionPointRec(mousePos, yes.ButtonRectangle);
 
       // !Lämna spelet
-      if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && exitAreOverlapping)
-      {
-        sceneRemove = true;
-      }
+      // if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && exitAreOverlapping)
+      // {
+      //   sceneRemove = true;
+      // }
 
-      // !Lämna exit mode
-      if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && yesAreOverlapping)
-      {
-        menuEnabled = false;
-      }
+      // // !Lämna exit mode
+      // if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON) && yesAreOverlapping)
+      // {
+      //   menuEnabled = false;
+      // }
     }
 
     public override bool Destroyed()
