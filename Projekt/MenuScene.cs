@@ -42,6 +42,7 @@ namespace Projekt
       Raylib.DrawRectangle(530, 200, 500, 200, Color.BLACK);
       Raylib.DrawText("Do You Really Want To Leave?", 590, 260, 25, Color.WHITE);
       // ?JAG FIxar att knapparna inte gör nåt senare...
+
       MenuButton yes = new MenuButton(700, 340, 50, 30, Color.GREEN, "No", this);
       MenuButton exit = new MenuButton(800, 340, 50, 30, Color.RED, "Yes", this);
 
