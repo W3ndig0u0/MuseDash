@@ -3,9 +3,8 @@ using Raylib_cs;
 
 namespace Projekt
 {
-  public class Mapping : Scene
+  public class Help : Scene
   {
-
     bool sceneRemove;
     public bool SceneRemove
     {
@@ -31,10 +30,6 @@ namespace Projekt
       return destroyed;
     }
 
-    TextBox MapName = new TextBox("Map Name", 400, 200);
-    TextBox ArtistName = new TextBox("Artist Name", 400, 400);
-    TextBox Diff = new TextBox("Diff", 400, 600);
-
     public override void WhatToDraw()
     {
       // !Debugging Stats
@@ -42,12 +37,14 @@ namespace Projekt
       Raylib.DrawText("GetTime: " + Raylib.GetTime().ToString(), 10, 30, 20, Color.GREEN);
       Raylib.DrawText("FrameTime: " + Raylib.GetFrameTime().ToString(), 10, 50, 20, Color.GREEN);
 
-      MapName.DrawBox();
-      ArtistName.DrawBox();
-      Diff.DrawBox();
-
+      // !Text om spelet för spelaren
       Raylib.ClearBackground(Color.WHITE);
-      Raylib.DrawText("Maping Forum", 700, 100, 50, Color.BLACK);
+      Raylib.DrawText("What is this?", 700, 100, 30, Color.BLACK);
+      Raylib.DrawText("This is a Muse Dash clone", 300, 200, 20, Color.BLACK);
+      Raylib.DrawText("Maping Forum", 300, 300, 20, Color.BLACK);
+
+      Raylib.DrawText("Controlls: Press 2 to hit the air enemies, and press 3 in order to hit the grounded enemies.", 300, 450, 20, Color.BLACK);
+      Raylib.DrawText("Try to hit the enemies in when they are in the middle of the Hit detection in order to get higher scores.", 300, 500, 20, Color.BLACK);
     }
 
   }

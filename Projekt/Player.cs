@@ -80,8 +80,7 @@ namespace Projekt
       get { return color; }
       set { color = value; }
     }
-
-    List<Vector2> vector2List = new List<Vector2>();
+    HashSet<Vector2> vector2Set = new HashSet<Vector2>();
 
     bool isFeverMode = false;
     public bool IsFeverMode
@@ -197,21 +196,12 @@ namespace Projekt
       pos2.X = random.Next(690, 800);
       pos2.Y = random.Next(80, 120);
 
-      vector2List.Add(pos);
-      vector2List.Add(pos2);
+      vector2Set.Add(pos);
+      vector2Set.Add(pos2);
     }
 
     void ScoreCircle()
     {
-
-      // for (int i = 0; i < vector2List.Count; i++)
-      // {
-      //   // !SKriver ut flera random cirklor med från listan
-      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X), (int)Math.Round(vector2List[i].Y), Radius, Color);
-      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X - 10), (int)Math.Round(vector2List[i].Y - 20), Radius / 2, Color);
-      //   Raylib.DrawCircle((int)Math.Round(vector2List[i].X + 10), (int)Math.Round(vector2List[i].Y + 20), Radius / 2, Color);
-      // }
-
       Raylib.DrawText(Combo.ToString(), 700, 60, 50, GamePlay.gamePlay.Black);
       Raylib.DrawText("COMBO", 690, 100, 30, GamePlay.gamePlay.Black);
     }

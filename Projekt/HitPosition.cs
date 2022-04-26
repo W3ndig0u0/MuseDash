@@ -53,8 +53,6 @@ namespace Projekt
     //! Texture
     Texture2D hitCircleTexture;
 
-    List<Rectangle> collitionalRectangleList = new List<Rectangle>();
-
     Rectangle perfektCollitionalRectangle;
     Rectangle perfektCollitionalRectangleAUTO;
     Rectangle greatCollitionalEarly;
@@ -81,15 +79,6 @@ namespace Projekt
       perfektCollitionalRectangle = new Rectangle(XPosition, YPosition, Width, Height);
       greatCollitionalEarly = new Rectangle(XPosition + 40, YPosition, Width, Height);
       greatCollitionalLate = new Rectangle(XPosition - 40, YPosition, Width, Height);
-
-      // collitionalRectangleList.Add(perfektCollitionalRectangle);
-      // collitionalRectangleList.Add(greatCollitionalEarly);
-      // collitionalRectangleList.Add(greatCollitionalLate);
-
-
-      // for (int i = 0; i < collitionalRectangleList.Count; i++)
-      // {
-      // }
     }
 
     // !Animera cirkeln

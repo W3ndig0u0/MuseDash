@@ -13,8 +13,6 @@ namespace Projekt
     int attacked;
     bool isSprintAttack = false;
     int xBase = 1300;
-    List<SmallEnemy> enemies = new List<SmallEnemy>();
-
 
     public Boss(int xPosition, int yPosition) : base(xPosition, yPosition)
     {
@@ -83,7 +81,7 @@ namespace Projekt
       }
 
       // Console.WriteLine(timer);
-
+      // !GÖe en attack när tiden har gått
       if (timer == 200)
       {
         ThrowAttack(250);

@@ -13,6 +13,7 @@ namespace Projekt
 
     GamePlay gamePlay = new GamePlay();
     Mapping mapping = new Mapping();
+    Help help = new Help();
 
     bool sceneRemove;
     public bool SceneRemove
@@ -33,7 +34,6 @@ namespace Projekt
       // {
       //   menuEnabled = false;
       // }
-
     }
 
     void EscapeMode()
@@ -78,9 +78,9 @@ namespace Projekt
 
       Raylib.ClearBackground(Color.LIGHTGRAY);
       Raylib.DrawText("Menu", 700, 250, 50, Color.WHITE);
-      MenuButton GameButton = new MenuButton(530, 450, 250, 75, Color.BLACK, "Game", gamePlay);
-      MenuButton MapButton = new MenuButton(830, 450, 250, 75, Color.BLACK, "Mapping", mapping);
-      // ? gör så att man inte behöver lägga in scenerna manuelt utan att förstöra för knappar som inte har scener
+      MenuButton GameButton = new MenuButton(530, 350, 250, 75, Color.BLACK, "Game", gamePlay);
+      MenuButton MapButton = new MenuButton(830, 350, 250, 75, Color.BLACK, "Mapping", mapping);
+      MenuButton HelpButton = new MenuButton(630, 550, 250, 75, Color.BLACK, "Help", help);
 
 
       if (menuEnabled)

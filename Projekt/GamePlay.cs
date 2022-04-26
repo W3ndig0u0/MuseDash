@@ -45,7 +45,7 @@ namespace Projekt
       bool destroyed = false;
       if (sceneRemove == true)
       {
-        destroyed = true;
+        // destroyed = true;
       }
       return destroyed;
     }
@@ -143,9 +143,6 @@ namespace Projekt
         // Console.WriteLine(gamePlay.enemyList[i].GetType());
 
       }
-
-      // !Gå till bakatill menyn, utan att skapa en ny instans av menyn
-      MenuButton menuButton = new MenuButton(1450, 5, 150, 75, Color.BLACK, "Menu", InitGame.currentScene.GetScene(1));
     }
   }
 }
