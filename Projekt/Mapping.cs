@@ -31,6 +31,12 @@ namespace Projekt
       return destroyed;
     }
 
+    public override void Update()
+    {
+      
+    
+    }
+
     TextBox MapName = new TextBox("Map Name", 400, 200);
     TextBox ArtistName = new TextBox("Artist Name", 400, 400);
     TextBox Diff = new TextBox("Diff", 400, 600);
