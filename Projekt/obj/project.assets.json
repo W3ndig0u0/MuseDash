@@ -124,11 +124,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/Projekt.csproj",
+      "projectUniqueName": "/Users/Administrator/Downloads/Github/C#/MuseDash/Projekt/Projekt.csproj",
       "projectName": "Projekt",
-      "projectPath": "/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/Projekt.csproj",
+      "projectPath": "/Users/Administrator/Downloads/Github/C#/MuseDash/Projekt/Projekt.csproj",
       "packagesPath": "/Users/Administrator/.nuget/packages/",
-      "outputPath": "/Users/Administrator/Documents/GitHub/Slutprojekt-2/Projekt/obj/",
+      "outputPath": "/Users/Administrator/Downloads/Github/C#/MuseDash/Projekt/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/Administrator/.nuget/NuGet/NuGet.Config"

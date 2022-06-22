@@ -29,7 +29,6 @@ namespace Projekt
 
     public override void DrawObject()
     {
-
       // !Ritar inte sakerna om de inte är med i skärmen
       if (XPosition >= 0 && YPosition >= 0 && XPosition <= 1700 && YPosition <= 1000)
       {

@@ -44,7 +44,7 @@ namespace Projekt
       Raylib.DrawText("Maping Forum", 300, 300, 20, Color.BLACK);
 
       Raylib.DrawText("Controlls: Press 2 to hit the air enemies, and press 3 in order to hit the grounded enemies.", 300, 450, 20, Color.BLACK);
-      Raylib.DrawText("Try to hit the enemies in when they are in the middle of the Hit detection in order to get higher scores.", 300, 500, 20, Color.BLACK);
+      Raylib.DrawText("Try to hit the enemies when they are in the middle of the Circle in order to achive better scores.", 300, 500, 20, Color.BLACK);
     }
 
   }
