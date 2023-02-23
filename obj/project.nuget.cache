@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ec0qr1pN+V8n2sMdnzrayQczZ5wqVm+UCyTYBsrd67ojLb7IfSX38AIVMXTckBM2gnsa8RtxdTdpO9JAdMNmjg==",
+  "success": true,
+  "projectFilePath": "/Users/Administrator/Developer/MuseDash/Slutprojekt-2.csproj",
+  "expectedPackageFiles": [
+    "/Users/Administrator/.nuget/packages/raylib-cs/4.0.0.1/raylib-cs.4.0.0.1.nupkg.sha512",
+    "/Users/Administrator/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/Administrator/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.17/microsoft.netcore.app.host.osx-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,5 @@
+/Users/Administrator/Developer/MuseDash/obj/Debug/net5.0/Slutprojekt-2.csproj.AssemblyReference.cache
+/Users/Administrator/Developer/MuseDash/obj/Debug/net5.0/Slutprojekt-2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Administrator/Developer/MuseDash/obj/Debug/net5.0/Slutprojekt-2.AssemblyInfoInputs.cache
+/Users/Administrator/Developer/MuseDash/obj/Debug/net5.0/Slutprojekt-2.AssemblyInfo.cs
+/Users/Administrator/Developer/MuseDash/obj/Debug/net5.0/Slutprojekt-2.csproj.CoreCompileInputs.cache
